@@ -8,18 +8,18 @@ namespace KIT206_RAP
 {
     internal class FakeReasearcherData
     {
-        public List<Researcher> Generate()
+        public static List<Researcher> Generate()
         {
             return new List<Researcher>()
             {
-                new Researcher(Researcher.Title.Dr, "Albert", "Einstein"),
-                new Researcher(Researcher.Title.Dr, "Marie", "Curie"),
-                new Researcher(Researcher.Title.Mrs, "Jane", "Doe"),
-                new Researcher(Researcher.Title.Mr, "John", "Doe"),
-                new Researcher(Researcher.Title.Prof, "Stephen", "Hawkings"),
-                new Researcher(Researcher.Title.Ms, "Amelia", "Reagan"),
-                new Researcher(Researcher.Title.Mrs, "Roberta", "Dawson"),
-                new Researcher(Researcher.Title.Rev, "Mark", "Holland")
+                new Staff(Researcher.Title.Dr, "Albert", "Einstein"),
+                new Staff(Researcher.Title.Dr, "Marie", "Curie"),
+                new Student(Researcher.Title.Mrs, "Jane", "Doe"),
+                new Student(Researcher.Title.Mr, "John", "Doe"),
+                new Staff(Researcher.Title.Prof, "Stephen", "Hawkings"),
+                new Student(Researcher.Title.Ms, "Amelia", "Reagan"),
+                new Student(Researcher.Title.Mrs, "Roberta", "Dawson"),
+                new Staff(Researcher.Title.Rev, "Mark", "Holland")
             };
         }
     }

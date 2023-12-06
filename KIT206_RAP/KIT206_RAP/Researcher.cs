@@ -18,7 +18,7 @@ namespace KIT206_RAP
         private int publications;
         private EmploymentLevel employmentLevel;
         private Campus campus;
-        private Title title; 
+        protected Title title; 
 
         public string ToBasicName()
         { 

@@ -1,0 +1,3 @@
+C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.AssemblyReference.cache
+C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.SuggestedBindingRedirects.cache
+C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CoreCompileInputs.cache
