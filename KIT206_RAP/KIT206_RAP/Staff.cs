@@ -9,7 +9,7 @@ namespace KIT206_RAP
 {
     internal class Staff : Researcher
     {
-        private double year3Avergae, funidngReceived, performanceByPublication, performanceByFunding;
+        private double year3Avergae, fundingReceived, performanceByPublication, performanceByFunding;
         private int supervisions;
 
         public Staff(Title title, string givenName, string familyName) : base(title, givenName, familyName)
