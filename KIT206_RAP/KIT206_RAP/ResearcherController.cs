@@ -10,9 +10,9 @@ namespace KIT206_RAP
     internal class ResearcherController
     {
         private static List<Researcher> masterList = FakeReasearcherData.Generate(); 
-        private static List<Researcher> modifiedList = masterList;
+        private List<Researcher> modifiedList = masterList;
 
-        public static void DisplayCurrentList()
+        public void DisplayCurrentList()
         {
             foreach (Researcher researcher in modifiedList)
             {

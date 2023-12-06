@@ -22,7 +22,7 @@ namespace KIT206_RAP
 
         public string ToBasicName()
         { 
-            return familyName + ", " + givenName + "(" + title + ")";
+            return familyName + ", " + givenName + " (" + title + ")";
         }
 
         public Researcher(Title title, string givenName, string familyName)
