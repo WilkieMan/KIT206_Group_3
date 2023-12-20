@@ -11,7 +11,7 @@ namespace KIT206_RAP
         private string degree;
         private Staff supervisor;
 
-        public Student(Title title, string givenName, string familyName) : base(title, givenName, familyName)
+        public Student(Title title, string givenName, string familyName, EmploymentLevel employmentLevel) : base(title, givenName, familyName, employmentLevel)
         {
 
         }

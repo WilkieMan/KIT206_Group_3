@@ -9,27 +9,29 @@ namespace KIT206_RAP
 {
     internal class Researcher
     {
-        public enum EmploymentLevel { Student, A, B, C, D, E };
+        public enum EmploymentLevel {Student, A, B, C, D, E};
         public enum Campus { CradleCoast, Hobart, Launceston };
         public enum Title { Dr, Mr, Mrs, Ms, Prof, Rev };
-        private string givenName, familyName, email, currentJobTitle;
+        public string givenName, familyName, email, currentJobTitle;
         private DateTime commencedInstitution, commencedPosition;
         private double tenure, q1Percentage;
-        private int publications;
-        private EmploymentLevel employmentLevel;
+        private int publications, funding;
+        public EmploymentLevel employmentLevel;
         private Campus campus;
-        protected Title title; 
+        protected Title title;
+        bool isStudent;
 
         public string ToBasicName()
         { 
             return familyName + ", " + givenName + " (" + title + ")";
         }
 
-        public Researcher(Title title, string givenName, string familyName)
+        public Researcher(Title title, string givenName, string familyName, EmploymentLevel employmentLevel)
         {
             this.givenName = givenName;
             this.familyName = familyName;
             this.title = title;
+            this.employmentLevel = employmentLevel;
         } 
     }
 }

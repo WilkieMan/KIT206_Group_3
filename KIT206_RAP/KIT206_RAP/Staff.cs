@@ -12,7 +12,7 @@ namespace KIT206_RAP
         private double year3Avergae, fundingReceived, performanceByPublication, performanceByFunding;
         private int supervisions;
 
-        public Staff(Title title, string givenName, string familyName) : base(title, givenName, familyName)
+        public Staff(Title title, string givenName, string familyName, EmploymentLevel employmentLevel) : base(title, givenName, familyName, employmentLevel)
         {
             
         }

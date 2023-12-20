@@ -9,9 +9,13 @@ namespace KIT206_RAP
     internal class Program
     {
         static ResearcherController researcherController = new ResearcherController();
+        private List<Researcher> testList;
         static void Main(string[] args)
         {
             researcherController.DisplayCurrentList();
+            List<Researcher> testList = researcherController.FilterByName("Doe");
+            researcherController.DisplayList(testList);
+
         }
     }
 }
