@@ -9,7 +9,7 @@ namespace KIT206_RAP
     internal class Student : Researcher
     {
         private string degree;
-        private Staff supervisor;
+        public Staff supervisor;
 
         public Student(Title title, string givenName, string familyName, EmploymentLevel employmentLevel) : base(title, givenName, familyName, employmentLevel)
         {

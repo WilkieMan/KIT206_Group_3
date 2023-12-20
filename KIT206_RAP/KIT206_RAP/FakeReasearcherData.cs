@@ -14,7 +14,7 @@ namespace KIT206_RAP
             {
                 new Staff(Researcher.Title.Dr, "Albert", "Einstein", Researcher.EmploymentLevel.A),
                 new Staff(Researcher.Title.Dr, "Marie", "Curie", Researcher.EmploymentLevel.B),
-                new Student(Researcher.Title.Mrs, "Jane", "Doe", Researcher.EmploymentLevel.Student),
+                new Student(Researcher.Title.Mrs, "Jane", "Doe", Researcher.EmploymentLevel.Student, ),
                 new Student(Researcher.Title.Mr, "John", "Doe", Researcher.EmploymentLevel.Student),
                 new Staff(Researcher.Title.Prof, "Stephen", "Hawkings", Researcher.EmploymentLevel.A),
                 new Student(Researcher.Title.Ms, "Amelia", "Reagan", Researcher.EmploymentLevel.Student),

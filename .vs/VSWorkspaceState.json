@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\KIT206_RAP",
+    "\\KIT206_RAP\\KIT206_RAP"
   ],
-  "SelectedNode": "\\KIT206_RAP.sln",
+  "SelectedNode": "\\KIT206_RAP\\KIT206_RAP\\Staff.cs",
   "PreviewInSolutionExplorer": false
 }

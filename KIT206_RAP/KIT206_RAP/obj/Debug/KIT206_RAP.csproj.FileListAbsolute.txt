@@ -13,3 +13,6 @@ C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT20
 C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CoreCompileInputs.cache
 C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.exe
 C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.pdb
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.dll
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.xml
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CopyComplete

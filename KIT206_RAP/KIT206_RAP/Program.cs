@@ -13,7 +13,7 @@ namespace KIT206_RAP
         static void Main(string[] args)
         {
             researcherController.DisplayCurrentList();
-            List<Researcher> testList = researcherController.FilterByName("Doe");
+            List<Researcher> testList = researcherController.FilterByName();
             researcherController.DisplayList(testList);
 
         }

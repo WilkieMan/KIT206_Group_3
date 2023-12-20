@@ -15,11 +15,11 @@ namespace KIT206_RAP
         public string givenName, familyName, email, currentJobTitle;
         private DateTime commencedInstitution, commencedPosition;
         private double tenure, q1Percentage;
-        private int publications, funding;
+        public int publications, funding, id;
         public EmploymentLevel employmentLevel;
         private Campus campus;
         protected Title title;
-        bool isStudent;
+      
 
         public string ToBasicName()
         { 

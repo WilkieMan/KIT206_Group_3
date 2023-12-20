@@ -9,7 +9,7 @@ namespace KIT206_RAP
 
     internal class ResearcherController
     {
-        private static List<Researcher> masterList = FakeReasearcherData.Generate(); 
+        private static List<Researcher> masterList = FakeReasearcherData.Generate();
         private List<Researcher> modifiedList = masterList;
         private List<Researcher> tempList = new List<Researcher>();
 
@@ -35,40 +35,40 @@ namespace KIT206_RAP
 
         public void LoadResearchers()
         {
-            //loads the researchers
+            
         }
 
         public List<Researcher> FilterByJobTitle(Researcher.EmploymentLevel employmentLevel)
         {
-           foreach(Researcher r in masterList)
-            {
-                if (r.employmentLevel == employmentLevel)
-                {
-                    tempList.Add(r); //add the researcher to temporary list
-                }
-            }
-            return tempList;
+            var temp = from Researcher r in masterList
+                       where r.employmentLevel == employmentLevel
+                       select r;
+
+            return new List<Researcher>(temp);
         }
 
-        //modify
-        public List<Researcher> FilterByName(string name)
+        public List<Researcher> FilterByName()
         {
-            foreach (Researcher r in masterList)
-            {
-                if (r.givenName == name)
-                {
-                    tempList.Add(r); //add the researcher to temporary list
-                } else if (r.familyName == name)
-                {
-                    tempList.Add(r); //add the researcher to temporary list
-                }
-            }
 
-            return tempList;
+            Console.Write("Enter search text: ");
+            string searchText = Console.ReadLine().ToLower();
+
+            var searchResults = from Researcher r in masterList
+                                where r.givenName.ToLower().Contains(searchText) || r.familyName.ToLower().Contains(searchText)
+                                select r;
+
+            return new List<Researcher>(searchResults);
+        }
+
+        public List<Student> getSupervisions(int id)
+        {
+            var supervisions =  from Student s in masterList
+                                where s.supervisor.id == id
+                                select s;
+
+            return new List<Student>(supervisions);
         }
 
     }
-
-
 
 }
