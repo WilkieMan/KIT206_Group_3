@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP
 {
-
     internal class ResearcherController
     {
-        private static List<Researcher> masterList = FakeReasearcherData.Generate();
+        private static List<Researcher> masterList = DBAdapter.FetchBasicResearcher();
         private List<Researcher> modifiedList = masterList;
-        private List<Researcher> tempList = new List<Researcher>();
+        // private List<Researcher> tempList = new List<Researcher>();
 
         public void DisplayCurrentList()
         {

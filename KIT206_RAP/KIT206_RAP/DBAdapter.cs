@@ -12,6 +12,11 @@ namespace KIT206_RAP
         static string db = "kit206", server = "alacritas.cis.utas.edu.au", user = "kit206", pass = "kit206";
         static MySqlConnection conn;
 
+        public DBAdapter()
+        {
+            conn = GetConnection(conn);
+        }
+
         private static MySqlConnection GetConnection(MySqlConnection conn)
         {
             if (conn == null)
@@ -33,13 +38,19 @@ namespace KIT206_RAP
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, employment_level, id from researcher", conn);
+                // MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, employment_level, id from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr.GetString(3)), rdr.GetInt32(4)));
+                    // researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr.GetString(3)), rdr.GetInt32(4)));
+                    System.Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1) + " " + rdr.GetString(2));
                 }
+            }
+            catch
+            {
+                System.Console.WriteLine("Conn failure.");
             }
             finally
             {
