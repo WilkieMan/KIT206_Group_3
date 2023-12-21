@@ -15,7 +15,7 @@ namespace KIT206_RAP
         public Performance performanceByPublication;
         public Performance performanceByFunding;
 
-        public Staff(Title title, string givenName, string familyName, EmploymentLevel employmentLevel) : base(title, givenName, familyName, employmentLevel)
+        public Staff(Title title, string givenName, string familyName, EmploymentLevel employmentLevel, int id) : base(title, givenName, familyName, employmentLevel, id)
         {
             
         }
