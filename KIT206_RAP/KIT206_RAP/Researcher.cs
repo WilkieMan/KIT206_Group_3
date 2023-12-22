@@ -17,9 +17,9 @@ namespace KIT206_RAP
         public Campus CampusName { get; set; }                                      //Researcher working campus base
         public string Email { get; set; }                                       //Researcher email
         public string Photo { get; set; }                                       //Researcher Photo (URL Type)   //Past and current positions of researcher
-        public Position EmploymentLevel { get; set; }
-        public List<Publication> publications = new List<Publication>();           //Publications list of researcher
-        public int Tenure;
+        public Position.EmploymentLevel EmploymentLevel { get; set; }
+        public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
+        public List<Position> Positions = new List<Position>();
         public int PublicationCount;
         public Q1Percentage Q1;
 
@@ -27,13 +27,23 @@ namespace KIT206_RAP
         public enum Q1Percentage { Q1, Q2, Q3, Q4}
         public enum Campus { CradleCoast, Hobart, Launceston };
 
+        //Tenure of researcher
+        public double Tenure
+        {
+            get
+            {
+                double daysInYear = 365.0;
+
+                return Math.Round((DateTime.Today - EarliestJobStart).Days / daysInYear, 1);
+            }
+        }
 
         public string ToBasicName()
         { 
             return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
 
-        public Researcher(int id, string givenName, string FamilyName, Title title, Campus campus, Position employmentLevel)
+        public Researcher(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
         {
             ID = id;
             GivenName = givenName;
@@ -42,125 +52,79 @@ namespace KIT206_RAP
             EmploymentLevel = employmentLevel;
         }
 
+        public string GetCurrentJob                                             //Current job of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
 
-        /*  public string GetCurrentJob                                             //Current job of researcher
-              {
-                  get
-                  {
-                      var currentJob = from Position p in Positions
-                                       orderby p.Start ascending
-                                       select p;
-
-                      return currentJob.First().ToTitle(currentJob.First().Level);
-                  }
-              }
-              public string CurrentJobTitle                                         //Date of current position of researcher
-              {
-                  get
-                  {
-                      var currentJob = from Position p in Positions
-                                       orderby p.Start descending
-                                       select p;
-
-                      return currentJob.First().Title;
-                  }
-              }
+                return currentJob.First().ToTitle();
+            }
+        }
 
 
 
-              public DateTime CurrentJobStart                                         //Date of current position of researcher
-              {
-                  get
-                  {
-                      var currentJob = from Position p in Positions
-                                       orderby p.Start descending
-                                       select p;
+        public string CurrentJobTitle                                         //Date of current position of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
 
-                      return currentJob.First().Start;
-                  }
-              }
-
-              public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
-              {
-                  get
-                  {
-                      var earliestJob = from Position p in Positions
-                                        orderby p.Start ascending
-                                        select p;
-
-                      return earliestJob.First().Start;
-                  }
-              }
-
-              public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
-              {
-                  get
-                  {
-                      List<Position> pastJob = new List<Position>();
-
-                      foreach (Position p in Positions)
-                      {
-                          pastJob.Add(p);
-                      }
-
-                      pastJob.RemoveAt(pastJob.Count - 1);
-
-                      return pastJob;
-                  }
-              }
-
-              //Tenure of researcher
-              public double Tenure                                                    
-              {
-                  get
-                  {
-                      double daysInYear = 365.0;
-
-                      return Math.Round((DateTime.Today - EarliestJobStart).Days / daysInYear, 1);
-                  }
-              }
-                  //Researcher publication count
-              public int PublicationCount                                             
-              {
-                  get { return Publications == null ? 0 : Publications.Count(); }
-              }
+                return currentJob.First().ToString();
+            }
+        }
 
 
 
+        public DateTime CurrentJobStart                                         //Date of current position of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
 
-               //Researcher supervisions count (staff)
-              public int SupervisionCount                                                 
-              {
-                  get
-                  {
-                      return Supervision.Count();
-                  }
-              }
+                return currentJob.First().Start;
+            }
+        }
 
-              //Cummulative publication count for researcher
-              public List<string> displayCommulativePublicationCount                      
-              {
-                  get
-                  {
-                      int commulativeCount = 0;
-                      List<string> Commulative = new List<string>();
+        public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
+        {
+            get
+            {
+                var earliestJob = from Position p in Positions
+                                  orderby p.Start ascending
+                                  select p;
 
-                      for (int i = EarliestJobStart.Year; i <= (DateTime.Today.Year); i++)
-                      {
-                          foreach (Publication t in Publications)
-                          {
-                              if (t.Year == i)
-                              {
-                                  commulativeCount++;
-                              }
-                          }
+                return earliestJob.First().Start;
+            }
+        }
 
-                          Commulative.Add("Commulative count in " + i + " is: " + commulativeCount);
-                      }
+        public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
+        {
+            get
+            {
+                List<Position> pastJob = new List<Position>();
 
-                      return Commulative;
-                  }
-              }*/
+                foreach (Position p in Positions)
+                {
+                    pastJob.Add(p);
+                }
 
+                pastJob.RemoveAt(pastJob.Count - 1);
+
+                return pastJob;
+            }
+        }
+
+        //Researcher publication count
+        public int GetPublicationCount()                                             
+        {
+            return Publications == null ? 0 : Publications.Count();
+        }
     }
 }

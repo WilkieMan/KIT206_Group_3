@@ -12,7 +12,7 @@ namespace KIT206_RAP
         private string Degree;
         public int SupervisorID;
 
-        public Student(int id, string givenName, string FamilyName, Title title, Campus campus, Position employmentLevel, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Student(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
             ID = id;
             GivenName = givenName;

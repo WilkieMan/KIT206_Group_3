@@ -12,12 +12,12 @@ namespace KIT206_RAP
         //Three year average of publications for reseacher
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
-        private double Year3Avergae, FundingReceived;
+        private double threeYearAverage, FundingReceived;
         public Performance PerformanceByPublication;
         public Performance PerformanceByFunding;
         List<int> FundingList;
         double FundingToMaintain;
-        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
             ID = id;
             GivenName = givenName;
@@ -36,7 +36,7 @@ namespace KIT206_RAP
             SupervisionsCount = SupervisionsList.Count();
         } 
 
-       /* public double threeYearAverage
+       /*public double threeYearAverage
         {
             get
             {
@@ -52,18 +52,16 @@ namespace KIT206_RAP
 
                 return Math.Round(threeYearPublicationCount / 3, 1);
             }
-        }
+        }*/
 
         //Performance of researcher 
-
+        
         public double getPerformance
         {
             get
             {
-                if (Type == "Staff")
-                {
-                    double realPublications = threeYearAverage;
-                    double expectedPublications;
+                double realPublications = threeYearAverage;
+                double expectedPublications;
 
                     switch (Level)
                     {
@@ -90,7 +88,7 @@ namespace KIT206_RAP
                 {
                     return 0;
                 }
-            }*/
-  
+            }
+        }
     }
 }
