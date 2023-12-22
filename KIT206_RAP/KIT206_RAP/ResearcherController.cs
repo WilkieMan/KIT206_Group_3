@@ -68,6 +68,11 @@ namespace KIT206_RAP
             return new List<Student>(supervisions);
         }
 
+        public void getCummulativeCount()
+        {
+
+        }
+
     }
 
 }

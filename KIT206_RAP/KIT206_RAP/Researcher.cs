@@ -26,7 +26,7 @@ namespace KIT206_RAP
             return familyName + ", " + givenName + " (" + title + ")";
         }
 
-        public Researcher(Title title, string givenName, string familyName, EmploymentLevel employmentLevel, int id)
+        /*public Researcher(Title title, string givenName, string familyName, EmploymentLevel employmentLevel, int id)
         {
             this.givenName = givenName;
             this.familyName = familyName;
@@ -152,7 +152,7 @@ namespace KIT206_RAP
 
                     return Commulative;
                 }
-            }
+            }*/
 
             //To string method for researcher
             public override string ToString()                                            
