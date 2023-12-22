@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static KIT206_RAP.Researcher;
 
 namespace KIT206_RAP
 {
     internal class Student : Researcher
     {
-        private string degree;
-        public Staff supervisor;
+        private string Degree;
+        public int SupervisorID;
 
-        public Student(Title title, string givenName, string familyName, EmploymentLevel employmentLevel, int id) : base(title, givenName, familyName, employmentLevel, id)
+        public Student(int id, string givenName, string FamilyName, string title, Campus campus, Position employmentLevel, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
-
+            ID = id;
+            GivenName = givenName;
+            Title = title;
+            CampusName = campus;
+            EmploymentLevel = employmentLevel;
+            Degree = degree;
+            SupervisorID = supervisorid;
         }
     }
 }

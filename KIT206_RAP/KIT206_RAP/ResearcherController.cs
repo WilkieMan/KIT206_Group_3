@@ -8,13 +8,13 @@ namespace KIT206_RAP
 {
     internal class ResearcherController
     {
-        private static List<Researcher> masterList = DBAdapter.FetchBasicResearcher();
-        private List<Researcher> modifiedList = masterList;
+        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher();
+        private List<Researcher> ModifiedList = MasterList;
         // private List<Researcher> tempList = new List<Researcher>();
 
         public void DisplayCurrentList()
         {
-            foreach (Researcher researcher in modifiedList)
+            foreach (Researcher researcher in ModifiedList)
             {
                 Console.WriteLine(researcher.ToBasicName());
             }
@@ -37,10 +37,10 @@ namespace KIT206_RAP
             
         }
 
-        public List<Researcher> FilterByJobTitle(Researcher.EmploymentLevel employmentLevel)
+        public List<Researcher> FilterByJobTitle(Position employmentLevel)
         {
-            var temp = from Researcher r in masterList
-                       where r.employmentLevel == employmentLevel
+            var temp = from Researcher r in MasterList
+                       where r.EmploymentLevel == employmentLevel
                        select r;
 
             return new List<Researcher>(temp);
@@ -52,17 +52,17 @@ namespace KIT206_RAP
             Console.Write("Enter search text: ");
             string searchText = Console.ReadLine().ToLower();
 
-            var searchResults = from Researcher r in masterList
-                                where r.givenName.ToLower().Contains(searchText) || r.familyName.ToLower().Contains(searchText)
+            var searchResults = from Researcher r in MasterList
+                                where r.GivenName.ToLower().Contains(searchText) || r.FamilyName.ToLower().Contains(searchText)
                                 select r;
 
             return new List<Researcher>(searchResults);
         }
 
-        public List<Student> getSupervisions(int id)
+        public static List<Student> getSupervisions(int id)
         {
-            var supervisions =  from Student s in masterList
-                                where s.supervisor.id == id
+            var supervisions =  from Student s in MasterList
+                                where s.SupervisorID == id
                                 select s;
 
             return new List<Student>(supervisions);

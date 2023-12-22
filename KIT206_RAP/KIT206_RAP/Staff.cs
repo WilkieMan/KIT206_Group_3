@@ -7,11 +7,36 @@ using static KIT206_RAP.Researcher;
 
 namespace KIT206_RAP
 {
-      namespace Researcher
+    internal class Staff : Researcher
     {
         //Three year average of publications for reseacher
+        public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
+        public int SupervisionsCount = 0;
+        private double Year3Avergae, FundingReceived;
+        public Performance PerformanceByPublication;
+        public Performance PerformanceByFunding;
+        List<int> FundingList;
+        double FundingToMaintain;
+        public Staff(int id, string givenName, string FamilyName, string title, Campus campus, Position employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        {
+            ID = id;
+            GivenName = givenName;
+            Title = title;
+            CampusName = campus;
+            EmploymentLevel = employmentLevel;
+            FundingList = fundingList;
+            FundingToMaintain = fundingToMaintain;
+        }
 
-        public double threeYearAverage
+        public enum Performance { A, B, C, D, E }
+
+        public void PopulateSupervisionsList()
+        {
+            SupervisionsList = ResearcherController.getSupervisions(this.ID);
+            SupervisionsCount = SupervisionsList.Count();
+        } 
+
+       /* public double threeYearAverage
         {
             get
             {
@@ -65,18 +90,7 @@ namespace KIT206_RAP
                 {
                     return 0;
                 }
-            }
-    internal class Staff : Researcher
-    {
-        public enum Performance {A, B, C, D, E }
-        private double year3Avergae, fundingReceived;
-        private int supervisions;
-        public Performance performanceByPublication;
-        public Performance performanceByFunding;
-
-        public Staff(Title title, string givenName, string familyName, EmploymentLevel employmentLevel, int id) : base(title, givenName, familyName, employmentLevel, id)
-        {
-            
-        }
+            }*/
+  
     }
 }
