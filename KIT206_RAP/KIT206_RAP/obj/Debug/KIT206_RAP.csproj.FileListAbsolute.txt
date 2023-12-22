@@ -23,3 +23,16 @@ C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 2
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CopyComplete
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.dll
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.xml
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.AssemblyReference.cache
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CoreCompileInputs.cache
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.exe
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.pdb
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\KIT206_RAP.exe.config
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\KIT206_RAP.exe
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\KIT206_RAP.pdb
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.dll
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\System.Memory.dll
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\System.Buffers.dll
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.xml
+C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CopyComplete

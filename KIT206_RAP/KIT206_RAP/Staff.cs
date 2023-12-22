@@ -17,11 +17,11 @@ namespace KIT206_RAP
         public Performance PerformanceByFunding;
         List<int> FundingList;
         double FundingToMaintain;
-        public Staff(int id, string givenName, string FamilyName, string title, Campus campus, Position employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
             ID = id;
             GivenName = givenName;
-            Title = title;
+            NameTitle = title;
             CampusName = campus;
             EmploymentLevel = employmentLevel;
             FundingList = fundingList;

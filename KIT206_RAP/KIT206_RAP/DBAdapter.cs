@@ -68,27 +68,27 @@ namespace KIT206_RAP
             return researchers;
         }
 
-        private static Researcher.EmploymentLevel MakeEmploymentLevel(string employmentLevel)
+        private static Position.EmploymentLevel MakeEmploymentLevel(string employmentLevel)
         {
             switch (employmentLevel.ToLower())
             {
                 case "a":
-                    return Researcher.EmploymentLevel.A;
+                    return Position.EmploymentLevel.A;
 
                 case "b":
-                    return Researcher.EmploymentLevel.B;
+                    return Position.EmploymentLevel.B;
 
                 case "c":
-                    return Researcher.EmploymentLevel.C;
+                    return Position.EmploymentLevel.C;
 
                 case "d":
-                    return Researcher.EmploymentLevel.D;
+                    return Position.EmploymentLevel.D;
 
                 case "e":
-                    return Researcher.EmploymentLevel.E;
+                    return Position.EmploymentLevel.E;
 
                 default:
-                    return Researcher.EmploymentLevel.Student;
+                    return Position.EmploymentLevel.Student;
             }
 
         }

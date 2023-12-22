@@ -13,7 +13,7 @@ namespace KIT206_RAP
         public string GivenName { get; set; }                                   //Researcher Given name
         public string FamilyName { get; set; }                                  //Researcher Family name                                                       //Researcher Title
         public string School { get; set; }                                      //Researcher School
-        public string Title { get; set; }
+        public Title NameTitle { get; set; }
         public Campus CampusName { get; set; }                                      //Researcher working campus base
         public string Email { get; set; }                                       //Researcher email
         public string Photo { get; set; }                                       //Researcher Photo (URL Type)   //Past and current positions of researcher
@@ -23,20 +23,21 @@ namespace KIT206_RAP
         public int PublicationCount;
         public Q1Percentage Q1;
 
+        public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
         public enum Q1Percentage { Q1, Q2, Q3, Q4}
         public enum Campus { CradleCoast, Hobart, Launceston };
 
 
         public string ToBasicName()
         { 
-            return FamilyName + ", " + GivenName + " (" + Title + ")";
+            return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
 
-        public Researcher(int id, string givenName, string FamilyName, string title, Campus campus, Position employmentLevel)
+        public Researcher(int id, string givenName, string FamilyName, Title title, Campus campus, Position employmentLevel)
         {
             ID = id;
             GivenName = givenName;
-            Title = title;
+            NameTitle = title;
             CampusName = campus;
             EmploymentLevel = employmentLevel;
         }
