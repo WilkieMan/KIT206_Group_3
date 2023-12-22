@@ -59,7 +59,7 @@ namespace KIT206_RAP
             return new List<Researcher>(searchResults);
         }
 
-        public static List<Student> getSupervisions(int id)
+        public static List<Student> GetSupervisions(int id)
         {
             var supervisions =  from Student s in MasterList
                                 where s.SupervisorID == id
@@ -68,11 +68,12 @@ namespace KIT206_RAP
             return new List<Student>(supervisions);
         }
 
-        public void getCummulativeCount()
+        public void GetCummulativeCount()
         {
 
         }
 
+        //fix
         /*//Cummulative publication count for researcher
         public List<string> displayCommulativePublicationCount
         {

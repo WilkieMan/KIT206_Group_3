@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CummulativeCount.cs" />
     <Compile Include="DBAdapter.cs" />
     <Compile Include="FakePublicationsData.cs" />
     <Compile Include="FakeReasearcherData.cs" />

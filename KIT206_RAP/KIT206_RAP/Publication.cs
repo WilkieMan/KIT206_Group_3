@@ -19,6 +19,9 @@ namespace KIT206_RAP
         public DateTime Year { get; set; }
         public OutputRanking Ranking { get; set; }
 
+        public enum OutputType { Conference, Journal, Other };
+        public enum OutputRanking { Q1, Q2, Q3, Q4 };
+
         public void AddAuthorNames(string author)
         {
             Authors.Add(author);
@@ -35,9 +38,10 @@ namespace KIT206_RAP
             this.DOI = doi;
         }
 
-        public enum OutputType { Conference, Journal, Other };
-        public enum OutputRanking { Q1, Q2, Q3, Q4};
-
+        public int Age()
+        {
+            return 1; //fiinish
+        }
     }
 }
 

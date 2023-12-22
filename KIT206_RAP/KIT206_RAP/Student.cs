@@ -22,5 +22,10 @@ namespace KIT206_RAP
             Degree = degree;
             SupervisorID = supervisorid;
         }
+
+        public string PrintSupervisonInfo()
+        {
+            return FamilyName + ", " + GivenName + " (" + NameTitle + ")          " + EmploymentLevel;
+        }
     }
 }

@@ -12,11 +12,12 @@ namespace KIT206_RAP
         //Three year average of publications for reseacher
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
-        private double threeYearAverage, FundingReceived;
+        private double FundingReceived;
         public Performance PerformanceByPublication;
         public Performance PerformanceByFunding;
         List<int> FundingList;
         double FundingToMaintain;
+
         public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
             ID = id;
@@ -32,49 +33,53 @@ namespace KIT206_RAP
 
         public void PopulateSupervisionsList()
         {
-            SupervisionsList = ResearcherController.getSupervisions(this.ID);
+            SupervisionsList = ResearcherController.GetSupervisions(this.ID);
             SupervisionsCount = SupervisionsList.Count();
-        } 
+        }
 
-       /*public double threeYearAverage
+        /*public double ThreeYearAverage
         {
             get
             {
-                double threeYearPublicationCount = 0.0;
+                double ThreeYearPublicationCount = 0.0;
+                int CurrentYear = DateTime.Now.Year;
 
                 foreach (Publication t in Publications)
                 {
-                    if ((t.Year >= (DateTime.Today.Year - 3)) && (t.Year <= (DateTime.Today.Year - 1)))
+                    int PublicationYear = t.Year;
+
+                    if (PublicationYear >= (CurrentYear - 3)) & (PublicationYear <= (CurrentYear - 1))
                     {
-                        threeYearPublicationCount++;
+                        ThreeYearPublicationCount++;
                     }
                 }
 
-                return Math.Round(threeYearPublicationCount / 3, 1);
+                return Math.Round(ThreeYearPublicationCount / 3, 1);
             }
-        }*/
+        }
+
+    
 
         //Performance of researcher 
-        
-        public double getPerformance
+        public double GetPerformanceByPublication
         {
             get
             {
-                double realPublications = threeYearAverage;
+                double realPublications = ThreeYearAverage;
                 double expectedPublications;
 
-                    switch (Level)
+                    switch (EmploymentLevel)
                     {
-                        case EmploymentLevel.A:
+                        case Position.EmploymentLevel.A:
                             expectedPublications = 0.5;
                             break;
-                        case EmploymentLevel.B:
+                        case Position.EmploymentLevel.B:
                             expectedPublications = 1;
                             break;
-                        case EmploymentLevel.C:
+                        case Position.EmploymentLevel.C:
                             expectedPublications = 2;
                             break;
-                        case EmploymentLevel.D:
+                        case Position.EmploymentLevel.D:
                             expectedPublications = 3;
                             break;
                         default:
@@ -83,12 +88,16 @@ namespace KIT206_RAP
                     }
 
                     return (Math.Round(100 * (realPublications / expectedPublications), 1));
-                }
-                else
-                {
-                    return 0;
-                }
+                
             }
+        }*/
+
+        public double GetPerformanceByFunding()
+        {
+            return 0.0; //finish
         }
+
+
+        //staff also need a table of all previous positions
     }
 }

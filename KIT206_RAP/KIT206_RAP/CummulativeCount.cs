@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP
 {
-    internal class PublicationsController
+    class CummulativeCount
     {
-
-
-
-
-
-        //ViewPublicationsList
-        //ExpandDetails
-        //FilterByYear
     }
 }

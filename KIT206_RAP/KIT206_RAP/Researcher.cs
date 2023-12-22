@@ -104,6 +104,16 @@ namespace KIT206_RAP
             }
         }
 
+        public DateTime CommencedWithInstitution()
+        {
+            return DateTime.Now; //finish
+        }
+
+        public Q1Percentage GetQ1Percentage()
+        {
+            return Q1Percentage.Q1; //finish
+        }
+
         public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
         {
             get
