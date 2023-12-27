@@ -14,13 +14,12 @@ namespace KIT206_RAP
         public string CiteAs { get; set; }
         public List<string> Authors { get; set; }
         public OutputType Type { get; set; }
-        public string YearOfPublication { get; set; }
+        public DateTime YearOfPublication { get; set; }
         public DateTime AvailableFrom { get; set; }
         public DateTime Year { get; set; }
-        public OutputRanking Ranking { get; set; }
+        public Researcher.Q1Percentage Ranking { get; set; }
 
         public enum OutputType { Conference, Journal, Other };
-        public enum OutputRanking { Q1, Q2, Q3, Q4 };
 
         public void AddAuthorNames(string author)
         {
@@ -40,7 +39,9 @@ namespace KIT206_RAP
 
         public int Age()
         {
-            return 1; //fiinish
+            TimeSpan difference = DateTime.Now - AvailableFrom;
+
+            return difference.Days;
         }
     }
 }

@@ -20,7 +20,9 @@ namespace KIT206_RAP
         public Position.EmploymentLevel EmploymentLevel { get; set; }
         public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public List<Position> Positions = new List<Position>();
-        public int PublicationCount;
+        public List<int> FundingList = new List<int>();
+        public double FundingToMaintian { get; set; }
+    public int PublicationCount;
         public Q1Percentage Q1;
 
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
@@ -43,10 +45,11 @@ namespace KIT206_RAP
             return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
 
-        public Researcher(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
+        public Researcher(int id, string givenName, string familyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
         {
             ID = id;
             GivenName = givenName;
+            FamilyName = familyName;
             NameTitle = title;
             CampusName = campus;
             EmploymentLevel = employmentLevel;
