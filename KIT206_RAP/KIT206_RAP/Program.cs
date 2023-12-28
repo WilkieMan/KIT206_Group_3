@@ -30,8 +30,11 @@ namespace KIT206_RAP
             a.FundingList.Add(3000.0);
             a.FundingList.Add(4000.0);
 
-            a.Publications.Add(new Publication("A", "123121"));
-
+            a.Publications.Add(new Publication("A", "430211", Publication.OutputType.Journal, new DateTime(2020, 4, 1), new DateTime(2020, 4, 1), Publication.RankingQ1.Q1));
+            a.Publications.Add(new Publication("B", "123121", Publication.OutputType.Other, new DateTime(2021, 4, 1), new DateTime(2021, 4, 1), Publication.RankingQ1.Q3));
+            a.Publications.Add(new Publication("C", "103901", Publication.OutputType.Conference, new DateTime(2022, 12, 1), new DateTime(2022, 12, 1), Publication.RankingQ1.Q1));
+            a.Publications.Add(new Publication("D", "129010", Publication.OutputType.Conference, new DateTime(2023, 4, 1), new DateTime(2023, 4, 1), Publication.RankingQ1.Q2));
+*/
             //use case 8 functions
             //Console.WriteLine("FIRST LIST");
             //researcherController.DisplayCurrentList();
@@ -56,7 +59,7 @@ namespace KIT206_RAP
             }
 
             Console.WriteLine(a.Tenure);
-            Console.WriteLine(a.ThreeYearAverage);
+           //' Console.WriteLine(a.ThreeYearAverage);
 
 
 
