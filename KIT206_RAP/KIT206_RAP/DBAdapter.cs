@@ -34,7 +34,7 @@ namespace KIT206_RAP
             conn = GetConnection(conn);
             MySqlDataReader rdr = null;
             int id = researcher.ID;
-            string selection = "unit, campus, email, photo";
+            string selection = "unit, campus, email, photo, utas_start, current_start ";
 
             try
             {
@@ -43,7 +43,7 @@ namespace KIT206_RAP
                 if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
                 {
                     researcher = researcher as Student;
-                    selection = "degree, supervisor_id";
+                    selection = selection = "degree, supervisor_id ";
                 }
                 else
                 {
@@ -51,13 +51,17 @@ namespace KIT206_RAP
                     selection = "";
                 }
 
-                MySqlCommand cmd = new MySqlCommand("select " + selection + " from researcher where id=" + id.ToString(), conn);
+                MySqlCommand cmd = new MySqlCommand("select " + selection + "from researcher where id=" + id.ToString(), conn);
 
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
+                    researcher.CampusName = rdr.GetString(1);
+                    if (researcher is Student)
+                    {
 
+                    }
                 }
             }
             catch (Exception e)
@@ -173,6 +177,21 @@ namespace KIT206_RAP
                     return Researcher.Title.Dr;
             }
 
+        }
+
+        private static Researcher.Campus MakeCampus(string campus)
+        {
+            switch (campus.ToLower())
+            {
+                case "cradle coast":
+                    return Researcher.Campus.CradleCoast;
+
+                case "launceston":
+                    return Researcher.Campus.Launceston;
+
+                default:
+                    return Researcher.Campus.Hobart;
+            }
         }
     }
 }
