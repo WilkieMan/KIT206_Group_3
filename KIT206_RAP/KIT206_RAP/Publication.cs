@@ -20,10 +20,10 @@ namespace KIT206_RAP
         public DateTime YearOfPublication { get; set; }
         public DateTime AvailableFrom { get; set; }
         public DateTime Year { get; set; }
-        public Researcher.Q1Percentage Ranking { get; set; }
+        public RankingQ1 Ranking  { get; set; }
 
         public enum OutputType { Conference, Journal, Other };
-
+        public enum RankingQ1 { Q1, Q2, Q3, Q4 }
         public void AddAuthorNames(string author)
         {
             Authors.Add(author);
@@ -58,12 +58,12 @@ namespace KIT206_RAP
         {
             return String.Format("DOI: {0} \n" +
                                  "Title: {1} \n" +
-                                 "Authors: {2} \n" +
+                                 "Authors: {2} et. al \n" +
                                  "Year: {3} \n" +
                                  "Type: {4} \n" +
                                  "Cite as: {5} \n" +
                                  "Available date: {6} \n" +
-                                 "Age: {7} day(s)", DOI, Title, Authors, Year, Type, CiteAs, AvailableFrom.ToString("dd-MM-yyyy"), Age());
+                                 "Age: {7} day(s)", DOI, Title, Authors[0], Year, Type, CiteAs, AvailableFrom.ToString("dd-MM-yyyy"), Age());
         }
     }
 }

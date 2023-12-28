@@ -98,10 +98,6 @@ namespace KIT206_RAP
                 return Commulative;
             }*/
 
-
-        //fundingperformance
-        //publcation performance
-
         }
 
 }

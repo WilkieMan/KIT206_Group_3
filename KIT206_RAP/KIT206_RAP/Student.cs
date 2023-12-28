@@ -25,7 +25,7 @@ namespace KIT206_RAP
 
         public string PrintSupervisonInfo()
         {
-            return FamilyName + ", " + GivenName + " (" + NameTitle + ")          " + EmploymentLevel;
+            return FamilyName + ", " + GivenName + " (" + NameTitle + ") " + EmploymentLevel;
         }
     }
 }

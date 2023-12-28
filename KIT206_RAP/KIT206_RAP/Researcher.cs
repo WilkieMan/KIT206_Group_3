@@ -22,10 +22,9 @@ namespace KIT206_RAP
         public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public List<Position> Positions = new List<Position>();
         public int PublicationCount;
-        public Q1Percentage Q1;
+        public int Q1;
 
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
-        public enum Q1Percentage { Q1, Q2, Q3, Q4}
         public enum Campus { CradleCoast, Hobart, Launceston };
 
         //Tenure of researcher
@@ -117,12 +116,34 @@ namespace KIT206_RAP
 
         public DateTime CommencedWithInstitution()
         {
-            return DateTime.Now; //finish
+            DateTime EarliestYear = new DateTime(DateTime.Now.Year, 1, 1);
+
+            foreach (Position p in Positions)
+            {
+                DateTime CurrentYear = new DateTime(p.Start.Year, 1, 1);
+
+                if (CurrentYear < EarliestYear)
+                {
+                    EarliestYear = CurrentYear;
+                }
+            }
+
+            return EarliestYear;
         }
 
-        public Q1Percentage GetQ1Percentage()
+        public int GetQ1Percentage()
         {
-            return Q1Percentage.Q1; //finish
+            int Q1Number = 0;
+
+            foreach(Publication p in Publications ) 
+            {
+                if (p.Ranking == Publication.RankingQ1.Q1)
+                {
+                    Q1Number++;
+                }
+            }
+
+            return 100 * (GetPublicationCount() / Q1Number);
         }
 
         public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)

@@ -14,8 +14,8 @@ namespace KIT206_RAP
         public int SupervisionsCount = 0;
         private double FundingReceived;
         public Performance Performance3Year;
-        public Performance PerformanceByPublication;
-        public Performance PerformanceByFunding;
+        public double PerformanceByPublication;
+        public double PerformanceByFunding;
         List<int> FundingList;
         double FundingToMaintain;
 
@@ -91,6 +91,20 @@ namespace KIT206_RAP
                     return (Math.Round(100 * (realPublications / expectedPublications), 1));
                 
             }
+        }
+
+        public double GetPerformanceByPublication()
+        {
+            double PublicationCount = GetPublicationCount();
+
+            return PublicationCount / Tenure;
+        }
+
+        public double GetPerformanceByFunding()
+        {
+            double PublicationCount = GetPublicationCount();
+
+            return PublicationCount / Tenure;
         }
 
         //staff also need a table of all previous positions - view??

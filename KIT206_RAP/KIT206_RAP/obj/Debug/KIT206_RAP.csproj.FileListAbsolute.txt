@@ -36,3 +36,6 @@ C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\
 C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\System.Buffers.dll
 C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\bin\Debug\MySql.Data.xml
 C:\Users\maeve\source\repos\KIT206 assignment 2\KIT206_RAP\KIT206_RAP\obj\Debug\KIT206_RAP.csproj.CopyComplete
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\System.Memory.dll
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\maeve\source\repos\KIT206_Group_3\KIT206_RAP\KIT206_RAP\bin\Debug\System.Buffers.dll

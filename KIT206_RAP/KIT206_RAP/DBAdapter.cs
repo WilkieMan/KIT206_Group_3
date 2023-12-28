@@ -57,7 +57,7 @@ namespace KIT206_RAP
 
                 while (rdr.Read())
                 {
-                    researcher.CampusName = rdr.GetString(1);
+                    //researcher.CampusName = rdr.GetString(1);
                     if (researcher is Student)
                     {
 
