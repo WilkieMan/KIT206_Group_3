@@ -13,6 +13,7 @@ namespace KIT206_RAP
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
         private double FundingReceived;
+        public Performance Performance3Year;
         public Performance PerformanceByPublication;
         public Performance PerformanceByFunding;
         List<int> FundingList;
@@ -37,7 +38,7 @@ namespace KIT206_RAP
             SupervisionsCount = SupervisionsList.Count();
         }
 
-        /*public double ThreeYearAverage
+        public double ThreeYearAverage
         {
             get
             {
@@ -46,9 +47,9 @@ namespace KIT206_RAP
 
                 foreach (Publication t in Publications)
                 {
-                    int PublicationYear = t.Year;
+                    int PublicationYear = (int)t.YearOfPublication.ToBinary();
 
-                    if (PublicationYear >= (CurrentYear - 3)) & (PublicationYear <= (CurrentYear - 1))
+                    if (PublicationYear >= (CurrentYear - 3))
                     {
                         ThreeYearPublicationCount++;
                     }
@@ -61,7 +62,7 @@ namespace KIT206_RAP
     
 
         //Performance of researcher 
-        public double GetPerformanceByPublication
+        public double GetPerformance3Year
         {
             get
             {
@@ -90,14 +91,8 @@ namespace KIT206_RAP
                     return (Math.Round(100 * (realPublications / expectedPublications), 1));
                 
             }
-        }*/
-
-        public double GetPerformanceByFunding()
-        {
-            return 0.0; //finish
         }
 
-
-        //staff also need a table of all previous positions
+        //staff also need a table of all previous positions - view??
     }
 }

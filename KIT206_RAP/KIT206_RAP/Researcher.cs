@@ -21,7 +21,9 @@ namespace KIT206_RAP
         public Position.EmploymentLevel EmploymentLevel { get; set; }
         public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public List<Position> Positions = new List<Position>();
-        public int PublicationCount;
+        public List<int> FundingList = new List<int>();
+        public double FundingToMaintian { get; set; }
+    public int PublicationCount;
         public Q1Percentage Q1;
 
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}

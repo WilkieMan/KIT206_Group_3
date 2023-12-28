@@ -8,9 +8,9 @@ namespace KIT206_RAP
 {
     internal class ResearcherController
     {
-        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher();
+        //private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher();
+        private static List<Researcher> MasterList = FakeReasearcherData.Generate();
         private List<Researcher> ModifiedList = MasterList;
-        // private List<Researcher> tempList = new List<Researcher>();
 
         public void DisplayCurrentList()
         {
@@ -97,6 +97,10 @@ namespace KIT206_RAP
 
                 return Commulative;
             }*/
+
+
+        //fundingperformance
+        //publcation performance
 
         }
 
