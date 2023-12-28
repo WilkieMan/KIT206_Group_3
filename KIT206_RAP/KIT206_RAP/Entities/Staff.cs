@@ -170,23 +170,6 @@ namespace KIT206_RAP
             }
         }
 
-        public DateTime CommencedWithInstitution()
-        {
-            DateTime EarliestYear = new DateTime(DateTime.Now.Year, 1, 1);
-
-            foreach (Position p in Positions)
-            {
-                DateTime CurrentYear = new DateTime(p.Start.Year, 1, 1);
-
-                if (CurrentYear < EarliestYear)
-                {
-                    EarliestYear = CurrentYear;
-                }
-            }
-
-            return EarliestYear;
-        }
-
         public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
         {
             get

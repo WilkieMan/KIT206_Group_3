@@ -33,17 +33,26 @@ namespace KIT206_RAP
             //testList = researcherController.Alphabetise(testList);
             //Console.WriteLine("ALPHABETISED LIST");
             //researcherController.DisplayList(testList);
+            //testList = researcherController.FilterByName();
+            //researcherController.DisplayList(testList);
+            //testList = researcherController.FilterByJobTitle(Position.EmploymentLevel.Student);
+            //researcherController.DisplayList(testList);
 
-
-            a.CurrentJob.ToString();
-
-
-            testList = researcherController.FilterByName();
-            researcherController.DisplayList(testList);
-            testList = researcherController.FilterByJobTitle(Position.EmploymentLevel.Student);
-            researcherController.DisplayList(testList);
-            
             //use case 16 functions
+            Console.WriteLine(a.CurrentJob);
+            Console.WriteLine(a.CurrentJobTitle);
+            Console.WriteLine(a.CurrentJobStart);
+            Console.WriteLine(a.EarliestJobStart);
+            Console.WriteLine(a.CurrentJobTitle);
+            
+            foreach (Position p in a.EarlierJobs)
+            {
+                Console.WriteLine(p);
+            }
+
+
+
+
 
         }
     }

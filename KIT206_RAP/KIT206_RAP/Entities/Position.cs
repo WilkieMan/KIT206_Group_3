@@ -52,13 +52,13 @@ namespace KIT206_RAP
             }
 
             //ToString method about the position
-            public override string ToString()
+            public string ToString()
             {
                 string start = Start.ToString("dd-MM-yyyy");  //The start date 
                 string end;                                   //The end date
                 string title = ToTitle(Level);                //Title of the posititon  
 
-                if (DateTime.Compare(End, DateTime.Today) == 0)
+                if (DateTime.Compare(End, DateTime.Now) == 1)
                 {
                     end = "NULL";
                 }
