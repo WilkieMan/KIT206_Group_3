@@ -12,12 +12,12 @@ namespace KIT206_RAP
         //Three year average of publications for reseacher
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
-        private double FundingReceived;
+        private double FundingReceived { get; set; }
         public Performance Performance3Year;
         public double PerformanceByPublication;
         public double PerformanceByFunding;
         List<int> FundingList;
-        double FundingToMaintain;
+        double FundingToMaintain { get; set; }
         public List<Position> Positions = new List<Position>();
 
         public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)

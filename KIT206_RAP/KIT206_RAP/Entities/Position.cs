@@ -13,8 +13,17 @@ namespace KIT206_RAP
             public DateTime Start { get; set; }                 //Start day 
             public DateTime End { get; set; }                   //End day  
 
-            //To title of the position
-            public string ToTitle(EmploymentLevel el)
+
+        public Position(int id, EmploymentLevel level, DateTime start, DateTime end)               
+        { 
+            ID = id;
+            Level = level;
+            Start = start;
+            End = end;
+        }
+
+        //To title of the position
+        public string ToTitle(EmploymentLevel el)
             {
                 string title;                                   //The title of the researcher
                 switch (el)

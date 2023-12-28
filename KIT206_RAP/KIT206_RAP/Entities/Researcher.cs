@@ -13,14 +13,13 @@ namespace KIT206_RAP
         public int ID { get; set; }                                             //Researcher ID
         public string GivenName { get; set; }                                   //Researcher Given name
         public string FamilyName { get; set; }                                  //Researcher Family name                                                       //Researcher Title
-        public string School { get; set; }                                      //Researcher School
+        public string Unit { get; set; }                                      //Researcher School
         public Title NameTitle { get; set; }
         public Campus CampusName { get; set; }                                      //Researcher working campus base
         public string Email { get; set; }                                       //Researcher email
         public string Photo { get; set; }                                       //Researcher Photo (URL Type)   //Past and current positions of researcher
         public Position.EmploymentLevel EmploymentLevel { get; set; }
         public List<Publication> Publications = new List<Publication>();           //Publications list of researche
-        public int PublicationCount;
         public int Q1;
 
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
