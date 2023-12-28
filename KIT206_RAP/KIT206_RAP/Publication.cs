@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP
 {
+     //Enum type for Output type
+    public enum Type { Conference, Journal, Other };
+    
     internal class Publication
     {
        
@@ -43,6 +46,35 @@ namespace KIT206_RAP
 
             return difference.Days;
         }
+        //Age of Publication 
+            public int Age                                 
+            {
+                get { return (Date.Today - Available).Days; }
+            }
+
+
+
+            //ToString method to present publication
+            public override string ToString()
+            {
+                return Title + " Finilised By " + Mode + " on " + Available.ToShortDateString();
+            }
+
+
+
+
+            //method to display information  of a publication
+            public string ToDetailedString()
+            {
+                return String.Format("DOI: {0} \n" +
+                                     "Title: {1} \n" +
+                                     "Authors: {2} \n" +
+                                     "Year: {3} \n" +
+                                     "Type: {4} \n" +
+                                     "Cite as: {5} \n" +
+                                     "Available date: {6} \n" +
+                                     "Age: {7} day(s)", DOI, Title, Authors, Year, Mode, Cite_as, Available.ToString("dd-MM-yyyy"), Age);
+            }
     }
 }
 
