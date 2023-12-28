@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,58 @@ namespace KIT206_RAP
             return conn;
         }
 
+        public static Researcher FetchAllDetail(Researcher researcher)
+        {
+            conn = GetConnection(conn);
+            MySqlDataReader rdr = null;
+            int id = researcher.ID;
+            string selection = "unit, campus, email, photo";
+
+            try
+            {
+                conn.Open();
+
+                if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
+                {
+                    researcher = researcher as Student;
+                    selection = "degree, supervisor_id";
+                }
+                else
+                {
+                    researcher = researcher as Staff;
+                    selection = "";
+                }
+
+                MySqlCommand cmd = new MySqlCommand("select " + selection + " from researcher where id=" + id.ToString(), conn);
+
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Conn failure.");
+                System.Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return researcher;
+        }
+
         public static List<Researcher> FetchBasicResearcher()
         {
             conn = GetConnection(conn);
@@ -38,14 +91,14 @@ namespace KIT206_RAP
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, employment_level, id from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, level, id from researcher", conn);
                 // MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr.GetString(3)), rdr.GetInt32(4)));
-                    System.Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1) + " " + rdr.GetString(2));
+                    researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr[3].ToString()), rdr.GetInt32(4)));
+                    // System.Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1) + " " + rdr.GetString(2));
                 }
             }
             catch (Exception e) 
