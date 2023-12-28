@@ -11,6 +11,7 @@ namespace KIT206_RAP
     {
         private string Degree;
         public int SupervisorID;
+        Position CurrentPosition;
 
         public Student(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
@@ -21,6 +22,16 @@ namespace KIT206_RAP
             EmploymentLevel = employmentLevel;
             Degree = degree;
             SupervisorID = supervisorid;
+        }
+
+        public double Tenure
+        {
+            get
+            {
+                double daysInYear = 365.0;
+
+                return Math.Round((DateTime.Today - CurrentPosition.Start).Days / daysInYear, 1);
+            }
         }
 
         public string PrintSupervisonInfo()

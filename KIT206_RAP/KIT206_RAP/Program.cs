@@ -9,14 +9,18 @@ namespace KIT206_RAP
     internal class Program
     {
         static ResearcherController researcherController = new ResearcherController();
-        //private List<Researcher> testList = FakeReasearcherData.Generate();
+        private static List<Researcher> testList = DBAdapter.FetchBasicResearcher();
 
         static void Main(string[] args)
         {
+
+            //use case 8 functions
             researcherController.DisplayCurrentList();
-            List<Researcher> testList = researcherController.FilterByName();
+            testList = researcherController.FilterByName();
             researcherController.DisplayList(testList);
-            //DBAdapter.FetchBasicResearcher();
+            testList = researcherController.FilterByJobTitle(Position.EmploymentLevel.Student);
+            researcherController.DisplayList(testList);
+            
 
         }
     }

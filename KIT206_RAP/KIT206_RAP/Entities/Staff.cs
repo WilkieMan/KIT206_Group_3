@@ -18,6 +18,7 @@ namespace KIT206_RAP
         public double PerformanceByFunding;
         List<int> FundingList;
         double FundingToMaintain;
+        public List<Position> Positions = new List<Position>();
 
         public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
@@ -31,6 +32,16 @@ namespace KIT206_RAP
         }
 
         public enum Performance { A, B, C, D, E }
+
+        public double Tenure
+        {
+            get
+            {
+                double daysInYear = 365.0;
+
+                return Math.Round((DateTime.Today - EarliestJobStart).Days / daysInYear, 1);
+            }
+        }
 
         public void PopulateSupervisionsList()
         {
@@ -105,6 +116,92 @@ namespace KIT206_RAP
             double PublicationCount = GetPublicationCount();
 
             return PublicationCount / Tenure;
+        }
+
+        public string CurrentJob                                             //Current job of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
+
+                return currentJob.First().ToTitle(currentJob.First().Level);
+            }
+        }
+
+
+
+        public string CurrentJobTitle                                         //Date of current position of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
+
+                return currentJob.First().ToString();
+            }
+        }
+
+
+
+        public DateTime CurrentJobStart                                         //Date of current position of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
+
+                return currentJob.First().Start;
+            }
+        }
+
+        public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
+        {
+            get
+            {
+                var earliestJob = from Position p in Positions
+                                  orderby p.Start ascending
+                                  select p;
+
+                return earliestJob.First().Start;
+            }
+        }
+
+        public DateTime CommencedWithInstitution()
+        {
+            DateTime EarliestYear = new DateTime(DateTime.Now.Year, 1, 1);
+
+            foreach (Position p in Positions)
+            {
+                DateTime CurrentYear = new DateTime(p.Start.Year, 1, 1);
+
+                if (CurrentYear < EarliestYear)
+                {
+                    EarliestYear = CurrentYear;
+                }
+            }
+
+            return EarliestYear;
+        }
+
+        public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
+        {
+            get
+            {
+                List<Position> pastJob = new List<Position>();
+
+                foreach (Position p in Positions)
+                {
+                    pastJob.Add(p);
+                }
+
+                pastJob.RemoveAt(pastJob.Count - 1);
+
+                return pastJob;
+            }
         }
 
         //staff also need a table of all previous positions - view??
