@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static KIT206_RAP.Researcher;
 
 namespace KIT206_RAP
 {
@@ -43,12 +44,22 @@ namespace KIT206_RAP
             return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
 
-        public Researcher(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
+        public Researcher(int id, string givenName, string familyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
         {
             ID = id;
             GivenName = givenName;
+            FamilyName = familyName;
             NameTitle = title;
             CampusName = campus;
+            EmploymentLevel = employmentLevel;
+        }
+
+        public Researcher(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id)
+        {
+            ID = id;
+            GivenName = givenName;
+            FamilyName = familyName;
+            NameTitle = title;
             EmploymentLevel = employmentLevel;
         }
 

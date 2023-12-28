@@ -38,19 +38,20 @@ namespace KIT206_RAP
             {
                 conn.Open();
 
-                // MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, employment_level, id from researcher", conn);
-                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, employment_level, id from researcher", conn);
+                // MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    // researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr.GetString(3)), rdr.GetInt32(4)));
+                    researchers.Add(new Researcher(MakeTitle(rdr.GetString(0)), rdr.GetString(1), rdr.GetString(2), MakeEmploymentLevel(rdr.GetString(3)), rdr.GetInt32(4)));
                     System.Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1) + " " + rdr.GetString(2));
                 }
             }
-            catch
+            catch (Exception e) 
             {
                 System.Console.WriteLine("Conn failure.");
+                System.Console.WriteLine(e.Message);
             }
             finally
             {

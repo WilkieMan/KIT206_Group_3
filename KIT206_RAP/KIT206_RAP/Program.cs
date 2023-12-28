@@ -16,7 +16,7 @@ namespace KIT206_RAP
             researcherController.DisplayCurrentList();
             List<Researcher> testList = researcherController.FilterByName();
             researcherController.DisplayList(testList);
-
+            DBAdapter.FetchBasicResearcher();
         }
     }
 }
