@@ -49,7 +49,7 @@ namespace KIT206_RAP
                 string end;                                   //The end date
                 string title = ToTitle(Level);                //Title of the posititon  
 
-                if (Date.Compare(End, Date.Today) == 0)
+                if (DateTime.Compare(End, DateTime.Today) == 0)
                 {
                     end = "NULL";
                 }
@@ -60,5 +60,7 @@ namespace KIT206_RAP
                 return String.Format("Start: {0}, End: {1},  {2}", start, end, title);
             }
 
+
+        public enum EmploymentLevel {A, B, C, D, E, Student}
         }
 }
