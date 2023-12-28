@@ -37,6 +37,13 @@ namespace KIT206_RAP
             
         }
 
+        public List<Researcher> Alphabetise(List<Researcher> researchers)
+        {
+            var sortedResearcher = researchers.OrderBy(r => r.FamilyName);
+
+            return new List<Researcher>(sortedResearcher);
+        }
+
         public List<Researcher> FilterByJobTitle(Position.EmploymentLevel employmentLevel)
         {
             var temp = from Researcher r in MasterList

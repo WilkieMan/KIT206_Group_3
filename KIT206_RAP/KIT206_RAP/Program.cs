@@ -15,12 +15,21 @@ namespace KIT206_RAP
         {
 
             //use case 8 functions
+            Console.WriteLine("FIRST LIST");
             researcherController.DisplayCurrentList();
+
+
+            testList = researcherController.Alphabetise(testList);
+
+            Console.WriteLine("ALPHABETISED LIST");
+            researcherController.DisplayList(testList);
+
             testList = researcherController.FilterByName();
             researcherController.DisplayList(testList);
             testList = researcherController.FilterByJobTitle(Position.EmploymentLevel.Student);
             researcherController.DisplayList(testList);
             
+            //use case 16 functions
 
         }
     }
