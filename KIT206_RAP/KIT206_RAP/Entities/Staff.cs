@@ -16,18 +16,17 @@ namespace KIT206_RAP
         public Performance Performance3Year;
         public double PerformanceByPublication;
         public double PerformanceByFunding;
-        List<int> FundingList;
+        public List<double> FundingList;
         double FundingToMaintain { get; set; }
         public List<Position> Positions = new List<Position>();
 
-        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, List<int> fundingList, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
         {
             ID = id;
             GivenName = givenName;
             NameTitle = title;
             CampusName = campus;
             EmploymentLevel = employmentLevel;
-            FundingList = fundingList;
             FundingToMaintain = fundingToMaintain;
         }
 

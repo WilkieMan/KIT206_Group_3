@@ -12,9 +12,7 @@ namespace KIT206_RAP
         private static List<Researcher> testList = DBAdapter.FetchBasicResearcher();
 
         public static List<int> fake1 = new List<int>();
-        
-
-        public static Staff a = new Staff(111111, "Marie", "Curie", Researcher.Title.Dr, Researcher.Campus.Launceston, Position.EmploymentLevel.B, fake1, 7000.0);
+        public static Staff a = new Staff(111111, "Marie", "Curie", Researcher.Title.Dr, Researcher.Campus.Launceston, Position.EmploymentLevel.B, 7000.0);
 
         static void Main(string[] args)
         {
@@ -26,6 +24,13 @@ namespace KIT206_RAP
             a.Positions.Add(new Position(111111, Position.EmploymentLevel.C, new DateTime(2020, 3, 20), new DateTime(2020, 12, 31)));
             a.Positions.Add(new Position(111111, Position.EmploymentLevel.B, new DateTime(2021, 1, 1), new DateTime(2022, 1, 1)));
             a.Positions.Add(new Position(111111, Position.EmploymentLevel.A, new DateTime(2022, 1, 2), DateTime.Now));
+
+            a.FundingList.Add(2000.0);
+            a.FundingList.Add(5000.0);
+            a.FundingList.Add(3000.0);
+            a.FundingList.Add(4000.0);
+
+            a.Publications.Add(new Publication("A", "123121"));
 
             //use case 8 functions
             //Console.WriteLine("FIRST LIST");
@@ -49,6 +54,10 @@ namespace KIT206_RAP
             {
                 Console.WriteLine(p);
             }
+
+            Console.WriteLine(a.Tenure);
+            Console.WriteLine(a.ThreeYearAverage);
+
 
 
 

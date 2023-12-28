@@ -34,10 +34,15 @@ namespace KIT206_RAP
             return DOI + " - " + Title + " - " + Authors[0] + "et. al";
         }
 
-        public Publication(string title, string doi)
+        public Publication(string title, string doi, OutputType type, DateTime yearOfPublication, DateTime availableFrom, RankingQ1 ranking)
         {
-            this.Title = title;
-            this.DOI = doi;
+            Title = title;
+            DOI = doi;
+            Type = type;
+            YearOfPublication = yearOfPublication;
+            AvailableFrom = availableFrom;
+            Ranking = ranking;
+
         }
 
         public int Age()
