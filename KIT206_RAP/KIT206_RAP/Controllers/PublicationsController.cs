@@ -37,38 +37,27 @@ namespace KIT206_RAP
             return new List<Publication>(pubsByTitle);
         }
 
-        public static List<Publication> SearchByResearcher(Researcher researcher)
-        {
-            if (researcher == null)
-            {
-                return publications;
-            }
-
-            if (publications == null)
-            {
-                //publications = LoadAllPublications();
-            }
-               
-            var pubsByAuthor = from pub in publications
-                               from author in pub.Authors  // nested LINQ as there is a list within a list
-                               where author.Contains(researcher.GivenName) || author.Contains(researcher.FamilyName)
-                               select pub;
-
-            return new List<Publication>(pubsByAuthor);
-
-        }
+        
 
         public static List<Publication> SearchByResearcher(string researcher)
         {
              
             var pubsByAuthor = from pub in publications
                                from author in pub.Authors  // nested LINQ as there is a list within a list
-                               where author.Contains(researcher)
+                               where author.ToLower().Contains(researcher)
                                select pub;
 
             return (List<Publication>)pubsByAuthor.ToList(); // dynamic typed variable has to be converted(casted) into a strong type (List<Publication>) before return
 
         }
+
+        public List<Publication> Sort(List<Publication> publications)
+        {
+            var sortedYearPublications = publications.OrderBy(p => p.YearOfPublication);
+
+            return new List<Publication>(sortedYearPublications);
+        }
+
     }
 }
 

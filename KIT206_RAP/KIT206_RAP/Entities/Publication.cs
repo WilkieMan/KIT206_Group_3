@@ -15,7 +15,7 @@ namespace KIT206_RAP
         public string DOI { get; set; }
         public string Title { get; set; }
         public string CiteAs { get; set; }
-        public List<string> Authors { get; set; }
+        public List<string> Authors = new List<string>();
         public OutputType Type { get; set; }
         public int YearOfPublication { get; set; }
         public DateTime AvailableFrom { get; set; }

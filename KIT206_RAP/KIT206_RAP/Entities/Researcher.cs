@@ -21,6 +21,9 @@ namespace KIT206_RAP
         public Position.EmploymentLevel EmploymentLevel { get; set; }
         public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public int Q1;
+        public List<Publication> Publications = new List<Publication>();           //Publications list of researche
+        public List<CummulativeCount> CummulativeCounts = new List<CummulativeCount>();
+
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
         public enum Campus { CradleCoast, Hobart, Launceston };
         public DateTime InstitutionStart { get; set; }
@@ -68,6 +71,31 @@ namespace KIT206_RAP
         public int GetPublicationCount()                                             
         {
             return Publications == null ? 0 : Publications.Count();
+        }
+
+        public void PopulateCummulatives(List<Publication> publications)
+        {
+            foreach (Publication p in publications)
+            {
+                DateTime PublicationYear = p.YearOfPublication;
+
+                if (CummulativeCounts.Count == 0)
+                {
+                    CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                }
+
+                foreach (CummulativeCount c in CummulativeCounts)
+                {
+                    if (c.Year.Year == p.YearOfPublication.Year)
+                    {
+                        c.publications.Add(p);
+                    } else
+                    {
+                        CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                        c.publications.Add(p);
+                    }
+                }
+            }
         }
     }
 }
