@@ -19,11 +19,12 @@ namespace KIT206_RAP
         public string Email { get; set; }                                       //Researcher email
         public string Photo { get; set; }                                       //Researcher Photo (URL Type)   //Past and current positions of researcher
         public Position.EmploymentLevel EmploymentLevel { get; set; }
-        public List<Publication> Publications = new List<Publication>();           //Publications list of researche
+        public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public int Q1;
-
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
         public enum Campus { CradleCoast, Hobart, Launceston };
+        public DateTime InstitutionStart { get; set; }
+        public DateTime CurrentStart { get; set; }
 
         public string ToBasicName()
         { 
@@ -54,7 +55,7 @@ namespace KIT206_RAP
 
             foreach(Publication p in Publications ) 
             {
-                if (p.Ranking == Publication.RankingQ1.Q1)
+                if (p.Ranking == Publication.JournalRanking.Q1)
                 {
                     Q1Number++;
                 }

@@ -53,7 +53,7 @@ namespace KIT206_RAP
 
                 foreach (Publication t in Publications)
                 {
-                    DateTime PublicationYear = t.YearOfPublication;
+                    DateTime PublicationYear = DateTime.Parse(t.YearOfPublication.ToString());
 
                     if (PublicationYear.Year >= Current.AddYears(-3).Year)
                     {

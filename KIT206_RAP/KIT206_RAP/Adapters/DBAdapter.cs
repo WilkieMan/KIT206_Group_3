@@ -40,6 +40,8 @@ namespace KIT206_RAP
             {
                 conn.Open();
 
+                // Changes the SQL call based on the type of information that is required and turns the
+                // researcher object into either a Student or Staff object
                 if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
                 {
                     researcher = researcher as Student;
@@ -57,11 +59,52 @@ namespace KIT206_RAP
 
                 while (rdr.Read())
                 {
-                    //researcher.CampusName = rdr.GetString(1);
+                    // Takes the information from the database and assigns it to the individual parameters
+                    researcher.Unit = rdr.GetString(0);
+                    researcher.CampusName = MakeCampus(rdr.GetString(1));
+                    researcher.Email = rdr.GetString(2);
+                    researcher.Photo = rdr.GetString(3);
+                    researcher.InstitutionStart = DateTime.Parse(rdr.GetString(4));
+                    researcher.CurrentStart = DateTime.Parse(rdr.GetString(5)); 
+
+                    // If the researcher is a student it gets the Degree that they are doing and
+                    // there supervisors ID and assigns them to the researcher
                     if (researcher is Student)
                     {
-
+                        Student student = researcher as Student;
+                        student.Degree = rdr.GetString(6);
+                        student.SupervisorID = rdr.GetInt32(7);
                     }
+                    else
+                    {
+                        List<Position> pastJob = new List<Position>();
+                        Staff staff = researcher as Staff;
+                        MySqlCommand positionCmd = new MySqlCommand("select level, start, end from position where id=" + id.ToString(), conn);
+                        rdr = cmd.ExecuteReader();
+
+                        while (rdr.Read())
+                        {
+                            pastJob.Add(new Position(id, MakeEmploymentLevel(rdr.GetString(0)), DateTime.Parse(rdr.GetString(1)), DateTime.Parse(rdr.GetString(2))));
+                        }
+                    }
+                }
+
+                cmd = new MySqlCommand("select doi from researcher_publications where id=" + id.ToString());
+
+                rdr = cmd.ExecuteReader();
+                String publications = "";
+
+                while (rdr.Read())
+                {
+                    publications += rdr.GetString(1) + ", ";
+                }
+
+                cmd = new MySqlCommand("select title, doi, type, type, year, available, ranking, authors, cite_as from publications where doi=" + publications);
+
+                List<Publication> curPublications = new List<Publication>();
+                while (rdr.Read())
+                {
+                    curPublications.Add(new Publication(rdr.GetString(0), rdr.GetString(1), MakeType(rdr.GetString(2)), rdr.GetInt32(3), DateTime.Parse(rdr.GetString(4)), MakeRanking(rdr.GetString(5)), new List<String>(rdr.GetString(6).Split(',')), rdr.GetString(7)));
                 }
             }
             catch (Exception e)
@@ -191,6 +234,39 @@ namespace KIT206_RAP
 
                 default:
                     return Researcher.Campus.Hobart;
+            }
+        }
+
+        private static Publication.OutputType MakeType(string type)
+        {
+            switch (type.ToLower())
+            {
+                case "conference":
+                    return Publication.OutputType.Conference;
+
+                case "journal":
+                    return Publication.OutputType.Journal;
+
+                default:
+                    return Publication.OutputType.Other;
+            }
+        }
+
+        private static Publication.JournalRanking MakeRanking(string ranking)
+        {
+            switch (ranking.ToLower())
+            {
+                case "q1":
+                    return Publication.JournalRanking.Q1;
+
+                case "q2":
+                    return Publication.JournalRanking.Q2;
+
+                case "q3":
+                    return Publication.JournalRanking.Q3;
+
+                default:
+                    return Publication.JournalRanking.Q4;
             }
         }
     }

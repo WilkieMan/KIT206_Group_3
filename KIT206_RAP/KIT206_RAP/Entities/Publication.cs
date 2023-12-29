@@ -17,13 +17,13 @@ namespace KIT206_RAP
         public string CiteAs { get; set; }
         public List<string> Authors { get; set; }
         public OutputType Type { get; set; }
-        public DateTime YearOfPublication { get; set; }
+        public int YearOfPublication { get; set; }
         public DateTime AvailableFrom { get; set; }
         public DateTime Year { get; set; }
-        public RankingQ1 Ranking  { get; set; }
+        public JournalRanking Ranking  { get; set; }
 
         public enum OutputType { Conference, Journal, Other };
-        public enum RankingQ1 { Q1, Q2, Q3, Q4 }
+        public enum JournalRanking { Q1, Q2, Q3, Q4 }
         public void AddAuthorNames(string author)
         {
             Authors.Add(author);
@@ -34,7 +34,7 @@ namespace KIT206_RAP
             return DOI + " - " + Title + " - " + Authors[0] + "et. al";
         }
 
-        public Publication(string title, string doi, OutputType type, DateTime yearOfPublication, DateTime availableFrom, RankingQ1 ranking)
+        public Publication(string title, string doi, OutputType type, int yearOfPublication, DateTime availableFrom, JournalRanking ranking, List<String> authors, String citeAs)
         {
             Title = title;
             DOI = doi;
@@ -42,6 +42,8 @@ namespace KIT206_RAP
             YearOfPublication = yearOfPublication;
             AvailableFrom = availableFrom;
             Ranking = ranking;
+            Authors = authors;
+            CiteAs = citeAs;
 
         }
 

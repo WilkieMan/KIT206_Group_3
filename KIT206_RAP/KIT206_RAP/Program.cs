@@ -21,10 +21,10 @@ namespace KIT206_RAP
             a.Positions.Add(new Position(111111, Position.EmploymentLevel.B, new DateTime(2021, 1, 1), new DateTime(2022, 1, 1)));
             a.Positions.Add(new Position(111111, Position.EmploymentLevel.A, new DateTime(2022, 1, 2), DateTime.Now));
 
-            a.Publications.Add(new Publication("A", "430211", Publication.OutputType.Journal, new DateTime(2020, 4, 1), new DateTime(2020, 4, 1), Publication.RankingQ1.Q1));
-            a.Publications.Add(new Publication("B", "123121", Publication.OutputType.Other, new DateTime(2021, 4, 1), new DateTime(2021, 4, 1), Publication.RankingQ1.Q3));
-            a.Publications.Add(new Publication("C", "103901", Publication.OutputType.Conference, new DateTime(2022, 12, 1), new DateTime(2022, 12, 1), Publication.RankingQ1.Q1));
-            a.Publications.Add(new Publication("D", "129010", Publication.OutputType.Conference, new DateTime(2023, 4, 1), new DateTime(2023, 4, 1), Publication.RankingQ1.Q2));
+            //a.Publications.Add(new Publication("A", "430211", Publication.OutputType.Journal, new DateTime(2020, 4, 1), new DateTime(2020, 4, 1), Publication.RankingQ1.Q1));
+            //a.Publications.Add(new Publication("B", "123121", Publication.OutputType.Other, new DateTime(2021, 4, 1), new DateTime(2021, 4, 1), Publication.RankingQ1.Q3));
+            //a.Publications.Add(new Publication("C", "103901", Publication.OutputType.Conference, new DateTime(2022, 12, 1), new DateTime(2022, 12, 1), Publication.RankingQ1.Q1));
+            //a.Publications.Add(new Publication("D", "129010", Publication.OutputType.Conference, new DateTime(2023, 4, 1), new DateTime(2023, 4, 1), Publication.RankingQ1.Q2));
 
             a.FundingList.Add(1000.0);
             a.FundingList.Add(3000.0);

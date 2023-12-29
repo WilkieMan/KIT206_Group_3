@@ -9,8 +9,8 @@ namespace KIT206_RAP
 {
     internal class Student : Researcher
     {
-        private string Degree;
-        public int SupervisorID;
+        public string Degree { get; set; }
+        public int SupervisorID { get; set; }
         Position CurrentPosition;
 
         public Student(int id, string givenName, string FamilyName, Title title, Campus campus, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus)
