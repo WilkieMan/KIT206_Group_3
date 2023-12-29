@@ -26,6 +26,10 @@ namespace KIT206_RAP
             a.Publications.Add(new Publication("C", "103901", Publication.OutputType.Conference, new DateTime(2022, 12, 1), new DateTime(2022, 12, 1), Publication.RankingQ1.Q1));
             a.Publications.Add(new Publication("D", "129010", Publication.OutputType.Conference, new DateTime(2023, 4, 1), new DateTime(2023, 4, 1), Publication.RankingQ1.Q2));
 
+            a.FundingList.Add(1000.0);
+            a.FundingList.Add(3000.0);
+            a.FundingList.Add(4000.0);
+
             //use case 8 functions
             //Console.WriteLine("FIRST LIST");
             //researcherController.DisplayCurrentList();
@@ -52,9 +56,9 @@ namespace KIT206_RAP
             Console.WriteLine("Publication count");
             Console.WriteLine(a.GetPublicationCount());
             Console.WriteLine("Tenure");
-            Console.WriteLine(a.Tenure);
+            Console.WriteLine(a.Tenure + " Years");
             Console.WriteLine("3 Year Average");
-            Console.WriteLine(a.ThreeYearAverage);
+            Console.WriteLine(a.ThreeYearAverage + " per year");
             Console.WriteLine("Q1");
             Console.WriteLine(a.GetQ1Percentage() + "%");
             Console.WriteLine("Performance 3 year");
@@ -62,8 +66,9 @@ namespace KIT206_RAP
             Console.WriteLine("Performance By Publication");
             Console.WriteLine(a.GetPerformanceByPublication() + " publications per year");
             Console.WriteLine("Performance By Funding");
-            //Console.WriteLine(a.GetPerformanceByFunding() + " AUD per year");
-
+            Console.WriteLine(a.GetPerformanceByFunding() + " AUD per year");
+            Console.WriteLine("Publication Age");
+            Console.WriteLine(a.Publications.First().Age() + " Days");
         }
     }
 }

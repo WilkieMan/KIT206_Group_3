@@ -13,7 +13,7 @@ namespace KIT206_RAP
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
         private double FundingReceived { get; set; }
-        public List<double> FundingList;
+        public List<double> FundingList = new List<double>();
         double FundingToMaintain { get; set; }
         public List<Position> Positions = new List<Position>();
 
@@ -103,7 +103,7 @@ namespace KIT206_RAP
         {
             double PublicationCount = GetPublicationCount();
 
-            return PublicationCount / Tenure;
+            return Math.Round(PublicationCount / Tenure, 1);
         }
 
         public double GetPerformanceByFunding()
@@ -115,7 +115,7 @@ namespace KIT206_RAP
                 TotalFunding = TotalFunding + f;
             }
 
-            return TotalFunding / Tenure;
+            return Math.Round(TotalFunding / Tenure, 1);
         }
 
         public string CurrentJob                                             //Current job of researcher
