@@ -21,7 +21,6 @@ namespace KIT206_RAP
         public Position.EmploymentLevel EmploymentLevel { get; set; }
         public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
         public int Q1;
-        public List<Publication> Publications = new List<Publication>();           //Publications list of researche
         public List<CummulativeCount> CummulativeCounts = new List<CummulativeCount>();
 
         public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev}
@@ -77,21 +76,21 @@ namespace KIT206_RAP
         {
             foreach (Publication p in publications)
             {
-                DateTime PublicationYear = p.YearOfPublication;
+                DateTime PublicationYear = DateTime.Parse(p.YearOfPublication.ToString());
 
                 if (CummulativeCounts.Count == 0)
                 {
-                    CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                    CummulativeCounts.Add(new CummulativeCount(DateTime.Parse(p.YearOfPublication.ToString())));
                 }
 
                 foreach (CummulativeCount c in CummulativeCounts)
                 {
-                    if (c.Year.Year == p.YearOfPublication.Year)
+                    if (c.Year.Year == p.YearOfPublication)
                     {
                         c.publications.Add(p);
                     } else
                     {
-                        CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                        CummulativeCounts.Add(new CummulativeCount(DateTime.Parse(p.YearOfPublication.ToString())));
                         c.publications.Add(p);
                     }
                 }
