@@ -15,7 +15,7 @@ namespace KIT206_RAP
         public string DOI { get; set; }
         public string Title { get; set; }
         public string CiteAs { get; set; }
-        public List<Researcher> Authors = new List<Researcher>();
+        public List<string> Authors = new List<string>();
         public OutputType Type { get; set; }
         public DateTime YearOfPublication { get; set; }
         public DateTime AvailableFrom { get; set; }
@@ -25,7 +25,7 @@ namespace KIT206_RAP
         public enum OutputType { Conference, Journal, Other };
         public enum RankingQ1 { Q1, Q2, Q3, Q4 }
         
-        public void AddAuthorNames(Researcher author)
+        public void AddAuthorNames(string author)
         {
             Authors.Add(author);
         }
