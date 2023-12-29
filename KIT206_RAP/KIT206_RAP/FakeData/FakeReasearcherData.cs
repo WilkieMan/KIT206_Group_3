@@ -28,12 +28,12 @@ namespace KIT206_RAP
 
             return new List<Researcher>()
             {
-                new Student(123456, "Jane", "Doe", Researcher.Title.Miss, Researcher.Campus.Hobart, Position.EmploymentLevel.Student, "Medicine", 111111),
+                //new Student(123456, "Jane", "Doe", Researcher.Title.Miss, Researcher.Campus.Hobart, Position.EmploymentLevel.Student, "Medicine", 111111),
                 //new Staff(111111, "Marie", "Curie", Researcher.Title.Dr, Researcher.Campus.Launceston, Position.EmploymentLevel.B, fake1, 7000.0),
                 //new Student(Researcher.Title.Mrs, "Jane", "Doe", Researcher.EmploymentLevel.Student, 3),
                 //new Student(Researcher.Title.Mr, "John", "Doe", Researcher.EmploymentLevel.Student, 4),
                 //new Staff(222222, "Stephen", "Hawkings", Researcher.Title.Prof, Researcher.Campus.Hobart, Position.EmploymentLevel.A, fake2, 5000.0),
-                new Student(112233, "Amelia", "Reagan", Researcher.Title.Ms, Researcher.Campus.CradleCoast, Position.EmploymentLevel.Student, "Arts", 222222),
+                //new Student(112233, "Amelia", "Reagan", Researcher.Title.Ms, Researcher.Campus.CradleCoast, Position.EmploymentLevel.Student, "Arts", 222222),
                 //new Student(Researcher.Title.Mrs, "Roberta", "Dawson", Researcher.EmploymentLevel.Student, 7),
                 //new Staff(Researcher.Title.Rev, "Mark", "Holland", Researcher.EmploymentLevel.E, 8)*/
             };

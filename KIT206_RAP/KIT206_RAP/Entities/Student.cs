@@ -13,13 +13,13 @@ namespace KIT206_RAP
         public int SupervisorID;
         Position CurrentPosition;
 
-        public Student(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Student(int id, string givenName, string FamilyName, Title title, Campus campus, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus)
         {
             ID = id;
             GivenName = givenName;
             NameTitle = title;
             CampusName = campus;
-            EmploymentLevel = employmentLevel;
+            EmploymentLevel = Position.EmploymentLevel.Student;
             Degree = degree;
             SupervisorID = supervisorid;
         }

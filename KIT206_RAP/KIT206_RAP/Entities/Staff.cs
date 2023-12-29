@@ -13,20 +13,16 @@ namespace KIT206_RAP
         public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
         public int SupervisionsCount = 0;
         private double FundingReceived { get; set; }
-        public Performance Performance3Year;
-        public double PerformanceByPublication;
-        public double PerformanceByFunding;
         public List<double> FundingList;
         double FundingToMaintain { get; set; }
         public List<Position> Positions = new List<Position>();
 
-        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus, employmentLevel)
+        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus)
         {
             ID = id;
             GivenName = givenName;
             NameTitle = title;
             CampusName = campus;
-            EmploymentLevel = employmentLevel;
             FundingToMaintain = fundingToMaintain;
         }
 
@@ -53,13 +49,13 @@ namespace KIT206_RAP
             get
             {
                 double ThreeYearPublicationCount = 0.0;
-                int CurrentYear = DateTime.Now.Year;
+                DateTime Current = DateTime.Now;
 
                 foreach (Publication t in Publications)
                 {
-                    int PublicationYear = (int)t.YearOfPublication.ToBinary();
+                    DateTime PublicationYear = t.YearOfPublication;
 
-                    if (PublicationYear >= (CurrentYear - 3))
+                    if (PublicationYear.Year >= Current.AddYears(-3).Year)
                     {
                         ThreeYearPublicationCount++;
                     }
@@ -72,14 +68,14 @@ namespace KIT206_RAP
     
 
         //Performance of researcher 
-        public double GetPerformance3Year
+        public double Performance3Year
         {
             get
             {
                 double realPublications = ThreeYearAverage;
                 double expectedPublications;
 
-                    switch (EmploymentLevel)
+                    switch (CurrentJobLevel)
                     {
                         case Position.EmploymentLevel.A:
                             expectedPublications = 0.5;
@@ -112,9 +108,14 @@ namespace KIT206_RAP
 
         public double GetPerformanceByFunding()
         {
-            double PublicationCount = GetPublicationCount();
+            double TotalFunding = 0.0;
 
-            return PublicationCount / Tenure;
+            foreach (int f in FundingList)
+            {
+                TotalFunding = TotalFunding + f;
+            }
+
+            return TotalFunding / Tenure;
         }
 
         public string CurrentJob                                             //Current job of researcher
@@ -129,7 +130,17 @@ namespace KIT206_RAP
             }
         }
 
+        public Position.EmploymentLevel CurrentJobLevel                                          //Current job level of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
 
+                return currentJob.First().Level;
+            }
+        }
 
         public string CurrentJobTitle                                         //Date of current position of researcher
         {
@@ -142,8 +153,6 @@ namespace KIT206_RAP
                 return currentJob.First().ToString();
             }
         }
-
-
 
         public DateTime CurrentJobStart                                         //Date of current position of researcher
         {

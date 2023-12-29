@@ -30,14 +30,13 @@ namespace KIT206_RAP
             return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
 
-        public Researcher(int id, string givenName, string familyName, Title title, Campus campus, Position.EmploymentLevel employmentLevel)
+        public Researcher(int id, string givenName, string familyName, Title title, Campus campus)
         {
             ID = id;
             GivenName = givenName;
             FamilyName = familyName;
             NameTitle = title;
             CampusName = campus;
-            EmploymentLevel = employmentLevel;
         }
 
         public Researcher(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id)
@@ -49,9 +48,9 @@ namespace KIT206_RAP
             EmploymentLevel = employmentLevel;
         }
 
-        public int GetQ1Percentage()
+        public double GetQ1Percentage()
         {
-            int Q1Number = 0;
+            double Q1Number = 0.0;
 
             foreach(Publication p in Publications ) 
             {
@@ -61,7 +60,7 @@ namespace KIT206_RAP
                 }
             }
 
-            return 100 * (GetPublicationCount() / Q1Number);
+            return 100 * (Q1Number / GetPublicationCount());
         }
 
         //Researcher publication count
