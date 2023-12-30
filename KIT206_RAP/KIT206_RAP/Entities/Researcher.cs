@@ -19,7 +19,7 @@ namespace KIT206_RAP
         public string Email { get; set; }                                       //Researcher email
         public string Photo { get; set; }                                       //Researcher Photo (URL Type)   //Past and current positions of researcher
         public Position.EmploymentLevel EmploymentLevel { get; set; }
-        public List<Publication> Publications = new List<Publication>();           //Publications list of researcher
+        public List<Publication> Publications = new List<Publication>();         //Publications list of researcher
         public int Q1;
         public List<CummulativeCount> CummulativeCounts = new List<CummulativeCount>();
 
@@ -95,6 +95,11 @@ namespace KIT206_RAP
                     }
                 }
             }
+        }
+
+        public void AddPublication(Publication publication)
+        {
+            Publications.Add(publication);
         }
     }
 }

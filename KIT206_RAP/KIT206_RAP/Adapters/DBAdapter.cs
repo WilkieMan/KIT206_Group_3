@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,12 +30,13 @@ namespace KIT206_RAP
             return conn;
         }
 
-        public static Researcher FetchAllDetail(Researcher researcher)
+        public static void FetchAllDetail(Researcher researcher)
         {
             conn = GetConnection(conn);
             MySqlDataReader rdr = null;
             int id = researcher.ID;
             string selection = "unit, campus, email, photo, utas_start, current_start ";
+            // Researcher researcher = new Researcher(oldResearcher.ID, oldResearcher.GivenName, oldResearcher.FamilyName, oldResearcher.NameTitle, oldResearcher.CampusName);
 
             try
             {
@@ -44,68 +46,106 @@ namespace KIT206_RAP
                 // researcher object into either a Student or Staff object
                 if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
                 {
-                    researcher = researcher as Student;
-                    selection = selection = "degree, supervisor_id ";
+                    selection += "degree, supervisor_id ";
                 }
                 else
                 {
-                    researcher = researcher as Staff;
-                    selection = "";
+                    selection += "";
                 }
 
-                MySqlCommand cmd = new MySqlCommand("select " + selection + "from researcher where id=" + id.ToString(), conn);
+                // System.Console.WriteLine("select " + selection + "from researcher where id = " + id);
+                MySqlCommand cmd = new MySqlCommand("select " + selection + "from researcher where id = " + id, conn);
 
                 rdr = cmd.ExecuteReader();
+                // System.Console.WriteLine("Reader is reading.");
 
                 while (rdr.Read())
                 {
                     // Takes the information from the database and assigns it to the individual parameters
+                    // System.Console.WriteLine("Basic information read starting.");
                     researcher.Unit = rdr.GetString(0);
+                    // System.Console.WriteLine("1");
                     researcher.CampusName = MakeCampus(rdr.GetString(1));
                     researcher.Email = rdr.GetString(2);
                     researcher.Photo = rdr.GetString(3);
                     researcher.InstitutionStart = DateTime.Parse(rdr.GetString(4));
-                    researcher.CurrentStart = DateTime.Parse(rdr.GetString(5)); 
+                    researcher.CurrentStart = DateTime.Parse(rdr.GetString(5));
+                    // System.Console.WriteLine("Basic information read.");
 
                     // If the researcher is a student it gets the Degree that they are doing and
                     // there supervisors ID and assigns them to the researcher
                     if (researcher is Student)
                     {
+                        // System.Console.WriteLine("Researcher is student.");
                         Student student = researcher as Student;
                         student.Degree = rdr.GetString(6);
                         student.SupervisorID = rdr.GetInt32(7);
                     }
                     else
                     {
+                        // System.Console.WriteLine("Researcher is staff.");
                         List<Position> pastJob = new List<Position>();
                         Staff staff = researcher as Staff;
-                        MySqlCommand positionCmd = new MySqlCommand("select level, start, end from position where id=" + id.ToString(), conn);
-                        rdr = cmd.ExecuteReader();
+                        MySqlCommand positionCmd = new MySqlCommand("select level, start, end from position where id=" + id, conn);
 
+                        rdr.Close();
+                        rdr = positionCmd.ExecuteReader();
+
+                        // System.Console.WriteLine("Making past positions.");
                         while (rdr.Read())
-                        {
-                            pastJob.Add(new Position(id, MakeEmploymentLevel(rdr.GetString(0)), DateTime.Parse(rdr.GetString(1)), DateTime.Parse(rdr.GetString(2))));
+                        { 
+                            // System.Console.WriteLine(rdr.GetString(1));
+                            DateTime dateTime = DateTime.Now;
+
+                            // System.Console.WriteLine(rdr[2]);
+                            if (rdr[2] is null)
+                            {
+                                // System.Console.WriteLine("In if loop.");
+                                dateTime = DateTime.Parse(rdr.GetString(2));
+                            }
+                            // System.Console.WriteLine("DateTime made.");
+                            pastJob.Add(new Position(id, MakeEmploymentLevel(rdr.GetString(0)), DateTime.Parse(rdr.GetString(1)), dateTime));
+                            // System.Console.WriteLine("Made position.");
                         }
                     }
                 }
 
-                cmd = new MySqlCommand("select doi from researcher_publications where id=" + id.ToString());
+                rdr.Close();
+
+                cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + id, conn);
+                // System.Console.WriteLine("Reading publications.");
 
                 rdr = cmd.ExecuteReader();
-                String publications = "";
-
-                while (rdr.Read())
-                {
-                    publications += rdr.GetString(1) + ", ";
-                }
-
-                cmd = new MySqlCommand("select title, doi, type, type, year, available, ranking, authors, cite_as from publications where doi=" + publications);
-
+                List<String> publications = new List<string>();
                 List<Publication> curPublications = new List<Publication>();
+
                 while (rdr.Read())
                 {
-                    curPublications.Add(new Publication(rdr.GetString(0), rdr.GetString(1), MakeType(rdr.GetString(2)), rdr.GetInt32(3), DateTime.Parse(rdr.GetString(4)), MakeRanking(rdr.GetString(5)), new List<String>(rdr.GetString(6).Split(',')), rdr.GetString(7)));
+                    // System.Console.WriteLine(rdr.GetString(0));
+                    publications.Add(rdr.GetString(0));
                 }
+
+                // System.Console.WriteLine("Read publications.");
+                rdr.Close();
+
+                foreach (String p in publications)
+                {
+                    cmd = new MySqlCommand("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'", conn);
+                    // System.Console.WriteLine("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'");
+
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        // System.Console.WriteLine("While.");
+                        // System.Console.WriteLine(rdr.GetString(1));
+                        // System.Console.WriteLine("Read data.");
+                        researcher.AddPublication(new Publication(rdr.GetString(1), rdr.GetString(0), MakeType(rdr.GetString(5)), rdr.GetInt32(4), DateTime.Parse(rdr.GetString(7)), MakeRanking(rdr.GetString(2)), new List<String>(rdr.GetString(3).Split(',')), rdr.GetString(6)));
+                    }
+
+                    rdr.Close();
+                }
+                // System.Console.WriteLine("Finished fetching publications.\n" + curPublications.Count());
             }
             catch (Exception e)
             {
@@ -123,9 +163,8 @@ namespace KIT206_RAP
                 {
                     conn.Close();
                 }
+                // System.Console.WriteLine("Finished finalisation.");
             }
-
-            return researcher;
         }
 
         public static List<Researcher> FetchBasicResearcher()
