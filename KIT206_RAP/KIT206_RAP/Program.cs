@@ -20,7 +20,7 @@ namespace KIT206_RAP
         {
             // a.ID = testList.ToArray()[1].ID;
             // Console.WriteLine(a.ID);
-            Staff a = new Staff(testList.ToArray()[1].NameTitle, testList.ToArray()[1].GivenName, testList.ToArray()[1].FamilyName, testList.ToArray()[1].EmploymentLevel, testList.ToArray()[1].ID);
+            Staff a = new Staff(testList.ToArray()[4].NameTitle, testList.ToArray()[4].GivenName, testList.ToArray()[4].FamilyName, testList.ToArray()[4].EmploymentLevel, testList.ToArray()[4].ID);
             DBAdapter.FetchAllDetail(a);
             // System.Console.WriteLine(a.CampusName);
 
@@ -70,12 +70,12 @@ namespace KIT206_RAP
             Console.WriteLine(a.CurrentJobTitle);
             Console.WriteLine(a.CurrentJobStart);
             Console.WriteLine(a.EarliestJobStart);
-            Console.WriteLine(a.CurrentJobTitle);
+            // Console.WriteLine(a.CurrentJobTitle);
             
             
             foreach (Position p in a.EarlierJobs)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(p.ToString());
             }
             
         }

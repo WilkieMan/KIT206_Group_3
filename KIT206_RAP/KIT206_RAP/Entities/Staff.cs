@@ -119,7 +119,7 @@ namespace KIT206_RAP
             return Math.Round(TotalFunding / Tenure, 1);
         }
 
-        public string CurrentJob                                             //Current job of researcher
+        public string CurrentJobTitle                                             //Current job of researcher
         {
             get
             {
@@ -127,7 +127,7 @@ namespace KIT206_RAP
                                  orderby p.Start descending
                                  select p;
 
-                return currentJob.First().ToTitle(currentJob.First().Level);
+                return currentJob.First().ToTitle(CurrentJobLevel);
             }
         }
 
@@ -143,7 +143,7 @@ namespace KIT206_RAP
             }
         }
 
-        public string CurrentJobTitle                                         //Date of current position of researcher
+        public string CurrentJob                                         //Date of current position of researcher
         {
             get
             {
@@ -151,7 +151,7 @@ namespace KIT206_RAP
                                  orderby p.Start descending
                                  select p;
 
-                return currentJob.First().ToString();
+                return currentJob.First().ToTitle(CurrentJobLevel) + " started on " + CurrentJobStart.ToString("dd-MM-yyyy");
             }
         }
 

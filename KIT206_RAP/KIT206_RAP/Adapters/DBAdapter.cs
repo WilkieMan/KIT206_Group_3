@@ -98,7 +98,7 @@ namespace KIT206_RAP
                             DateTime dateTime = DateTime.Now;
 
                             // System.Console.WriteLine(rdr[2]);
-                            if (rdr[2] is null)
+                            if (rdr[2].ToString().Length > 0)
                             {
                                 // System.Console.WriteLine("In if loop.");
                                 dateTime = DateTime.Parse(rdr.GetString(2));
@@ -165,7 +165,7 @@ namespace KIT206_RAP
                 }
                 // System.Console.WriteLine("Finished finalisation.");
             }
-            System.Console.WriteLine(researcher.ID + " " + researcher.GivenName + " " + researcher.FamilyName);
+            // System.Console.WriteLine(researcher.ID + " " + researcher.GivenName + " " + researcher.FamilyName);
             // return researcher;
         }
 
