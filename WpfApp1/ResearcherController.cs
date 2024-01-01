@@ -8,10 +8,13 @@ namespace KIT206_RAP
 {
     internal class ResearcherController
     {
-        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher();
+        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher(); // A list of all the researchers and their query-able details.
         // private static List<Researcher> MasterList = FakeReasearcherData.Generate();
-        private List<Researcher> ModifiedList = MasterList;
+        private List<Researcher> ModifiedList = MasterList; // A list to be manipulated
 
+        /// <summary>
+        /// Prints the short hand version of the researchers in the current/modified list.
+        /// </summary>
         public void DisplayCurrentList()
         {
             foreach (Researcher researcher in ModifiedList)
@@ -22,6 +25,10 @@ namespace KIT206_RAP
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Displays a list of researchers. 
+        /// </summary>
+        /// <param name="list">The list of researchers to display.</param>
         public void DisplayList(List<Researcher> list)
         {
             foreach (Researcher researcher in list)
@@ -32,11 +39,11 @@ namespace KIT206_RAP
             Console.WriteLine();
         }
 
-        public void LoadResearchers()
-        {
-
-        }
-
+        /// <summary>
+        /// Sorts a list of researchers alphabetically by family name.
+        /// </summary>
+        /// <param name="researchers">The list to be sorted.</param>
+        /// <returns>The sorted list.</returns>
         public List<Researcher> Alphabetise(List<Researcher> researchers)
         {
             var sortedResearcher = researchers.OrderBy(r => r.FamilyName);
@@ -44,28 +51,47 @@ namespace KIT206_RAP
             return new List<Researcher>(sortedResearcher);
         }
 
-        public List<Researcher> FilterByJobTitle(Position.EmploymentLevel employmentLevel)
+        /// <summary>
+        /// Filters a researcher list by employment level.
+        /// </summary>
+        /// <param name="researchers">The list of researchers to be sorted.</param>
+        /// <param name="employmentLevel">The employment level to filter by.</param>
+        /// <returns>
+        /// A filtered list of researchers
+        /// </returns>
+        public List<Researcher> FilterByJobTitle(List<Researcher> researchers, Position.EmploymentLevel employmentLevel)
         {
-            var temp = from Researcher r in MasterList
+            var temp = from Researcher r in researchers
                        where r.EmploymentLevel == employmentLevel
                        select r;
 
             return new List<Researcher>(temp);
         }
 
-        public List<Researcher> FilterByName()
+        /// <summary>
+        /// Filters a researcher list by name.
+        /// </summary>
+        /// <param name="researchers">The list of researchers to filter.</param>
+        /// <param name="query">The query to filter against their names</param>
+        /// <returns>
+        /// A list of researchers filtered by name.
+        /// </returns>
+        public List<Researcher> FilterByName(List<Researcher> researchers, string query)
         {
-
-            Console.Write("Enter search text: ");
-            string searchText = Console.ReadLine().ToLower();
-
-            var searchResults = from Researcher r in MasterList
-                                where r.GivenName.ToLower().Contains(searchText) || r.FamilyName.ToLower().Contains(searchText)
+            var searchResults = from Researcher r in researchers
+                                where r.GivenName.ToLower().Contains(query.ToLower()) || r.FamilyName.ToLower().Contains(query.ToLower())
                                 select r;
 
             return new List<Researcher>(searchResults);
         }
 
+        /// <summary>
+        /// Returns a list of students that are supervised by a staff.
+        /// </summary>
+        /// <param name="id">The ID of the staff member.</param>
+        /// <returns>
+        /// The students that are under that staff members supervision
+        /// </returns>
         public static List<Student> GetSupervisions(int id)
         {
             var supervisions = from Student s in MasterList
@@ -74,8 +100,6 @@ namespace KIT206_RAP
 
             return new List<Student>(supervisions);
         }
-
-
 
         public void GetCummulativeCount()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +10,17 @@ namespace KIT206_RAP
 {
     internal class Staff : Researcher
     {
-        //Three year average of publications for reseacher
-        public List<Student> SupervisionsList;         //Supervision list of researcher (If available)     
-        public int SupervisionsCount = 0;
-        private double FundingReceived { get; set; }
-        public List<double> FundingList = new List<double>();
-        double FundingToMaintain { get; set; }
+        public List<Student> SupervisionsList; // Supervision list of researcher (If available)     
+        public int SupervisionsCount = 0; // The number of supervisions they have
 
+        /// <summary>
+        /// Staff constructor.
+        /// </summary>
+        /// <param name="title">The honorific of the staff member.</param>
+        /// <param name="givenName">The given name of the staff member.</param>
+        /// <param name="familyName">The family name of the staff member.</param>
+        /// <param name="employmentLevel">The employment level of the staff member.</param>
+        /// <param name="id">The UTas ID of the staff member.</param>
         public Staff(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id/*, double fundingToMaintain*/) : base(title, givenName, familyName, employmentLevel, id)
         {
             ID = id;
@@ -26,8 +31,9 @@ namespace KIT206_RAP
             // FundingToMaintain = fundingToMaintain;
         }
 
-        public enum Performance { A, B, C, D, E }
-
+        /// <summary>
+        /// The length of time in fractional years since they started at UTas
+        /// </summary>
         public double Tenure
         {
             get
@@ -39,12 +45,18 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Populates the staff's supervisions using information that is already known.
+        /// </summary>
         public void PopulateSupervisionsList()
         {
             SupervisionsList = ResearcherController.GetSupervisions(this.ID);
             SupervisionsCount = SupervisionsList.Count();
         }
 
+        /// <summary>
+        /// The average number of publications produced per year for the last 3 years.
+        /// </summary>
         public double ThreeYearAverage
         {
             get
@@ -68,7 +80,9 @@ namespace KIT206_RAP
 
 
 
-        //Performance of researcher 
+        /// <summary>
+        /// A percentage representing the percent of expected publications produced per year over the last 3 years.
+        /// </summary>
         public double Performance3Year
         {
             get
@@ -100,6 +114,12 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// The number of publications produced per year over their entire tenure.
+        /// </summary>
+        /// <returns>
+        /// The number of publications per year.
+        /// </returns>
         public double GetPerformanceByPublication()
         {
             double PublicationCount = GetPublicationCount();
@@ -107,18 +127,27 @@ namespace KIT206_RAP
             return Math.Round(PublicationCount / Tenure, 1);
         }
 
+        /// <summary>
+        /// The amount of funding received per year for their entire tenure. 
+        /// </summary>
+        /// <returns>
+        /// The amount of funding received per year.
+        /// </returns>
         public double GetPerformanceByFunding()
         {
             double TotalFunding = 0.0;
 
-            foreach (int f in FundingList)
+            foreach (Publication p in Publications)
             {
-                TotalFunding = TotalFunding + f;
+                TotalFunding += p.Funding;
             }
 
             return Math.Round(TotalFunding / Tenure, 1);
         }
 
+        /// <summary>
+        /// Creates a string for the staff's current employment level.
+        /// </summary>
         public string CurrentJobTitle                                             //Current job of researcher
         {
             get
@@ -131,6 +160,9 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Returns the employment level of the staff's current job.
+        /// </summary>
         public Position.EmploymentLevel CurrentJobLevel                                          //Current job level of researcher
         {
             get
@@ -143,6 +175,9 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Creates a string describing their current job in the form of job title + date they started.
+        /// </summary>
         public string CurrentJob                                         //Date of current position of researcher
         {
             get
@@ -155,6 +190,9 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Returns the date they started their current job.
+        /// </summary>
         public DateTime CurrentJobStart                                         //Date of current position of researcher
         {
             get
@@ -167,6 +205,9 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Gets the date that they started at the institution. 
+        /// </summary>
         public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
         {
             get
@@ -179,6 +220,9 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Returns a list of all the other jobs this person has held.
+        /// </summary>
         public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
         {
             get
@@ -195,6 +239,5 @@ namespace KIT206_RAP
                 return pastJob;
             }
         }
-        //staff also need a table of all previous positions - view??
     }
 }

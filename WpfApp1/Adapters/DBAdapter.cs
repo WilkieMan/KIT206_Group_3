@@ -11,14 +11,24 @@ namespace KIT206_RAP
 {
     internal class DBAdapter
     {
-        static string db = "kit206", server = "alacritas.cis.utas.edu.au", user = "kit206", pass = "kit206";
-        static MySqlConnection conn;
+        static string db = "kit206", server = "alacritas.cis.utas.edu.au", user = "kit206", pass = "kit206"; // Information to connect to the MySQL database
+        static MySqlConnection conn; // The connection to the database
 
+        /// <summary>
+        /// Creates the database adapter.
+        /// </summary>
         public DBAdapter()
         {
             conn = GetConnection(conn);
         }
 
+        /// <summary>
+        /// Connects the MySQL connection to the database.
+        /// </summary>
+        /// <param name="conn">The connection to connect</param>
+        /// <returns>
+        /// The connection.
+        /// </returns>
         private static MySqlConnection GetConnection(MySqlConnection conn)
         {
             if (conn == null)
@@ -30,11 +40,15 @@ namespace KIT206_RAP
             return conn;
         }
 
+        /// <summary>
+        /// Gets all the detail available for a given researcher.
+        /// </summary>
+        /// <param name="researcher">The researcher that needs information filling out.</param>
         public static void FetchAllDetail(Researcher researcher)
         {
-            conn = GetConnection(conn);
-            MySqlDataReader rdr = null;
-            int id = researcher.ID;
+            conn = GetConnection(conn); // The connection
+            MySqlDataReader rdr = null; // The database reader
+            int id = researcher.ID; // The id of the researcher
             string selection = "unit, campus, email, photo, utas_start, current_start ";
             // Researcher researcher = new Researcher(oldResearcher.ID, oldResearcher.GivenName, oldResearcher.FamilyName, oldResearcher.NameTitle, oldResearcher.CampusName);
 
@@ -54,7 +68,7 @@ namespace KIT206_RAP
                 }
 
                 // System.Console.WriteLine("select " + selection + "from researcher where id = " + id);
-                MySqlCommand cmd = new MySqlCommand("select " + selection + "from researcher where id = " + id, conn);
+                MySqlCommand cmd = new MySqlCommand("select " + selection + "from researcher where id = " + id, conn); // A command to get the basic information from the database
 
                 rdr = cmd.ExecuteReader();
                 // System.Console.WriteLine("Reader is reading.");
@@ -84,9 +98,9 @@ namespace KIT206_RAP
                     else
                     {
                         // System.Console.WriteLine("Researcher is staff.");
-                        List<Position> pastJob = new List<Position>();
+                        // List<Position> pastJob = new List<Position>();
                         Staff staff = researcher as Staff;
-                        MySqlCommand positionCmd = new MySqlCommand("select level, start, end from position where id=" + id, conn);
+                        MySqlCommand positionCmd = new MySqlCommand("select level, start, end from position where id=" + id, conn); // A command to get all previous position for a researcher
 
                         rdr.Close();
                         rdr = positionCmd.ExecuteReader();
@@ -112,7 +126,7 @@ namespace KIT206_RAP
 
                 rdr.Close();
 
-                cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + id, conn);
+                cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + id, conn); // A command to get the unique dois to query against.
                 // System.Console.WriteLine("Reading publications.");
 
                 rdr = cmd.ExecuteReader();
@@ -130,7 +144,7 @@ namespace KIT206_RAP
 
                 foreach (String p in publications)
                 {
-                    cmd = new MySqlCommand("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'", conn);
+                    cmd = new MySqlCommand("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'", conn); // Gets the information about the publications using the doi as the identifying aspect
                     // System.Console.WriteLine("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'");
 
                     rdr = cmd.ExecuteReader();
@@ -169,6 +183,12 @@ namespace KIT206_RAP
             // return researcher;
         }
 
+        /// <summary>
+        /// Gets the basic information of all the researchers 
+        /// </summary>
+        /// <returns>
+        /// A list of all the researches in the database.
+        /// </returns>
         public static List<Researcher> FetchBasicResearcher()
         {
             conn = GetConnection(conn);
@@ -179,7 +199,7 @@ namespace KIT206_RAP
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, level, id from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name, level, id from researcher", conn); // A command to get the query-able information for a researcher
                 // MySqlCommand cmd = new MySqlCommand("select title, given_name, family_name from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
@@ -210,6 +230,13 @@ namespace KIT206_RAP
             return researchers;
         }
 
+        /// <summary>
+        /// Turns a string into an enumerated employment level.
+        /// </summary>
+        /// <param name="employmentLevel">The string version of the employment level.</param>
+        /// <returns>
+        /// The enumerated employment level.
+        /// </returns>
         private static Position.EmploymentLevel MakeEmploymentLevel(string employmentLevel)
         {
             switch (employmentLevel.ToLower())
@@ -235,6 +262,13 @@ namespace KIT206_RAP
 
         }
 
+        /// <summary>
+        /// Turns a string into an enumerated honorific.
+        /// </summary>
+        /// <param name="title">The string honorific.</param>
+        /// <returns>
+        /// The enumerated honorific
+        /// </returns>
         private static Researcher.Title MakeTitle(string title)
         {
             switch (title.ToLower())
@@ -263,6 +297,13 @@ namespace KIT206_RAP
 
         }
 
+        /// <summary>
+        /// Turns a string campus location into an enumerated campus location.
+        /// </summary>
+        /// <param name="campus">The string campus location.</param>
+        /// <returns>
+        /// The enumerated campus location.
+        /// </returns>
         private static Researcher.Campus MakeCampus(string campus)
         {
             switch (campus.ToLower())
@@ -278,6 +319,13 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Turns a string publication type into an enumerated publication type.
+        /// </summary>
+        /// <param name="type">The string publication type.</param>
+        /// <returns>
+        /// The enumerated publication type.
+        /// </returns>
         private static Publication.OutputType MakeType(string type)
         {
             switch (type.ToLower())
@@ -293,6 +341,13 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Turns a string journal ranking into an enumerated journal ranking.
+        /// </summary>
+        /// <param name="ranking">The string journal ranking.</param>
+        /// <returns>
+        /// The enumerated journal ranking.
+        /// </returns>
         private static Publication.JournalRanking MakeRanking(string ranking)
         {
             switch (ranking.ToLower())
