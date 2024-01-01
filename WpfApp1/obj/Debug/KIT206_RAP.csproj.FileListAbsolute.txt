@@ -1,0 +1,17 @@
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\MySql.Data.dll
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\MySql.Data.xml
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\App.g.cs
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.GenerateResource.cache
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.CoreCompileInputs.cache
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.CopyComplete
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.pdb

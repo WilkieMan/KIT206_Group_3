@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static KIT206_RAP.Researcher;
+
+namespace KIT206_RAP
+{
+    internal class Student : Researcher
+    {
+        public string Degree { get; set; }
+        public int SupervisorID { get; set; }
+        Position CurrentPosition;
+
+        public Student(int id, string givenName, string FamilyName, Title title, Campus campus, string degree, int supervisorid) : base(id, givenName, FamilyName, title, campus)
+        {
+            ID = id;
+            GivenName = givenName;
+            NameTitle = title;
+            CampusName = campus;
+            EmploymentLevel = Position.EmploymentLevel.Student;
+            Degree = degree;
+            SupervisorID = supervisorid;
+        }
+
+        public double Tenure
+        {
+            get
+            {
+                double daysInYear = 365.0;
+
+                return Math.Round((DateTime.Today - CurrentPosition.Start).Days / daysInYear, 1);
+            }
+        }
+
+        public string PrintSupervisonInfo()
+        {
+            return FamilyName + ", " + GivenName + " (" + NameTitle + ") - " + EmploymentLevel;
+        }
+    }
+}
