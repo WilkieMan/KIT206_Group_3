@@ -16,6 +16,14 @@ namespace KIT206_RAP
         public List<double> FundingList = new List<double>();
         double FundingToMaintain { get; set; }
 
+        /// <summary>
+        /// Staff constructor.
+        /// </summary>
+        /// <param name="title">The honorific of the staff member.</param>
+        /// <param name="givenName">The given name of the staff member.</param>
+        /// <param name="familyName">The family name of the staff member.</param>
+        /// <param name="employmentLevel">The employment level of the staff member.</param>
+        /// <param name="id">The UTas ID of the staff member.</param>
         public Staff(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id/*, double fundingToMaintain*/) : base(title, givenName, familyName, employmentLevel, id)
         {
             ID = id;
@@ -26,8 +34,9 @@ namespace KIT206_RAP
             // FundingToMaintain = fundingToMaintain;
         }
 
-        public enum Performance { A, B, C, D, E }
-
+        /// <summary>
+        /// The length of time in fractional years since they started at UTas
+        /// </summary>
         public double Tenure
         {
             get
@@ -39,12 +48,18 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// Populates the staff's supervisions using information that is already known.
+        /// </summary>
         public void PopulateSupervisionsList()
         {
             SupervisionsList = ResearcherController.GetSupervisions(this.ID);
             SupervisionsCount = SupervisionsList.Count();
         }
 
+        /// <summary>
+        /// The average number of publications produced per year for the last 3 years.
+        /// </summary>
         public double ThreeYearAverage
         {
             get
@@ -68,7 +83,9 @@ namespace KIT206_RAP
 
     
 
-        //Performance of researcher 
+        /// <summary>
+        /// A percentage representing the percent of expected publications produced per year over the last 3 years.
+        /// </summary>
         public double Performance3Year
         {
             get
@@ -100,6 +117,12 @@ namespace KIT206_RAP
             }
         }
 
+        /// <summary>
+        /// The number of publications produced per year over their entire tenure.
+        /// </summary>
+        /// <returns>
+        /// The number of publications per year.
+        /// </returns>
         public double GetPerformanceByPublication()
         {
             double PublicationCount = GetPublicationCount();
@@ -107,6 +130,12 @@ namespace KIT206_RAP
             return Math.Round(PublicationCount / Tenure, 1);
         }
 
+        /// <summary>
+        /// The amount of funding received per year for their entire tenure. 
+        /// </summary>
+        /// <returns>
+        /// The amount of funding received per year.
+        /// </returns>
         public double GetPerformanceByFunding()
         {
             double TotalFunding = 0.0;
