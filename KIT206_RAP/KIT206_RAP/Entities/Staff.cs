@@ -15,15 +15,15 @@ namespace KIT206_RAP
         private double FundingReceived { get; set; }
         public List<double> FundingList = new List<double>();
         double FundingToMaintain { get; set; }
-        public List<Position> Positions = new List<Position>();
 
-        public Staff(int id, string givenName, string FamilyName, Title title, Campus campus, double fundingToMaintain) : base(id, givenName, FamilyName, title, campus)
+        public Staff(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id/*, double fundingToMaintain*/) : base(title, givenName, familyName, employmentLevel, id)
         {
             ID = id;
             GivenName = givenName;
             NameTitle = title;
-            CampusName = campus;
-            FundingToMaintain = fundingToMaintain;
+            EmploymentLevel = employmentLevel;
+            FamilyName = familyName;
+            // FundingToMaintain = fundingToMaintain;
         }
 
         public enum Performance { A, B, C, D, E }
@@ -33,8 +33,9 @@ namespace KIT206_RAP
             get
             {
                 double daysInYear = 365.0;
-
-                return Math.Round((DateTime.Today - EarliestJobStart).Days / daysInYear, 1);
+                // System.Console.WriteLine(Positions.Count());
+                // System.Console.WriteLine(EarliestJobStart.ToString());
+                return Math.Round((DateTime.Today.Subtract(EarliestJobStart)).Days / daysInYear, 1);
             }
         }
 
@@ -53,7 +54,7 @@ namespace KIT206_RAP
 
                 foreach (Publication t in Publications)
                 {
-                    DateTime PublicationYear = DateTime.Parse(t.YearOfPublication.ToString());
+                    DateTime PublicationYear = DateTime.Parse("1/1/" + t.YearOfPublication.ToString());
 
                     if (PublicationYear.Year >= Current.AddYears(-3).Year)
                     {
@@ -194,7 +195,6 @@ namespace KIT206_RAP
                 return pastJob;
             }
         }
-
         //staff also need a table of all previous positions - view??
     }
 }

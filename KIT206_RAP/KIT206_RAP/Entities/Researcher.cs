@@ -27,6 +27,7 @@ namespace KIT206_RAP
         public enum Campus { CradleCoast, Hobart, Launceston };
         public DateTime InstitutionStart { get; set; }
         public DateTime CurrentStart { get; set; }
+        public List<Position> Positions = new List<Position>();
 
         public string ToBasicName()
         { 
@@ -101,5 +102,10 @@ namespace KIT206_RAP
         {
             Publications.Add(publication);
         }
+        public void AddPosition(Position position)
+        {
+            Positions.Add(position);
+        }
+
     }
 }

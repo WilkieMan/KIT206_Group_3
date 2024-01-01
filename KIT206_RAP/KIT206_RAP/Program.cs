@@ -14,14 +14,16 @@ namespace KIT206_RAP
         private static List<Researcher> testList = DBAdapter.FetchBasicResearcher();
 
         public static List<int> fake1 = new List<int>();
-        public static Staff a = new Researcher(testList.ToArray()[1].NameTitle, testList.ToArray()[1].GivenName, testList.ToArray()[1].FamilyName, testList.ToArray()[1].EmploymentLevel, testList.ToArray()[1].ID) as Staff;
+        // public static Staff a = new Researcher(testList.ToArray()[1].NameTitle, testList.ToArray()[1].GivenName, testList.ToArray()[1].FamilyName, testList.ToArray()[1].EmploymentLevel, testList.ToArray()[1].ID) as Staff;
 
         static void Main(string[] args)
         {
             // a.ID = testList.ToArray()[1].ID;
             // Console.WriteLine(a.ID);
-            DBAdapter.FetchAllDetail(testList.ToArray()[1]);
-            System.Console.WriteLine(testList.ToArray()[1].CampusName);
+            Staff a = new Staff(testList.ToArray()[1].NameTitle, testList.ToArray()[1].GivenName, testList.ToArray()[1].FamilyName, testList.ToArray()[1].EmploymentLevel, testList.ToArray()[1].ID);
+            DBAdapter.FetchAllDetail(a);
+            // System.Console.WriteLine(a.CampusName);
+
             // a.Positions.Add(new Position(111111, Position.EmploymentLevel.C, new DateTime(2020, 3, 20), new DateTime(2020, 12, 31)));
             // a.Positions.Add(new Position(111111, Position.EmploymentLevel.B, new DateTime(2021, 1, 1), new DateTime(2022, 1, 1)));
             // a.Positions.Add(new Position(111111, Position.EmploymentLevel.A, new DateTime(2022, 1, 2), DateTime.Now));
@@ -45,7 +47,7 @@ namespace KIT206_RAP
             //researcherController.DisplayList(testList);
             //testList = researcherController.FilterByJobTitle(Position.EmploymentLevel.Student);
             //researcherController.DisplayList(testList);
-
+            
             Console.WriteLine("Publication count");
             Console.WriteLine(a.GetPublicationCount());
             Console.WriteLine("Tenure");
@@ -70,10 +72,12 @@ namespace KIT206_RAP
             Console.WriteLine(a.EarliestJobStart);
             Console.WriteLine(a.CurrentJobTitle);
             
+            
             foreach (Position p in a.EarlierJobs)
             {
                 Console.WriteLine(p);
             }
+            
         }
     }
 }

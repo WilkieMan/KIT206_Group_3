@@ -104,7 +104,7 @@ namespace KIT206_RAP
                                 dateTime = DateTime.Parse(rdr.GetString(2));
                             }
                             // System.Console.WriteLine("DateTime made.");
-                            pastJob.Add(new Position(id, MakeEmploymentLevel(rdr.GetString(0)), DateTime.Parse(rdr.GetString(1)), dateTime));
+                            researcher.AddPosition(new Position(id, MakeEmploymentLevel(rdr.GetString(0)), DateTime.Parse(rdr.GetString(1)), dateTime));
                             // System.Console.WriteLine("Made position.");
                         }
                     }
@@ -165,6 +165,8 @@ namespace KIT206_RAP
                 }
                 // System.Console.WriteLine("Finished finalisation.");
             }
+            System.Console.WriteLine(researcher.ID + " " + researcher.GivenName + " " + researcher.FamilyName);
+            // return researcher;
         }
 
         public static List<Researcher> FetchBasicResearcher()
