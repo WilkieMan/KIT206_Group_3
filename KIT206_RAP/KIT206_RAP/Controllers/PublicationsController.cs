@@ -8,56 +8,49 @@ namespace KIT206_RAP
 {
     internal class PublicationsController
     {
-        public enum PerformanceLevel
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="publications"></param>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public static List<Publication> SearchByTitle(List<Publication> publications, string query)
         {
-            Poor, Below_Average, Average, Good, Excellent
-        }
-
-        private static List<Publication> publications;
-        
-        /*public static List<Publication> LoadAllPublications()
-          {
-            publications = DBAdapter.LoadAll();
-            if (publications != null)
-            {
-                return publications;
-            }
-                return null;
-          }*/
-
-         public static List<Publication> SearchByTitle()
-         {
-            Console.Write("Enter publication title: ");
-            string searchText = Console.ReadLine().ToLower();
-
-            var pubsByTitle = from pub in publications
-                              where pub.Title.ToLower().Contains(searchText)
-                              select pub;
+            var pubsByTitle = from p in publications
+                              where p.Title.ToLower().Contains(query)
+                              select p;
 
             return new List<Publication>(pubsByTitle);
-        }
+        } 
 
-        
-
-        public static List<Publication> SearchByResearcher(string researcher)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="researcher"></param>
+        /// <param name="publications"></param>
+        /// <returns></returns>
+        public static List<Publication> SearchByResearcher(string researcher, List<Publication> publications)
         {
-             
-            var pubsByAuthor = from pub in publications
-                               from author in pub.Authors  // nested LINQ as there is a list within a list
+            var pubsByAuthor = from p in publications
+                               from author in p.Authors  
                                where author.ToLower().Contains(researcher)
-                               select pub;
+                               select p;
 
-            return (List<Publication>)pubsByAuthor.ToList(); // dynamic typed variable has to be converted(casted) into a strong type (List<Publication>) before return
-
+            return (List<Publication>)pubsByAuthor.ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="publications"></param>
+        /// <returns></returns>
         public List<Publication> Sort(List<Publication> publications)
         {
             var sortedYearPublications = publications.OrderBy(p => p.YearOfPublication);
 
             return new List<Publication>(sortedYearPublications);
         }
-
     }
 }
 

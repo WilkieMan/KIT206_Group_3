@@ -22,6 +22,7 @@ namespace KIT206_RAP
 
         public enum OutputType { Conference, Journal, Other }; // The types of publications
         public enum JournalRanking { Q1, Q2, Q3, Q4 } // The different journal rankings 
+        public double Funding { get; set; } // The amount of funding received for this publications
 
         /// <summary>
         ///  This method adds an author to the list of authors for a given publication.
@@ -64,6 +65,7 @@ namespace KIT206_RAP
             Ranking = ranking;
             Authors = authors;
             CiteAs = citeAs;
+            Funding = 0;
 
         }
 

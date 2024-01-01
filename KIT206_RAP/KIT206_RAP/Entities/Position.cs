@@ -8,10 +8,10 @@ namespace KIT206_RAP
 {
     public class Position
         {
-            public int ID { get; set; }                         //ID of researcher
-            public EmploymentLevel Level { get; set; }          //Employment level 
-            public DateTime Start { get; set; }                 //Start day 
-            public DateTime End { get; set; }                   //End day  
+            public int ID { get; set; } // ID of researcher
+            public EmploymentLevel Level { get; set; } // Employment level 
+            public DateTime Start { get; set; } // Start day 
+            public DateTime End { get; set; } // End day  
 
 
         public Position(int id, EmploymentLevel level, DateTime start, DateTime end)               
