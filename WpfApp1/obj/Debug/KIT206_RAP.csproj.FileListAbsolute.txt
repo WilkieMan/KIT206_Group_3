@@ -3,11 +3,8 @@ C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\WpfApp1.exe
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\WpfApp1.pdb
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\MySql.Data.dll
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\bin\Debug\MySql.Data.xml
-C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\MainWindow.g.cs
-C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\App.g.cs
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
-C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\MainWindow.baml
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.g.resources
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
 C:\Users\maeve\source\repos\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.GenerateResource.cache
@@ -36,3 +33,10 @@ C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 2
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.CopyComplete
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\bin\Debug\System.Memory.dll
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\bin\Debug\System.Buffers.dll
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\obj\Debug\KIT206_RAP.csproj.AssemblyReference.cache
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\obj\Debug\Interface\MainWindow.g.cs
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\obj\Debug\Interface\App.g.cs
+C:\Users\maeve\Source\Repos\KIT206_Group_3\WpfApp1\obj\Debug\Interface\MainWindow.baml

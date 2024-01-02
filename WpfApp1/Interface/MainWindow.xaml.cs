@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
 
-namespace KIT206_UI
+namespace KIT206_RAP
 {
  
     /// <summary>
@@ -25,6 +25,7 @@ namespace KIT206_UI
     {
         public MainWindow()
         {
+           
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
