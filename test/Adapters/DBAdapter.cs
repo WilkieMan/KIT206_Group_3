@@ -127,39 +127,7 @@ namespace test
 
                 rdr.Close();
 
-                cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + id, conn); // A command to get the unique dois to query against.
-                // System.Console.WriteLine("Reading publications.");
-
-                rdr = cmd.ExecuteReader();
-                List<String> publications = new List<string>();
-                List<Publication> curPublications = new List<Publication>();
-
-                while (rdr.Read())
-                {
-                    // System.Console.WriteLine(rdr.GetString(0));
-                    publications.Add(rdr.GetString(0));
-                }
-
-                // System.Console.WriteLine("Read publications.");
-                rdr.Close();
-
-                foreach (String p in publications)
-                {
-                    cmd = new MySqlCommand("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'", conn); // Gets the information about the publications using the doi as the identifying aspect
-                    // System.Console.WriteLine("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'");
-
-                    rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        // System.Console.WriteLine("While.");
-                        // System.Console.WriteLine(rdr.GetString(1));
-                        // System.Console.WriteLine("Read data.");
-                        researcher.AddPublication(new Publication(rdr.GetString(1), rdr.GetString(0), MakeType(rdr.GetString(5)), rdr.GetInt32(4), DateTime.Parse(rdr.GetString(7)), MakeRanking(rdr.GetString(2)), new List<String>(rdr.GetString(3).Split(',')), rdr.GetString(6)));
-                    }
-
-                    rdr.Close();
-                }
+                GetResearcherPublications(researcher);
                 // System.Console.WriteLine("Finished fetching publications.\n" + curPublications.Count());
             }
             catch (Exception e)
@@ -182,6 +150,63 @@ namespace test
             }
             // System.Console.WriteLine(researcher.ID + " " + researcher.GivenName + " " + researcher.FamilyName);
             // return researcher;
+        }
+
+        /// <summary>
+        /// A method to retrieve all of a researchers publications and nothing else
+        /// </summary>
+        /// <param name="researcher">The researcher to retrieve the information of.</param>
+        public static void GetResearcherPublications(Researcher researcher)
+        { 
+            MySqlDataReader rdr = null;
+            int id = researcher.ID;
+            
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + id, conn); // A command to get the unique dois to query against.
+
+                rdr = cmd.ExecuteReader();
+                List<String> publications = new List<string>();
+                List<Publication> curPublications = new List<Publication>();
+
+                while (rdr.Read())
+                {
+                    publications.Add(rdr.GetString(0));
+                }
+
+                rdr.Close();
+
+                foreach (String p in publications)
+                {
+                    cmd = new MySqlCommand("select doi, title, ranking, authors, year, type, cite_as, available from publication where doi like '" + p + "'", conn); // Gets the information about the publications using the doi as the identifying aspect
+
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        researcher.AddPublication(new Publication(rdr.GetString(1), rdr.GetString(0), MakeType(rdr.GetString(5)), rdr.GetInt32(4), DateTime.Parse(rdr.GetString(7)), MakeRanking(rdr.GetString(2)), new List<String>(rdr.GetString(3).Split(',')), rdr.GetString(6)));
+                    }
+
+                    rdr.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Conn failure.");
+                System.Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         /// <summary>
