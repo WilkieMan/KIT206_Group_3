@@ -55,10 +55,10 @@ namespace test
         private void ResearcherList_Changed(object sender, SelectionChangedEventArgs e)
         {
             ResearcherDetailView researcherDetailView = new ResearcherDetailView();
- 
+
             Researcher researcher = ResearcherListView.SelectedItem as Researcher;
-            DBAdapter.FetchAllDetail(researcher);
             researcherDetailView.DataContext = researcher;
+            DBAdapter.FetchAllDetail(researcher);
 
             DataContext = researcherDetailView;
         }

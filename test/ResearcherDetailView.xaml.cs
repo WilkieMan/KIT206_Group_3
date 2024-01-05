@@ -34,7 +34,11 @@ namespace test
 
         private void CummulativeCount_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Cummulative Count");
+            Researcher r = this.DataContext as Researcher;
+
+
+
+            MessageBox.Show("Cummulative Count" + r.Email );
             
         }
 

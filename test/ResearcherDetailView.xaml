@@ -43,7 +43,7 @@
                             <TextBlock Text="Performance" Background="WhiteSmoke"/>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Current Job Title: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding CurrentJob}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobTitle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Commenced with institution: "/>
@@ -69,7 +69,7 @@
                         <Button Content="Cumulative Count" Height="50" Margin="30,20,10,10" VerticalAlignment="Top" Click="CummulativeCount_Click" />
                     </StackPanel>
                 </Border>
-            <Image Height="Auto" Width="Auto" Source="{Binding Path=Photo}"/>
+            <Image Height="200" Width="200" Source="{Binding Path=Photo}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="500" Margin="10,10,10,10" HorizontalAlignment="Left">
