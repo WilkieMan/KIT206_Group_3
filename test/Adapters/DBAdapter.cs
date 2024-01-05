@@ -50,7 +50,7 @@ namespace test
             conn = GetConnection(conn); // The connection
             MySqlDataReader rdr = null; // The database reader
             int id = researcher.ID; // The id of the researcher
-            string selection = "unit, campus, email, photo, utas_start, current_start, photo";
+            string selection = "unit, campus, email, photo, utas_start, current_start";
             // Researcher researcher = new Researcher(oldResearcher.ID, oldResearcher.GivenName, oldResearcher.FamilyName, oldResearcher.NameTitle, oldResearcher.CampusName);
 
             try

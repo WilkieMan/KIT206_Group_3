@@ -74,6 +74,8 @@ namespace test
                 s.PopulateSupervisionsList();
                 MessageBox.Show("Supervsions" + s.SupervisionsList); //fix
             } */
+
+            MessageBox.Show("Supervisions");
         }
 
         private void Publication_SelectionChanged(object sender, SelectionChangedEventArgs e)
