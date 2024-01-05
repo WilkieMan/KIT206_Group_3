@@ -20,6 +20,10 @@ namespace test
     /// </summary>
     public partial class ReportsView : UserControl
     {
+
+        private static ResearcherController researcherController = new ResearcherController();
+        private List<Researcher> reportResearchers = new List<Researcher>();
+
         public ReportsView()
         {
             InitializeComponent();
@@ -28,25 +32,23 @@ namespace test
 
         private void PoorButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Reports.ItemsSource = researcherController.GenerateReports("poor");
         }
 
         private void BelowExpectationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Reports.ItemsSource = researcherController.GenerateReports("below expectation");
         }
 
         private void MeetingMinimumButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Reports.ItemsSource = researcherController.GenerateReports("meeting minimum");
         }
 
         private void StarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Reports.ItemsSource = researcherController.GenerateReports("star");
+          
         }
-
-
-
     }
 }

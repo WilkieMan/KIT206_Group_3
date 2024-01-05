@@ -125,7 +125,7 @@ namespace test
         /// <returns></returns>
         public static Researcher GetSupervisor(int id)
         {
-           foreach (Researcher r in MasterList)
+            foreach (Researcher r in MasterList)
             {
                 if (r.ID == id)
                 {
@@ -139,12 +139,51 @@ namespace test
         }
 
 
-
-        /*public static List<Researcher> GenerateReports (double percentage)
+        /// <summary>
+        /// Generates the reports of each resercher's perormance
+        /// </summary>
+        /// <param name="performance"></param>
+        /// <returns>
+        /// List of the researchers in the required bracket
+        /// </returns>
+        public List<Researcher> GenerateReports(string performance)
         {
-        }*/
 
+            double poor = 70.0;
+            double belowExpectation = 110.0;
+            double minimum = 110.0;
+            double star = 200.0;
+
+            switch (performance) 
+            {
+                case "poor":
+                    var poorPerformers = from Staff s in MasterList
+                                         where s.Performance3Year <= poor
+                                         select s;
+                    return new List<Researcher>(poorPerformers);
+                    break;
+                case "below expectation":
+                    var belowExpectationPerformers = from Staff s in MasterList
+                                         where s.Performance3Year > poor && s.Performance3Year < belowExpectation
+                                         select s;
+                    return new List<Researcher>(belowExpectationPerformers);
+                    break;
+                case "meeting minimum":
+                    var meetingMinimumPerformers = from Staff s in MasterList
+                                                     where s.Performance3Year > minimum && s.Performance3Year < star
+                                                     select s;
+                    return new List<Researcher>(meetingMinimumPerformers);
+                    break;
+                default:
+                    var starPerformers = from Staff s in MasterList
+                                                   where s.Performance3Year >= star
+                                                   select s;
+                    return new List<Researcher>(starPerformers);
+                    break;
+            }
+
+
+        }
 
     }
-
 }
