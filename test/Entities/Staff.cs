@@ -11,6 +11,7 @@ namespace test
     {
         public List<Student> SupervisionsList; // Supervision list of researcher (If available)     
         public int SupervisionsCount = 0; // The number of supervisions they have
+        public string funding = null;
 
         /// <summary>
         /// Staff constructor.
@@ -44,6 +45,15 @@ namespace test
             }
         }
 
+        public string GetFunding()
+        {
+            if (funding == null)
+            {
+                return "No funding data available.";
+            }
+
+            return funding;
+        }
 
         /// <summary>
         /// Creates a string for the staff's current employment level.
@@ -63,10 +73,12 @@ namespace test
         /// <summary>
         /// Populates the staff's supervisions using information that is already known.
         /// </summary>
-        public void PopulateSupervisionsList()
+        public List<Student> GetSupervisionsList()
         {
             SupervisionsList = ResearcherController.GetSupervisions(this.ID);
             SupervisionsCount = SupervisionsList.Count();
+
+            return SupervisionsList;
         }
 
         /// <summary>
@@ -137,7 +149,7 @@ namespace test
         /// </returns>
         public double GetPerformanceByPublication()
         {
-            double PublicationCount = GetPublicationCount();
+            double PublicationCount = Publications.Count;
 
             return Math.Round(PublicationCount / Tenure, 1);
         }

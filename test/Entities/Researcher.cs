@@ -25,6 +25,7 @@ namespace test
         public DateTime CurrentStart { get; set; } // The date the researcher started their current position
         public List<Position> Positions = new List<Position>(); // A list of previous positions they have held at the current institution
         public PublicationsController publicationsController = new PublicationsController();
+        
         /// <summary>
         /// Creates a string of their name and honorific to use in a list.
         /// </summary>
@@ -74,18 +75,12 @@ namespace test
                 }
             }
 
-            return 100 * (Q1Number / GetPublicationCount());
+            return 100 * (Q1Number / Publications.Count);
         }
 
-        /// <summary>
-        /// Calculates the number of publications the researcher has published.
-        /// </summary>
-        /// <returns>
-        /// The number of publications.
-        /// </returns>
-        public int GetPublicationCount()
+        public string GetPublicationCount()
         {
-            return Publications == null ? 0 : Publications.Count();
+            return Publications.Count.ToString();
         }
 
         /// <summary>

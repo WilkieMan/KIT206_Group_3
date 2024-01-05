@@ -48,7 +48,7 @@ namespace test
         private void StarButton_Click(object sender, RoutedEventArgs e)
         {
             Reports.ItemsSource = researcherController.GenerateReports("star");
-          
+    
         }
     }
 }

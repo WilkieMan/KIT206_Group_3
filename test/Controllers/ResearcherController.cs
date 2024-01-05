@@ -110,7 +110,11 @@ namespace test
         /// </returns>
         public static List<Student> GetSupervisions(int id)
         {
-            var supervisions = from Student s in MasterList
+            var students = from Researcher r in MasterList
+                           where r.EmploymentLevel == Position.EmploymentLevel.Student
+                           select r;
+
+            var supervisions = from Student s in students
                                where s.SupervisorID == id
                                select s;
 

@@ -15,76 +15,73 @@ using System.Windows.Shapes;
 
 namespace test
 {
+
     /// <summary>
     /// Interaction logic for ResearcherDetailView.xaml
     /// </summary>
     public partial class ResearcherDetailView : UserControl
     {
 
-        /*private static ResearcherController researcherController = new ResearcherController();
+        private static Researcher researcher1 { get; set; }
+
+        private static ResearcherController researcherController = new ResearcherController();
         private static PublicationsController pubicationsController = new PublicationsController();
         private List<Publication> publications;
-       
-        */
+        private Researcher researcher;
 
         public ResearcherDetailView()
         {
-            InitializeComponent();   
+            InitializeComponent();
+        }
+
+        public void setResearcher()
+        {
+            Researcher researcher = this.DataContext as Researcher;
+            PublicationsListView.ItemsSource = researcher.Publications;
+            publications = researcher.Publications;
         }
 
         private void CummulativeCount_Click(object sender, RoutedEventArgs e)
         {
             Researcher r = this.DataContext as Researcher;
-
-
-
             MessageBox.Show("Cummulative Count" + r.Email );
             
         }
 
         private void OldestToNewest_Click(object sender, RoutedEventArgs e)
         {
-            /*publications = PublicationsListView.ItemsSource as List<Publication>;
-
-            PublicationsListView.ItemsSource = pubicationsController.OldestToNewest(publications);*/
+            PublicationsListView.ItemsSource = pubicationsController.OldestToNewest(publications);
         }
 
         private void NewestToOldest_Click(object sender, RoutedEventArgs e)
         {
-/*
-            publications = PublicationsListView.ItemsSource as List<Publication>;
-
-            PublicationsListView.ItemsSource = pubicationsController.NewestToOldest(publications);*/
+            PublicationsListView.ItemsSource = pubicationsController.NewestToOldest(publications);
         }
 
         private void PublicationSearch_Click(object sender, RoutedEventArgs e)
         {
-            /*publications = PublicationsListView.ItemsSource as List<Publication>;
+            Researcher temp = this.DataContext as Researcher;
 
-            PublicationsListView.ItemsSource = pubicationsController.FilterByYears(publications, UpperLimit.Text, LowerLimit.Text);
-        */
+            PublicationsListView.ItemsSource = pubicationsController.FilterByYears(temp.Publications, UpperLimit.Text, LowerLimit.Text);
         }
 
         private void Supervisions_Click(object sender, RoutedEventArgs e)
         {
-            /*Researcher r = this.DataContext as Researcher;
-
-            if (r.EmploymentLevel == Position.EmploymentLevel.Student)
+            if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
             {
                 MessageBox.Show("Students do not have supervisions");
             } else
             {
-                Staff s = this.DataContext as Staff;
-                s.PopulateSupervisionsList();
-                MessageBox.Show("Supervsions" + s.SupervisionsList); //fix
-            } */
+                Staff staff = researcher as Staff;
+                List<Student> supervisions = staff.GetSupervisionsList();
+                MessageBox.Show("Supervsions");
+            } 
 
-            MessageBox.Show("Supervisions");
         }
 
         private void Publication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
         }
     }
 }

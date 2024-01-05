@@ -66,6 +66,14 @@ namespace test
 
         public List<Publication> FilterByYears(List<Publication> publications, string UpperLimit, string LowerLimit)
         {
+
+
+
+            if (UpperLimit == "" || LowerLimit == "")
+            {
+                return publications;
+            }
+
             int upperLimit = int.Parse(UpperLimit);
             int lowerLimit = int.Parse(LowerLimit);
 

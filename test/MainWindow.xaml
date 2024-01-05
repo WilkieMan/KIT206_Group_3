@@ -26,7 +26,6 @@
                 <ComboBox x:Name="FilterByTitleBox" Margin="10,10,10,10" SelectionChanged="FilterTitle_SelectionChanged"/>
                 <StackPanel>
                     <ListBox x:Name= "ResearcherListView" Height="600" Margin="10,10,10,10" VerticalAlignment="Top" Width="220" SelectionChanged="ResearcherList_Changed"/>
-                    
                 </StackPanel>
             </StackPanel>
         </DockPanel>

@@ -58,16 +58,24 @@ namespace test
 
             Researcher researcher = ResearcherListView.SelectedItem as Researcher;
 
-            if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
+            if (researcher != null)
             {
-                Student student = new Student(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
-                DBAdapter.FetchAllDetail(student);
-                researcherDetailView.DataContext = student;
-            } else
-            {
-                Staff staff = new Staff(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
-                DBAdapter.FetchAllDetail(staff);
-                researcherDetailView.DataContext = staff;
+                if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
+                {
+                    Student student = new Student(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
+                    DBAdapter.FetchAllDetail(student);
+                    researcherDetailView.DataContext = student;
+                    researcherDetailView.setResearcher();
+
+                }
+                else
+                {
+                    Staff staff = new Staff(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
+                    DBAdapter.FetchAllDetail(staff);
+                    researcherDetailView.DataContext = staff;
+                    researcherDetailView.setResearcher();
+                }
+
             }
 
             DataContext = researcherDetailView;
@@ -85,8 +93,6 @@ namespace test
 
         private void ApplyFilters()
         {
-            ResearcherDetailView researcherDetailView = new ResearcherDetailView();
-
             researcherList = researcherController.GetMasterList();
 
             Position.EmploymentLevel selctedLevel = (Position.EmploymentLevel)FilterByTitleBox.SelectedItem;

@@ -52,7 +52,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Commenced in current position: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding Email}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobStart}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Tenure: "/>
@@ -60,11 +60,11 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Number of publications: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetPublicationCount()}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding GetPublicationCount}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Q1 percentage: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetQ1Percentage()}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding GetQ1Percentage}"/>
                             </StackPanel>
                         </StackPanel>
                         <Button Content="Cumulative Count" Height="50" Margin="30,20,10,10" VerticalAlignment="Top" Click="CummulativeCount_Click" />
@@ -78,16 +78,16 @@
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Staff Details" Background="WhiteSmoke"/>
                             <StackPanel Orientation="Horizontal">
-                                <Label Margin="0,2,5,2" Content="3-year average:: "/>
+                                <Label Margin="0,2,5,2" Content="3-year average: "/>
                                 <Label Margin="0,2,5,2" Content="{Binding ThreeYearAverage}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Funding recieved: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding Email}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding GetFunding}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Performance by publication: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetPerformanceByPublicationil}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding GetPerformanceByPublication}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Performance by funding: "/>
@@ -114,7 +114,7 @@
 
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Publicaion List" FontSize="20" Background="WhiteSmoke" Width="150" HorizontalAlignment="Left" Margin="10,30,10,10"/>
+                    <TextBlock Text="Publication List" FontSize="20" Background="WhiteSmoke" Width="150" HorizontalAlignment="Left" Margin="10,30,10,10"/>
                     <Button Content="Oldest to Newest" Height="20" HorizontalAlignment="Left" Margin="10,30,10,10" Click="OldestToNewest_Click"/>
                     <Button Content="Newest to Oldest" Height ="20" HorizontalAlignment="Left" Margin="10,30,10,10" Click="NewestToOldest_Click" />
                 </StackPanel>

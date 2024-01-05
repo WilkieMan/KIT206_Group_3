@@ -50,7 +50,7 @@ namespace test
             conn = GetConnection(conn); // The connection
             MySqlDataReader rdr = null; // The database reader
             int id = researcher.ID; // The id of the researcher
-            string selection = "unit, campus, email, photo, utas_start, current_start ";
+            string selection = "unit, campus, email, photo, utas_start, current_start";
             // Researcher researcher = new Researcher(oldResearcher.ID, oldResearcher.GivenName, oldResearcher.FamilyName, oldResearcher.NameTitle, oldResearcher.CampusName);
 
             try
@@ -61,7 +61,7 @@ namespace test
                 // researcher object into either a Student or Staff object
                 if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
                 {
-                    selection += "degree, supervisor_id ";
+                    selection += ", degree, supervisor_id ";
                 }
                 else
                 {
