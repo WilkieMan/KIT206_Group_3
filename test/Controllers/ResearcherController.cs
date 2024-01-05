@@ -150,7 +150,7 @@ namespace test
         /// <returns>
         /// List of the researchers in the required bracket
         /// </returns>
-        public List<Researcher> GenerateReports(string performance)
+        public List<Staff> GenerateReports(string performance)
         {
 
             double poor = 70.0;
@@ -158,32 +158,32 @@ namespace test
             double minimum = 110.0;
             double star = 200.0;
 
+            var staffList = from Researcher r in MasterList
+                            where r.EmploymentLevel != Position.EmploymentLevel.Student
+                            select r as Staff;
+
             switch (performance) 
             {
                 case "poor":
-                    var poorPerformers = from Staff s in MasterList
+                    var poorPerformers = from Staff s in staffList
                                          where s.Performance3Year <= poor
                                          select s;
-                    return new List<Researcher>(poorPerformers);
-                    break;
+                    return new List<Staff>(poorPerformers);
                 case "below expectation":
-                    var belowExpectationPerformers = from Staff s in MasterList
-                                         where s.Performance3Year > poor && s.Performance3Year < belowExpectation
-                                         select s;
-                    return new List<Researcher>(belowExpectationPerformers);
-                    break;
-                case "meeting minimum":
-                    var meetingMinimumPerformers = from Staff s in MasterList
-                                                     where s.Performance3Year > minimum && s.Performance3Year < star
+                    var belowExpectationPerformers = from Staff s in staffList
+                                                     where s.Performance3Year > poor && s.Performance3Year < belowExpectation
                                                      select s;
-                    return new List<Researcher>(meetingMinimumPerformers);
-                    break;
-                default:
-                    var starPerformers = from Staff s in MasterList
-                                                   where s.Performance3Year >= star
+                    return new List<Staff>(belowExpectationPerformers);
+                case "meeting minimum":
+                    var meetingMinimumPerformers = from Staff s in staffList
+                                                   where s.Performance3Year > minimum && s.Performance3Year < star
                                                    select s;
-                    return new List<Researcher>(starPerformers);
-                    break;
+                    return new List<Staff>(meetingMinimumPerformers);
+                default:
+                    var starPerformers = from Staff s in staffList
+                                         where s.Performance3Year >= star
+                                         select s;
+                    return new List<Staff>(starPerformers);
             }
 
 

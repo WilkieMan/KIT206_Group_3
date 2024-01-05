@@ -41,6 +41,7 @@ namespace test
         {
             Researcher researcher = this.DataContext as Researcher;
             PublicationsListView.ItemsSource = researcher.Publications;
+            PastPositionsBox.ItemsSource = researcher.Positions;
             publications = researcher.Publications;
         }
 
