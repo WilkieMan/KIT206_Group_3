@@ -117,7 +117,7 @@ namespace test
                 double realPublications = ThreeYearAverage;
                 double expectedPublications;
 
-                switch (CurrentJobLevel)
+                switch (EmploymentLevel)
                 {
                     case Position.EmploymentLevel.A:
                         expectedPublications = 0.5;

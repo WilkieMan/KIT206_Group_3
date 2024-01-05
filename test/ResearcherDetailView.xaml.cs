@@ -21,9 +21,6 @@ namespace test
     /// </summary>
     public partial class ResearcherDetailView : UserControl
     {
-
-        private static Researcher researcher1 { get; set; }
-
         private static ResearcherController researcherController = new ResearcherController();
         private static PublicationsController pubicationsController = new PublicationsController();
         private List<Publication> publications;

@@ -157,11 +157,17 @@ namespace test
             double belowExpectation = 110.0;
             double minimum = 110.0;
             double star = 200.0;
+            List<Staff> staffList = new List<Staff>();
 
-            var staffList = from Researcher r in MasterList
-                            where r.EmploymentLevel != Position.EmploymentLevel.Student
-                            select r as Staff;
-
+            foreach (Researcher r in MasterList)
+            {
+                if (r.EmploymentLevel != Position.EmploymentLevel.Student)
+                {
+                    Staff s = new Staff(r.NameTitle, r.GivenName, r.FamilyName, r.EmploymentLevel, r.ID);
+                    staffList.Add(s);
+                }
+            }
+            
             switch (performance) 
             {
                 case "poor":
