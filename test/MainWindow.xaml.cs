@@ -57,8 +57,18 @@ namespace test
             ResearcherDetailView researcherDetailView = new ResearcherDetailView();
 
             Researcher researcher = ResearcherListView.SelectedItem as Researcher;
-            researcherDetailView.DataContext = researcher;
-            DBAdapter.FetchAllDetail(researcher);
+
+            if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
+            {
+                Student student = new Student(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
+                DBAdapter.FetchAllDetail(student);
+                researcherDetailView.DataContext = student;
+            } else
+            {
+                Staff staff = new Staff(researcher.NameTitle, researcher.GivenName, researcher.FamilyName, researcher.EmploymentLevel, researcher.ID);
+                DBAdapter.FetchAllDetail(staff);
+                researcherDetailView.DataContext = staff;
+            }
 
             DataContext = researcherDetailView;
         }

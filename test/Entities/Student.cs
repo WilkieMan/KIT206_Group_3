@@ -23,15 +23,13 @@ namespace test
         /// <param name="id">Their ID.</param>
         /// <param name="degree">Their degree as a string.</param>
         /// <param name="supervisorid">Their supervisors ID.</param>
-        public Student(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id, string degree, int supervisorid) : base(title, givenName, familyName, employmentLevel, id)
+        public Student(Title title, string givenName, string familyName, Position.EmploymentLevel employmentLevel, int id) : base(title, givenName, familyName, employmentLevel, id)
         {
             ID = id;
             GivenName = givenName;
             NameTitle = title;
             FamilyName = familyName;
             EmploymentLevel = employmentLevel;
-            Degree = degree;
-            SupervisorID = supervisorid;
         }
 
         /// <summary>
