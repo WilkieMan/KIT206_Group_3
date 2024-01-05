@@ -13,7 +13,6 @@ namespace test
         public int SupervisorID { get; set; } // The ID of their supervisor.
         Position CurrentPosition; // The date they started their research degree. 
         
-
         /// <summary>
         /// Student constructor.
         /// </summary>
