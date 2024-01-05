@@ -16,10 +16,13 @@ using System.Windows.Shapes;
 namespace test
 {
     /// <summary>
-    /// Interaction logic for PublicationDetailView.xaml
+    /// Interaction logic for PublicationDetailView.xaml.
     /// </summary>
     public partial class PublicationDetailView : UserControl
     {
+        /// <summary>
+        /// Constructor for the PublicationDetailsView.
+        /// </summary>
         public PublicationDetailView()
         {
             InitializeComponent();

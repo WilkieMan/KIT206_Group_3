@@ -16,40 +16,57 @@ using System.Windows.Shapes;
 namespace test
 {
     /// <summary>
-    /// Interaction logic for ReportsView.xaml
+    /// Interaction logic for ReportsView.xaml.
     /// </summary>
     public partial class ReportsView : UserControl
     {
 
-        private static ResearcherController researcherController = new ResearcherController();
-        private List<Researcher> reportResearchers = new List<Researcher>();
+        private static ResearcherController researcherController = new ResearcherController(); // The controller used to manage the researchers
+        private List<Researcher> reportResearchers = new List<Researcher>(); // The list used to create reports
 
+        /// <summary>
+        /// The constructor for the ReportsView.
+        /// </summary>
         public ReportsView()
         {
             InitializeComponent();
-
-            foreach (Researcher r in researcherController.GetMasterList())
-            {
-                DBAdapter.GetResearcherPublications(r);
-            }
-            
         }
 
+        /// <summary>
+        /// Generates the report for poor performing researchers using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void PoorButton_Click(object sender, RoutedEventArgs e)
         {
             Reports.ItemsSource = researcherController.GenerateReports("poor");
         }
 
+        /// <summary>
+        /// Generates the report for researchers performing below expectations using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void BelowExpectationButton_Click(object sender, RoutedEventArgs e)
         {
             Reports.ItemsSource = researcherController.GenerateReports("below expectation");
         }
 
+        /// <summary>
+        /// Generates the report for researchers that are meeting minimum using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void MeetingMinimumButton_Click(object sender, RoutedEventArgs e)
         {
             Reports.ItemsSource = researcherController.GenerateReports("meeting minimum");
         }
 
+        /// <summary>
+        /// Generates the report for star researchers using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void StarButton_Click(object sender, RoutedEventArgs e)
         {
             Reports.ItemsSource = researcherController.GenerateReports("star");
