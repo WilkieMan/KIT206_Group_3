@@ -12,6 +12,7 @@ namespace test
         public string Degree { get; set; } // A string for the degree that they are undertaking. 
         public int SupervisorID { get; set; } // The ID of their supervisor.
         Position CurrentPosition; // The date they started their research degree. 
+        public string CurrentTitle = "Student";                                    //Current job of researcher
         
         /// <summary>
         /// Student constructor.

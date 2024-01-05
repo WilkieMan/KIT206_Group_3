@@ -55,6 +55,7 @@ namespace test
             EmploymentLevel = employmentLevel;
         }
 
+
         /// <summary>
         /// Calculates the percentage of publications that are published in Q1 journals.
         /// </summary>

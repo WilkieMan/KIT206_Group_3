@@ -44,6 +44,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Current Job Title: "/>
                                 <Label Margin="0,2,5,2" Content="{Binding CurrentJobTitle}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding CurrentTitle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Commenced with institution: "/>
@@ -105,7 +106,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="0,2,5,2" Content="Supervisor: "/>
-                            <Label Margin="0,2,5,2" Content="{Binding PrintSupervisorInfo}"/>
+                            <Label Margin="0,2,5,2" Content="{Binding SupervisorID}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>

@@ -44,6 +44,22 @@ namespace test
             }
         }
 
+
+        /// <summary>
+        /// Creates a string for the staff's current employment level.
+        /// </summary>
+        public string CurrentJobTitle                                             //Current job of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
+
+                return currentJob.First().ToTitle(CurrentJobLevel);
+            }
+        }
+
         /// <summary>
         /// Populates the staff's supervisions using information that is already known.
         /// </summary>
@@ -142,21 +158,6 @@ namespace test
             }
 
             return Math.Round(TotalFunding / Tenure, 1);
-        }
-
-        /// <summary>
-        /// Creates a string for the staff's current employment level.
-        /// </summary>
-        public string CurrentJobTitle                                             //Current job of researcher
-        {
-            get
-            {
-                var currentJob = from Position p in Positions
-                                 orderby p.Start descending
-                                 select p;
-
-                return currentJob.First().ToTitle(CurrentJobLevel);
-            }
         }
 
         /// <summary>
