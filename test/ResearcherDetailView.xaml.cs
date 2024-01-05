@@ -21,7 +21,12 @@ namespace test
     public partial class ResearcherDetailView : UserControl
     {
 
+        private static ResearcherController researcherController = new ResearcherController();
+        private static PublicationsController pubicationsController = new PublicationsController();
+        private List<Publication> publications;
+       
         
+
         public ResearcherDetailView()
         {
             InitializeComponent();   
@@ -35,23 +40,39 @@ namespace test
 
         private void OldestToNewest_Click(object sender, RoutedEventArgs e)
         {
+            publications = PublicationsListView.ItemsSource as List<Publication>;
 
+            PublicationsListView.ItemsSource = pubicationsController.OldestToNewest(publications);
         }
 
         private void NewestToOldest_Click(object sender, RoutedEventArgs e)
         {
 
+            publications = PublicationsListView.ItemsSource as List<Publication>;
+
+            PublicationsListView.ItemsSource = pubicationsController.NewestToOldest(publications);
         }
 
         private void PublicationSearch_Click(object sender, RoutedEventArgs e)
         {
+            publications = PublicationsListView.ItemsSource as List<Publication>;
 
+            PublicationsListView.ItemsSource = pubicationsController.FilterByYears(publications, UpperLimit.Text, LowerLimit.Text);
         }
 
         private void Supervisions_Click(object sender, RoutedEventArgs e)
         {
+            Researcher r = this.DataContext as Researcher;
 
-            MessageBox.Show("Supervisions: ");
+            if (r.EmploymentLevel == Position.EmploymentLevel.Student)
+            {
+                MessageBox.Show("Students do not have supervisions");
+            } else
+            {
+                Staff s = this.DataContext as Staff;
+                s.PopulateSupervisionsList();
+                MessageBox.Show("Supervsions" + s.SupervisionsList); //fix
+            }
         }
     }
 }

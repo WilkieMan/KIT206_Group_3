@@ -75,6 +75,8 @@ namespace test
 
         private void ApplyFilters()
         {
+            ResearcherDetailView researcherDetailView = new ResearcherDetailView();
+
             researcherList = researcherController.GetMasterList();
 
             Position.EmploymentLevel selctedLevel = (Position.EmploymentLevel)FilterByTitleBox.SelectedItem;

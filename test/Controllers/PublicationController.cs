@@ -64,10 +64,13 @@ namespace test
             return new List<Publication>(sortedYearPublications);
         }
 
-        public List<Publication> FilterByYears(List<Publication> publications, DateTime UpperLimit, DateTime LowerLimit)
+        public List<Publication> FilterByYears(List<Publication> publications, string UpperLimit, string LowerLimit)
         {
+            int upperLimit = int.Parse(UpperLimit);
+            int lowerLimit = int.Parse(LowerLimit);
+
             var sortedYearPublications = from p in publications
-                                         where (new DateTime(p.YearOfPublication, 1,1) < UpperLimit) && (new DateTime(p.YearOfPublication, 1, 1) > LowerLimit)
+                                         where p.YearOfPublication <= upperLimit && p.YearOfPublication >= lowerLimit
                                          select p;
 
             return new List<Publication>(sortedYearPublications);

@@ -24,7 +24,7 @@ namespace test
         public DateTime InstitutionStart { get; set; } // The date the researcher started at the current institution
         public DateTime CurrentStart { get; set; } // The date the researcher started their current position
         public List<Position> Positions = new List<Position>(); // A list of previous positions they have held at the current institution
-
+        public PublicationsController publicationsController = new PublicationsController();
         /// <summary>
         /// Creates a string of their name and honorific to use in a list.
         /// </summary>
@@ -123,7 +123,9 @@ namespace test
         /// <param name="publication">The publication to be added.</param>
         public void AddPublication(Publication publication)
         {
+
             Publications.Add(publication);
+            Publications = publicationsController.NewestToOldest(Publications);
         }
 
         /// <summary>
