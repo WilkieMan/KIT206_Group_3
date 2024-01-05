@@ -95,6 +95,10 @@
                             </StackPanel>
                         </StackPanel>
                         <Button Content="Supervisions" Height="50" Margin="30,20,10,10" VerticalAlignment="Top" Click="Supervisions_Click" />
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Past Positions" Margin="10,10,0,0"/>
+                            <ListBox x:Name="PastPositionsBox" Height="100" Width="180" Margin="10,0,10,10" ItemsSource="{Binding Positions}"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left">

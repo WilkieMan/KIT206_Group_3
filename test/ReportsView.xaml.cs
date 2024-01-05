@@ -27,6 +27,11 @@ namespace test
         public ReportsView()
         {
             InitializeComponent();
+
+            foreach (Researcher r in researcherController.GetMasterList())
+            {
+                DBAdapter.GetResearcherPublications(r);
+            }
             
         }
 

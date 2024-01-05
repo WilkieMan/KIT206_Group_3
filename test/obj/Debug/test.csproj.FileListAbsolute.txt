@@ -71,3 +71,6 @@ C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 2
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\obj\Debug\test.csproj.CopyComplete
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\obj\Debug\test.exe
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\obj\Debug\test.pdb
+C:\Users\maeve\Source\Repos\KIT206_Group_3\test\bin\Debug\System.Memory.dll
+C:\Users\maeve\Source\Repos\KIT206_Group_3\test\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\maeve\Source\Repos\KIT206_Group_3\test\bin\Debug\System.Buffers.dll
