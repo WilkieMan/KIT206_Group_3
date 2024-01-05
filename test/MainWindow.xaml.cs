@@ -16,13 +16,16 @@ using System.Windows.Shapes;
 namespace test
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static ResearcherController researcherController = new ResearcherController();
-        private static List<Researcher> researcherList;
+        private static ResearcherController researcherController = new ResearcherController(); // The controller to control all the researchers
+        private static List<Researcher> researcherList; // The list to be displayed as the ResearcherListView
         
+        /// <summary>
+        /// Constructor for the MainWindow.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -42,16 +45,31 @@ namespace test
             FilterByTitleBox.SelectedItem = 0;
         }
 
+        /// <summary>
+        /// Creates the ResearcherDetailsView using a event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void DetailButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new ResearcherDetailView();
         }
 
+        /// <summary>
+        /// Creates the ReportsView using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void ReportsView_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new ReportsView();
         }
 
+        /// <summary>
+        /// Updates the ResearcherDeatils view if it is already showing a researcher using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void ResearcherList_Changed(object sender, SelectionChangedEventArgs e)
         {
             ResearcherDetailView researcherDetailView = new ResearcherDetailView();
@@ -81,16 +99,29 @@ namespace test
             DataContext = researcherDetailView;
         }
 
+        /// <summary>
+        /// Applies filters when the FilterByTitleBox is changed using an event handler.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void FilterTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ApplyFilters();
         }
 
+        /// <summary>
+        /// Applies filters when the FilterByTextBox's text is changed.
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event.</param>
         private void FilterName_TextChanged(object sender, TextChangedEventArgs e)
         {
             ApplyFilters();
         }
 
+        /// <summary>
+        /// Applies the current filters to the ResearcherList by getting the value of the FilterByTitleBox and the FilterByNameBox.
+        /// </summary>
         private void ApplyFilters()
         {
             researcherList = researcherController.GetMasterList();
