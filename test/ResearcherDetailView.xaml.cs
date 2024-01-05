@@ -21,11 +21,11 @@ namespace test
     public partial class ResearcherDetailView : UserControl
     {
 
-        private static ResearcherController researcherController = new ResearcherController();
+        /*private static ResearcherController researcherController = new ResearcherController();
         private static PublicationsController pubicationsController = new PublicationsController();
         private List<Publication> publications;
        
-        
+        */
 
         public ResearcherDetailView()
         {
@@ -40,29 +40,30 @@ namespace test
 
         private void OldestToNewest_Click(object sender, RoutedEventArgs e)
         {
-            publications = PublicationsListView.ItemsSource as List<Publication>;
+            /*publications = PublicationsListView.ItemsSource as List<Publication>;
 
-            PublicationsListView.ItemsSource = pubicationsController.OldestToNewest(publications);
+            PublicationsListView.ItemsSource = pubicationsController.OldestToNewest(publications);*/
         }
 
         private void NewestToOldest_Click(object sender, RoutedEventArgs e)
         {
-
+/*
             publications = PublicationsListView.ItemsSource as List<Publication>;
 
-            PublicationsListView.ItemsSource = pubicationsController.NewestToOldest(publications);
+            PublicationsListView.ItemsSource = pubicationsController.NewestToOldest(publications);*/
         }
 
         private void PublicationSearch_Click(object sender, RoutedEventArgs e)
         {
-            publications = PublicationsListView.ItemsSource as List<Publication>;
+            /*publications = PublicationsListView.ItemsSource as List<Publication>;
 
             PublicationsListView.ItemsSource = pubicationsController.FilterByYears(publications, UpperLimit.Text, LowerLimit.Text);
+        */
         }
 
         private void Supervisions_Click(object sender, RoutedEventArgs e)
         {
-            Researcher r = this.DataContext as Researcher;
+            /*Researcher r = this.DataContext as Researcher;
 
             if (r.EmploymentLevel == Position.EmploymentLevel.Student)
             {
@@ -72,7 +73,7 @@ namespace test
                 Staff s = this.DataContext as Staff;
                 s.PopulateSupervisionsList();
                 MessageBox.Show("Supervsions" + s.SupervisionsList); //fix
-            }
+            } */
         }
 
         private void Publication_SelectionChanged(object sender, SelectionChangedEventArgs e)
