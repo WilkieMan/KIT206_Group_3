@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:test"
-             mc:Ignorable="d" d:DesignWidth="Auto" Height="Auto">
+             mc:Ignorable="d" d:DesignWidth="1000" Height="800">
     <Grid Background="Wheat">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
@@ -129,7 +129,7 @@
                     <TextBox x:Name="LowerLimit" Width="100" Height="30" Margin="10,10,10,10"/>
                     <Button Content="Search" Height="30" Width="80" Click="PublicationSearch_Click"/>
                 </StackPanel>
-                <ListBox x:Name="PublicationsListView" Height="180" Width="500" HorizontalAlignment="Left" Margin="10,10,10,10" ItemsSource="{Binding Publications}" SelectionChanged="Publication_SelectionChanged"/>
+                <ListBox x:Name="PublicationsListView" Height="180" Width="600" HorizontalAlignment="Left" Margin="10,10,10,10" ItemsSource="{Binding Publications}" SelectionChanged="Publication_SelectionChanged"/>
             </StackPanel>
         </StackPanel>
     </Grid>

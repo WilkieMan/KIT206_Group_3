@@ -8,14 +8,14 @@ namespace test
 {
     class CummulativeCount
     {
-        public DateTime Year { get; set; } // The year this cumulative count represents 
+        public int Year { get; set; } // The year this cumulative count represents 
         public List<Publication> publications = new List<Publication>(); // The list of publications published in this year 
 
         /// <summary>
         /// Cumulative count constructor.
         /// </summary>
         /// <param name="year">The year of this cumulative count</param>
-        public CummulativeCount(DateTime year)
+        public CummulativeCount(int year)
         {
             Year = year;
         }

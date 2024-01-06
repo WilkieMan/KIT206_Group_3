@@ -89,24 +89,29 @@ namespace test
         /// <param name="publications">The researchers publications.</param>
         public void PopulateCummulatives(List<Publication> publications)
         {
+            publications = publicationsController.OldestToNewest(publications);
+
             foreach (Publication p in publications)
             {
-                DateTime PublicationYear = DateTime.Parse(p.YearOfPublication.ToString());
+                //DateTime PublicationYear = DateTime.Parse(p.YearOfPublication.ToString());
 
                 if (CummulativeCounts.Count == 0)
                 {
-                    CummulativeCounts.Add(new CummulativeCount(DateTime.Parse(p.YearOfPublication.ToString())));
-                }
+                    CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                } 
+             
+
+
 
                 foreach (CummulativeCount c in CummulativeCounts)
                 {
-                    if (c.Year.Year == p.YearOfPublication)
+                    if (c.Year == p.YearOfPublication)
                     {
                         c.publications.Add(p);
                     }
                     else
                     {
-                        CummulativeCounts.Add(new CummulativeCount(DateTime.Parse(p.YearOfPublication.ToString())));
+                        CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
                         c.publications.Add(p);
                     }
                 }

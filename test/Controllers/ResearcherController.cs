@@ -110,11 +110,19 @@ namespace test
         /// </returns>
         public static List<Student> GetSupervisions(int id)
         {
-            var students = from Researcher r in MasterList
-                           where r.EmploymentLevel == Position.EmploymentLevel.Student
-                           select r;
+            List<Student> studentList = new List<Student>();
 
-            var supervisions = from Student s in students
+            foreach (Researcher r in MasterList)
+            {
+                if (r.EmploymentLevel == Position.EmploymentLevel.Student)
+                {
+                    Student s = new Student(r.NameTitle, r.GivenName, r.FamilyName, r.EmploymentLevel, r.ID);
+                    DBAdapter.FetchAllDetail(s);
+                    studentList.Add(s);
+                }
+            }
+
+            var supervisions = from Student s in studentList
                                where s.SupervisorID == id
                                select s;
 

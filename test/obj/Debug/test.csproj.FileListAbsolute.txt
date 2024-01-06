@@ -42,8 +42,6 @@ C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\test.Properties.Resour
 C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\test.csproj.GenerateResource.cache
 C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\test.csproj.CoreCompileInputs.cache
 C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\test.csproj.CopyComplete
-C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\PublicationDetailView.g.cs
-C:\Users\maeve\Source\Repos\KIT206_Group_3\test\obj\Debug\PublicationDetailView.baml
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\bin\Debug\test.exe.config
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\bin\Debug\test.exe
 C:\Users\jakew\OneDrive\Desktop\Uni Work Dear God Help Me\2023\Summer 2023\KIT 206 - Software Design and Development\KIT206_Group_3\test\bin\Debug\test.pdb

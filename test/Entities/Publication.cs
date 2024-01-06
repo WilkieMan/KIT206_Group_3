@@ -90,7 +90,7 @@ namespace test
         /// </returns>
         public override string ToString()
         {
-            return Title + " Finilised By " + Type + " on " + AvailableFrom.ToShortDateString();
+            return Title + " Finalised By " + Type + " on " + AvailableFrom.ToShortDateString();
         }
 
         /// <summary>

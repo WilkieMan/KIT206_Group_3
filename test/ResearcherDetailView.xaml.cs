@@ -41,8 +41,11 @@ namespace test
 
         private void CummulativeCount_Click(object sender, RoutedEventArgs e)
         {
-            Researcher r = this.DataContext as Researcher;
-            MessageBox.Show("Cummulative Count" + r.Email );
+            Researcher researcher = this.DataContext as Researcher;
+
+            researcher.PopulateCummulatives(researcher.Publications);
+
+            MessageBox.Show("Cummulative Count\n");
             
         }
 
@@ -65,21 +68,35 @@ namespace test
 
         private void Supervisions_Click(object sender, RoutedEventArgs e)
         {
-            if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
+
+            Researcher temp = this.DataContext as Researcher;
+
+            if (temp.EmploymentLevel == Position.EmploymentLevel.Student)
             {
                 MessageBox.Show("Students do not have supervisions");
             } else
             {
-                Staff staff = researcher as Staff;
+                Staff staff = new Staff(temp.NameTitle, temp.GivenName, temp.FamilyName, temp.EmploymentLevel, temp.ID);
                 List<Student> supervisions = staff.GetSupervisionsList();
-                MessageBox.Show("Supervsions");
+                
+                if(supervisions.Count == 0)
+                {
+                    MessageBox.Show("Researcher has no supervisions");
+                } else
+                {
+                    var listToString = string.Join(Environment.NewLine, supervisions);
+                    MessageBox.Show("Supervisions:\n" + listToString);
+                }
+
             } 
 
         }
 
         private void Publication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+            Publication selected = PublicationsListView.SelectedItem as Publication;
+
+            MessageBox.Show("Publication Details:\n " + selected.ToDetailedString());
         }
     }
 }

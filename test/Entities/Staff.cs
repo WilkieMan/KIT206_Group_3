@@ -75,7 +75,7 @@ namespace test
         /// </summary>
         public List<Student> GetSupervisionsList()
         {
-            SupervisionsList = ResearcherController.GetSupervisions(this.ID);
+            SupervisionsList = ResearcherController.GetSupervisions(ID);
             SupervisionsCount = SupervisionsList.Count();
 
             return SupervisionsList;
