@@ -102,7 +102,7 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left">
+                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="250" Margin="10,10,10,10" HorizontalAlignment="Left">
                     <StackPanel>
                         <TextBlock Text="Student Details" Background="WhiteSmoke"/>
                         <StackPanel Orientation="Horizontal">

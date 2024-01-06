@@ -22,3 +22,4 @@ C:\Users\maeve\source\repos\KIT206_Group_3\test\obj\Debug\KIT206_RAP.csproj.Core
 C:\Users\maeve\source\repos\KIT206_Group_3\test\obj\Debug\KIT206_RAP.csproj.CopyComplete
 C:\Users\maeve\source\repos\KIT206_Group_3\test\obj\Debug\test.exe
 C:\Users\maeve\source\repos\KIT206_Group_3\test\obj\Debug\test.pdb
+C:\Users\maeve\source\repos\KIT206_Group_3\test\obj\Debug\KIT206_RAP.csproj.AssemblyReference.cache
