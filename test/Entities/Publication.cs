@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     //Enum type for Output type
     public enum Type { Conference, Journal, Other };
 
     internal class Publication
     {
-        public string DOI { get; set; } // The unique identifying string for each publications
-        public string Title { get; set; } // The title of the publication
-        public string CiteAs { get; set; } // The Cite string of the publication
-        public List<string> Authors = new List<string>(); // A list of authors involved in the publication
-        public OutputType Type { get; set; } // The type of publication
-        public int YearOfPublication { get; set; } // The year the publication was published
-        public DateTime AvailableFrom { get; set; } // The date on which the publication was first made available
-        public JournalRanking Ranking { get; set; } // The ranking of the journal the publication was published in
-
-        public enum OutputType { Conference, Journal, Other }; // The types of publications
-        public enum JournalRanking { Q1, Q2, Q3, Q4 } // The different journal rankings 
-        public double Funding { get; set; } // The amount of funding received for this publications
+        public string DOI { get; set; }                                             // The unique identifying string for each publications
+        public string Title { get; set; }                                           // The title of the publication
+        public string CiteAs { get; set; }                                          // The Cite string of the publication
+        public List<string> Authors = new List<string>();                           // A list of authors involved in the publication
+        public OutputType Type { get; set; }                                        // The type of publication
+        public int YearOfPublication { get; set; }                                  // The year the publication was published
+        public DateTime AvailableFrom { get; set; }                                 // The date on which the publication was first made available
+        public JournalRanking Ranking { get; set; }                                 // The ranking of the journal the publication was published in
+        public enum OutputType { Conference, Journal, Other };                      // The types of publications
+        public enum JournalRanking { Q1, Q2, Q3, Q4 }                               // The different journal rankings 
+        public double Funding { get; set; }                                         // The amount of funding received for this publications
 
         /// <summary>
         ///  This method adds an author to the list of authors for a given publication.

@@ -4,27 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     internal class Researcher
     {
-        public int ID { get; set; } // Researcher ID
-        public string GivenName { get; set; } // Researcher Given name
-        public string FamilyName { get; set; } // Researcher Family name                                                   
-        public string Unit { get; set; } // Researcher School
-        public Title NameTitle { get; set; } // The honorific of the researcher 
-        public Campus CampusName { get; set; } // Researcher's working campus 
-        public string Email { get; set; } // Researcher's email
-        public string Photo { get; set; } // Researcher Photo (URL Type) 
-        public Position.EmploymentLevel EmploymentLevel { get; set; } // The current employment level of the researcher
-        public List<Publication> Publications = new List<Publication>(); // Publications list of researcher
-        public List<CummulativeCount> CummulativeCounts = new List<CummulativeCount>(); // A list used to hold cumulative counts 
-        public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev } // A list of honorifics
-        public enum Campus { CradleCoast, Hobart, Launceston }; // A list of UTas campus' that the researcher can work at
-        public DateTime InstitutionStart { get; set; } // The date the researcher started at the current institution
-        public DateTime CurrentStart { get; set; } // The date the researcher started their current position
-        public List<Position> Positions = new List<Position>(); // A list of previous positions they have held at the current institution
-        public PublicationsController publicationsController = new PublicationsController();
+        public int ID { get; set; }                                                                     // Researcher ID
+        public string GivenName { get; set; }                                                           // Researcher Given name
+        public string FamilyName { get; set; }                                                          // Researcher Family name                                                   
+        public string Unit { get; set; }                                                                // Researcher School
+        public Title NameTitle { get; set; }                                                            // The honorific of the researcher 
+        public Campus CampusName { get; set; }                                                          // Researcher's working campus 
+        public string Email { get; set; }                                                               // Researcher's email
+        public string Photo { get; set; }                                                               // Researcher Photo (URL Type) 
+        public Position.EmploymentLevel EmploymentLevel { get; set; }                                   // The current employment level of the researcher
+        public List<Publication> Publications = new List<Publication>();                                // Publications list of researcher
+        public List<CummulativeCount> CummulativeCounts = new List<CummulativeCount>();                 // A list used to hold cumulative counts 
+        public enum Title { Dr, Prof, Mr, Mrs, Miss, Ms, Prov, Rev }                                    // A list of honorifics
+        public enum Campus { CradleCoast, Hobart, Launceston };                                         // A list of UTas campus' that the researcher can work at
+        public DateTime InstitutionStart { get; set; }                                                  // The date the researcher started at the current institution
+        public DateTime CurrentStart { get; set; }                                                      // The date the researcher started their current position
+        public List<Position> Positions = new List<Position>();                                         // A list of previous positions they have held at the current institution
+        public PublicationsController publicationsController = new PublicationsController();            // A controller for the publications
         
         /// <summary>
         /// Creates a string of their name and honorific to use in a list.
@@ -36,8 +36,6 @@ namespace test
         {
             return FamilyName + ", " + GivenName + " (" + NameTitle + ")";
         }
-        
-
 
         /// <summary>
         /// The constructor for a researcher object. 
@@ -56,14 +54,13 @@ namespace test
             EmploymentLevel = employmentLevel;
         }
 
-
         /// <summary>
         /// Calculates the percentage of publications that are published in Q1 journals.
         /// </summary>
         /// <returns>
         /// A double indicating a percentage.
         /// </returns>
-        public string Q1Percentage
+        public string Q1Percentage                                                          //The researcher's Q1 percentage
         {
             get
             {
@@ -89,7 +86,7 @@ namespace test
         /// The length of time in fractional years since they started at UTas
         /// </summary>
         /// Written by Sumaiya
-        public double Tenure
+        public double Tenure                                                          //The researcher's tenure
         {
             get
             {
@@ -99,7 +96,7 @@ namespace test
             }
         }
 
-        public int PublicationCount
+        public int PublicationCount                                                          //The number of publications the researcher has published
         {
             get
             {
@@ -116,15 +113,15 @@ namespace test
             bool found = false;
             publications = publicationsController.OldestToNewest(publications);
 
+            //sort every publication
             foreach (Publication p in publications)
             {
-                //DateTime PublicationYear = DateTime.Parse(p.YearOfPublication.ToString());
-
-                if (CummulativeCounts.Count == 0)
+                if (CummulativeCounts.Count == 0) //if the list is empty
                 {
-                    CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
+                    CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication)); //make new instance
                 } 
                 
+                //while the publication has not been placed
                 while (found == false)
                 {
                     foreach (CummulativeCount c in CummulativeCounts)
@@ -136,6 +133,7 @@ namespace test
                         } 
                     }
 
+                    //if the year did not aleady exist
                     if (found == false)
                     {
                         CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
@@ -151,8 +149,8 @@ namespace test
                     }
                 }
 
+                //reset
                 found = false;
-
             }
         }
 
@@ -162,7 +160,6 @@ namespace test
         /// <param name="publication">The publication to be added.</param>
         public void AddPublication(Publication publication)
         {
-
             Publications.Add(publication);
             Publications = publicationsController.NewestToOldest(Publications);
         }

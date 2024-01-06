@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static test.Researcher;
+using static KIT206_RAP.Researcher;
 
-namespace test
+namespace KIT206_RAP
 {
     internal class Staff : Researcher
     {
-        public List<Student> SupervisionsList; // Supervision list of researcher (If available)     
-        public int SupervisionsCount = 0; // The number of supervisions they have
-        int FundingToMaintin = 0;
+        public List<Student> SupervisionsList;              // Supervision list of researcher (If available)     
+        public int SupervisionsCount = 0;                   // The number of supervisions they have
+        int FundingToMaintin = 0;                           //Funding given to the researcher for the current year
 
         /// <summary>
         /// Staff constructor.
@@ -30,7 +30,10 @@ namespace test
             FamilyName = familyName;
         }
 
-        public string Funding
+        /// <summary>
+        /// Get the funding of the researcher
+        /// </summary>
+        public string Funding                                   //The funding the researcher recieved this year
         {
             get
             {
@@ -44,20 +47,9 @@ namespace test
         }
 
         /// <summary>
-        /// Populates the staff's supervisions using information that is already known.
-        /// </summary>
-        public List<Student> GetSupervisionsList()
-        {
-            SupervisionsList = ResearcherController.GetSupervisions(ID);
-            SupervisionsCount = SupervisionsList.Count();
-
-            return SupervisionsList;
-        }
-
-        /// <summary>
         /// The average number of publications produced per year for the last 3 years.
         /// </summary>
-        public double ThreeYearAverage
+        public double ThreeYearAverage                                      //The researcher's 3 year average
         {
             get
             {
@@ -79,10 +71,26 @@ namespace test
         }
 
         /// <summary>
+        /// Creates a string for the staff's current employment level.
+        /// </summary>
+        /// Written by Sumaiya
+        public string CurrentJobTitle                           //The name of the researcher's current job                                             //Current job of researcher
+        {
+            get
+            {
+                var currentJob = from Position p in Positions
+                                 orderby p.Start descending
+                                 select p;
+
+                return currentJob.First().ToTitle(EmploymentLevel);
+            }
+        }
+
+        /// <summary>
         /// A percentage representing the percent of expected publications produced per year over the last 3 years.
         /// </summary>
         /// Written by Sumaiya
-        public double Performance3Year
+        public double Performance3Year                               //The researcher's performance based on thier 3 year average                                
         {
             get
             {
@@ -109,7 +117,6 @@ namespace test
                 }
 
                 return (Math.Round(100 * (realPublications / expectedPublications), 1));
-
             }
         }
 
@@ -119,7 +126,7 @@ namespace test
         /// <returns>
         /// The number of publications per year.
         /// </returns>
-        public string PerformanceByPublication
+        public string PerformanceByPublication                                   //The researcher's performance based on thier publications
         {
             get
             {
@@ -135,18 +142,18 @@ namespace test
         /// <returns>
         /// The amount of funding received per year.
         /// </returns>
-        public string PerformanceByFunding
+        public string PerformanceByFunding                          //The researcher's performance based on thier funding
         {
             get
             {
-                double TotalFunding = 0.0;
+                double TotalFunding = 0.0; //total of all funding from all years
 
-                foreach (Publication p in Publications)
+                foreach (Publication p in Publications) 
                 {
-                    TotalFunding += p.Funding;
+                    TotalFunding += p.Funding; 
                 } 
 
-                if (TotalFunding == 0.0)
+                if (TotalFunding == 0.0) //if there is no funding information given
                 {
                     return "No funding data available.";
                 } else
@@ -170,6 +177,17 @@ namespace test
 
                 return currentJob.First().Start;
             }
+        }
+
+        /// <summary>
+        /// Populates the staff's supervisions using information that is already known.
+        /// </summary>
+        public List<Student> GetSupervisionsList()
+        {
+            SupervisionsList = ResearcherController.GetSupervisions(ID);
+            SupervisionsCount = SupervisionsList.Count();
+
+            return SupervisionsList;
         }
     }
 }

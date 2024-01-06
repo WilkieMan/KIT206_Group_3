@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     class CummulativeCount
     {
-        public int Year { get; set; } // The year this cumulative count represents 
-        public List<Publication> publications = new List<Publication>(); // The list of publications published in this year 
+        public int Year { get; set; }                                               // The year this cumulative count represents 
+        public List<Publication> publications = new List<Publication>();            // The list of publications published in this year 
 
         /// <summary>
         /// Cumulative count constructor.

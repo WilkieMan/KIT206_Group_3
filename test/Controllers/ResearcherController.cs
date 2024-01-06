@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     internal class ResearcherController
     {
-        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher(); // A list of all the researchers and their query-able details.
+        private static List<Researcher> MasterList = DBAdapter.FetchBasicResearcher();          // A list of all the researchers and their query-able details.
         // private static List<Researcher> MasterList = FakeReasearcherData.Generate();
-        private List<Researcher> ModifiedList = MasterList; // A list to be manipulated 
+        private List<Researcher> ModifiedList = MasterList;                                     // A list to be manipulated 
 
         /// <summary>
         /// Prints the short hand version of the researchers in the current/modified list.
@@ -26,6 +26,12 @@ namespace test
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Gives the original master list of researchers in alphabetical order.
+        /// </summary>
+        /// <returns>
+        /// The alphabetised master list of researchers
+        /// </returns>
         public List<Researcher> GetMasterList()
         {
             return Alphabetise(MasterList);
@@ -67,7 +73,6 @@ namespace test
         /// </returns>
         public List<Researcher> FilterByJobTitle(List<Researcher> researchers, Position.EmploymentLevel employmentLevel)
         {
-
             if (employmentLevel == Position.EmploymentLevel.Any)
             {
                 return researchers;
@@ -111,8 +116,9 @@ namespace test
         /// </returns>
         public static List<Student> GetSupervisions(int id)
         {
-            List<Student> studentList = new List<Student>();
+            List<Student> studentList = new List<Student>();        //temporary list
 
+            //creating a list of students from the master list
             foreach (Researcher r in MasterList)
             {
                 if (r.EmploymentLevel == Position.EmploymentLevel.Student)
@@ -133,7 +139,7 @@ namespace test
         /// <summary>
         /// Returns the supervisor based on their ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the supervisor</param>
         /// The researher object
         /// <returns></returns>
         public static Researcher GetSupervisor(int id)
@@ -151,23 +157,22 @@ namespace test
             return null;
         }
 
-
         /// <summary>
         /// Generates the reports of each resercher's perormance
         /// </summary>
-        /// <param name="performance"></param>
+        /// <param name="performance">the wanted performance level</param>
         /// <returns>
         /// List of the researchers in the required bracket
         /// </returns>
         public List<Staff> GenerateReports(string performance)
         {
-
-            double poor = 70.0;
+            double poor = 70.0;                                                     //Criteria for each performance metric
             double belowExpectation = 110.0;
             double minimum = 110.0;
             double star = 200.0;
-            List<Staff> staffList = new List<Staff>();
+            List<Staff> staffList = new List<Staff>();                               //temporary list  
 
+            //converts researhcers into staff objects
             foreach (Researcher r in MasterList)
             {
                 if (r.EmploymentLevel != Position.EmploymentLevel.Student)
@@ -177,6 +182,7 @@ namespace test
                 }
             }
             
+            //sort the researchers based on their performance
             switch (performance) 
             {
                 case "poor":
@@ -200,13 +206,19 @@ namespace test
                                          select s;
                     return new List<Staff>(starPerformers);
             }
-
-
         }
 
+        /// <summary>
+        /// Calculates the amount of publications a researcher published in one year.
+        /// </summary>
+        /// <param name="year">the queried year</param>
+        /// <param name="researcher">the researcher that the table is being generate for</param>
+        /// <returns>
+        /// The number of publication published in a given year.
+        /// </returns>
         public int GetCummulativeYears(int year, Researcher researcher)
         {
-            int totalPublications = 0;
+            int totalPublications = 0;                                      //the total number of publications for one year
 
             foreach (Publication p in researcher.Publications)
             {
@@ -219,22 +231,29 @@ namespace test
             return totalPublications;
         }
 
+        /// <summary>
+        /// Generates the table for the cummulative count of publications.
+        /// </summary>
+        /// <param name="researcher">The researcher that the table is being generated for</param>
+        /// <returns>
+        /// The generated table.
+        /// </returns>
         public string GenerateCummulativeTable(Researcher researcher)
         {
-            int cummulative = 0;
-            string message = "";
+            int cummulative = 0;            //total number of publications
+            string message = "";            //new table
 
             DataTable table = new DataTable();
             table.Columns.Add("Year", typeof(int));
             table.Columns.Add("Number of Publications", typeof(int));
 
+            //add rows for years starting at the year they started at the institution and ending at the current year
             for (int i = researcher.InstitutionStart.Year; i <= DateTime.Now.Year; i++)
             {
                 table.Rows.Add(i, (GetCummulativeYears(i, researcher) + cummulative));
 
                 cummulative = GetCummulativeYears(i, researcher) + cummulative;
             }
-
 
             foreach (DataRow row in table.Rows)
             {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace test
+namespace KIT206_RAP
 {
     internal class DBAdapter
     {

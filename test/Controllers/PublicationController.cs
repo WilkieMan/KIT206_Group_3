@@ -4,47 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     internal class PublicationsController
     {
+ 
         /// <summary>
-        /// Takes a list of publications and searches their titles for a provided query. 
-        /// </summary>
-        /// <param name="publications">The list of queried publications.</param>
-        /// <param name="query">The string query.</param>
-        /// <returns>
-        /// A list of publications with satisfy the query.
-        /// </returns>
-        public static List<Publication> SearchByTitle(List<Publication> publications, string query)
-        {
-            var pubsByTitle = from p in publications
-                              where p.Title.ToLower().Contains(query.ToLower())
-                              select p;
-
-            return new List<Publication>(pubsByTitle);
-        }
-
-        /// <summary>
-        /// Checks if a list of publications for if their author contains a certain string.
-        /// </summary>
-        /// <param name="publications">The list of publications to check.</param>
-        /// <param name="query">The string to query against the authors.</param>
-        /// <returns>
-        /// A list of publications that satisfy the query.
-        /// </returns>
-        public static List<Publication> SearchByResearcher(List<Publication> publications, string query)
-        {
-            var pubsByAuthor = from p in publications
-                               from author in p.Authors
-                               where author.ToLower().Contains(query.ToLower())
-                               select p;
-
-            return (List<Publication>)pubsByAuthor.ToList();
-        }
-
-        /// <summary>
-        /// Sorts a list of publications by publication date.
+        /// Sorts a list of publications by publication date from oldest to newest.
         /// </summary>
         /// <param name="publications">The list of publications to sort.</param>
         /// <returns>
@@ -57,6 +23,13 @@ namespace test
             return new List<Publication>(sortedYearPublications);
         }
 
+        /// <summary>
+        /// Sorts a list of publications by publication date from newest to oldest.
+        /// </summary>
+        /// <param name="publications">The list of publications to sort.</param>
+        /// <returns>
+        /// The sorted list of publications.
+        /// </returns>
         public List<Publication> NewestToOldest(List<Publication> publications)
         {
             var sortedYearPublications = publications.OrderByDescending(p => p.YearOfPublication);
@@ -64,26 +37,33 @@ namespace test
             return new List<Publication>(sortedYearPublications);
         }
 
-        public List<Publication> FilterByYears(List<Publication> publications, string UpperLimit, string LowerLimit)
+        /// <summary>
+        /// Filters a list of publications by publication date using an upper and lower limit.
+        /// </summary>
+        /// <param name="publications">The list of publications to filter</param>
+        /// <param name="UpperLimit">The largest year to filter by</param>
+        /// <param name="LowerLimit">The smallest year to filter by</param>
+        /// <returns>
+        /// The filtered list of publications.
+        /// </returns>
+        public List<Publication> FilterByYears(List<Publication> publications, string upperLimit, string lowerLimit)
         {
 
-
-
-            if (UpperLimit == "" || LowerLimit == "")
+            //reset the list if either field is empty
+            if (upperLimit == "" || lowerLimit == "")
             {
                 return publications;
             }
 
-            int upperLimit = int.Parse(UpperLimit);
-            int lowerLimit = int.Parse(LowerLimit);
+            //convert to a int
+            int upperLimitInt = int.Parse(upperLimit);
+            int lowerLimitInt = int.Parse(lowerLimit);
 
             var sortedYearPublications = from p in publications
-                                         where p.YearOfPublication <= upperLimit && p.YearOfPublication >= lowerLimit
+                                         where p.YearOfPublication <= upperLimitInt && p.YearOfPublication >= lowerLimitInt
                                          select p;
 
             return new List<Publication>(sortedYearPublications);
-
         }
-
     }
 }

@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="test.ResearcherDetailView"
+﻿<UserControl x:Class="KIT206_RAP.ResearcherDetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:local="clr-namespace:test"
+             xmlns:local="clr-namespace:KIT206_RAP"
              mc:Ignorable="d" d:DesignWidth="1000" Height="800">
     <Grid Background="Wheat">
         <StackPanel Orientation="Vertical">
@@ -111,7 +111,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="0,2,5,2" Content="Supervisor: "/>
-                            <Label Margin="0,2,5,2" Content="{Binding SupervisorID}"/>
+                            <Label Margin="0,2,5,2" Content="{Binding PrintSupervisorInfo}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -124,10 +124,10 @@
                     <Button Content="Newest to Oldest" Height ="20" HorizontalAlignment="Left" Margin="10,30,10,10" Click="NewestToOldest_Click" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Upper Limt: " Margin="20,10,0,10"/>
-                    <TextBox x:Name="UpperLimit" Width="100" Height="30" Margin="10,10,10,10"/>
                     <Label Content="Lower Limt: " Margin="0,10,0,10"/>
                     <TextBox x:Name="LowerLimit" Width="100" Height="30" Margin="10,10,10,10"/>
+                    <Label Content="Upper Limt: " Margin="20,10,0,10"/>
+                    <TextBox x:Name="UpperLimit" Width="100" Height="30" Margin="10,10,10,10"/>
                     <Button Content="Search" Height="30" Width="80" Click="PublicationSearch_Click"/>
                 </StackPanel>
                 <ListBox x:Name="PublicationsListView" Height="150" Width="850" HorizontalAlignment="Left" Margin="10,10,10,10" ItemsSource="{Binding Publications}" SelectionChanged="Publication_SelectionChanged"/>

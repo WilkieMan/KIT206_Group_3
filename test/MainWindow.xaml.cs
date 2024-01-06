@@ -13,15 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace test
+namespace KIT206_RAP
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static ResearcherController researcherController = new ResearcherController(); // The controller to control all the researchers
-        private static List<Researcher> researcherList; // The list to be displayed as the ResearcherListView
+        private static ResearcherController researcherController = new ResearcherController();      // The controller to control all the researchers
+        private static List<Researcher> researcherList;                                             // The list to be displayed as the ResearcherListView
         
         /// <summary>
         /// Constructor for the MainWindow.
@@ -29,10 +29,11 @@ namespace test
         public MainWindow()
         {
             InitializeComponent();
-            ResearcherListView.ItemsSource = researcherController.GetMasterList();
+            ResearcherListView.ItemsSource = researcherController.GetMasterList();          //fills the ResearcherListView
 
             List<Position.EmploymentLevel> employmentLevels = new List<Position.EmploymentLevel>();
 
+            //converts enum types to a list
             employmentLevels.Add(Position.EmploymentLevel.Any);
             employmentLevels.Add(Position.EmploymentLevel.A);
             employmentLevels.Add(Position.EmploymentLevel.B);
@@ -41,8 +42,9 @@ namespace test
             employmentLevels.Add(Position.EmploymentLevel.E);
             employmentLevels.Add(Position.EmploymentLevel.Student);
        
+            //fills the FilterByTitleBox with the positions list
             FilterByTitleBox.ItemsSource = employmentLevels;
-            FilterByTitleBox.SelectedItem = 0;
+            FilterByTitleBox.SelectedItem = employmentLevels[0];
         }
 
         /// <summary>
@@ -76,6 +78,7 @@ namespace test
 
             Researcher researcher = ResearcherListView.SelectedItem as Researcher;
 
+            //loads in the researcher data and creates a new ResearcherDetailView
             if (researcher != null)
             {
                 if (researcher.EmploymentLevel == Position.EmploymentLevel.Student)
@@ -125,7 +128,6 @@ namespace test
         private void ApplyFilters()
         {
             researcherList = researcherController.GetMasterList();
-
             Position.EmploymentLevel selctedLevel = (Position.EmploymentLevel)FilterByTitleBox.SelectedItem;
 
             researcherList = researcherController.FilterByJobTitle(researcherList, selctedLevel);

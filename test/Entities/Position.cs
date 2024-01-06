@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace KIT206_RAP
 {
     public class Position
     {
         /// Written by Sumaiya
-        public int ID { get; set; } // ID of researcher
-        public EmploymentLevel Level { get; set; } // Employment level 
-        public DateTime Start { get; set; } // Start day 
-        public DateTime End { get; set; } // End day  
-        public enum EmploymentLevel { A, B, C, D, E, Student, Any} // The different employment levels a researcher can be
+        public int ID { get; set; }                                  // ID of researcher
+        public EmploymentLevel Level { get; set; }                   // Employment level 
+        public DateTime Start { get; set; }                          // Start day 
+        public DateTime End { get; set; }                            // End day  
+        public enum EmploymentLevel { A, B, C, D, E, Student, Any}   // The different employment levels a researcher can be
 
         /// <summary>
         /// The position constructor.
@@ -40,7 +40,7 @@ namespace test
         /// Written by Sumaiya
         public string ToTitle(EmploymentLevel el)
         {
-            string title;                                   //The title of the researcher
+            string title;                                               //The title of the researcher
             switch (el)
             {
                 case EmploymentLevel.Student:

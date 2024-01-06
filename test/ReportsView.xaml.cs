@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace test
+namespace KIT206_RAP
 {
     /// <summary>
     /// Interaction logic for ReportsView.xaml.
@@ -21,8 +21,8 @@ namespace test
     public partial class ReportsView : UserControl
     {
 
-        private static ResearcherController researcherController = new ResearcherController(); // The controller used to manage the researchers
-        private List<Researcher> reportResearchers = new List<Researcher>(); // The list used to create reports
+        private static ResearcherController researcherController = new ResearcherController();      // The controller used to manage the researchers
+        private List<Researcher> reportResearchers = new List<Researcher>();                        // The list used to create reports
 
         /// <summary>
         /// The constructor for the ReportsView.
@@ -73,6 +73,12 @@ namespace test
     
         }
 
+
+        /// <summary>
+        /// Copies the emails of the reported researchers to the clipboard
+        /// </summary>
+        /// <param name="sender">The object that sent the event.</param>
+        /// <param name="e">The event</param>
         private void CopyEmails_Copy(object sender, RoutedEventArgs e)
         {
             string emails = "";

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static test.Researcher;
+using static KIT206_RAP.Researcher;
 
-namespace test
+namespace KIT206_RAP
 {
     internal class Student : Researcher
     {
-        public string Degree { get; set; } // A string for the degree that they are undertaking. 
-        public int SupervisorID { get; set; } // The ID of their supervisor.
-        Position CurrentPosition; // The date they started their research degree. 
+        public string Degree { get; set; }                      // A string for the degree that they are undertaking. 
+        public int SupervisorID { get; set; }                   // The ID of their supervisor.
+        Position CurrentPosition;                               // The date they started their research degree. 
                                         
         /// <summary>
         /// Student constructor.
@@ -43,21 +43,11 @@ namespace test
                 return "Student";
             }
         }
-        /// <summary>
-        /// Formats a string for displaying basic student information. 
-        /// </summary>
-        /// <returns>
-        /// A string containing their full name title and position.
-        /// </returns>
-        public string PrintStudentInfo()
-        {
-            return FamilyName + ", " + GivenName + " (" + NameTitle + ") - " + EmploymentLevel;
-        }
-
+        
         /// <summary>
         /// Return the amount of time they have so far spent on their research degree.
         /// </summary>
-        public double DegreeLength
+        public double DegreeLength                                         //How long the student has been doing the degree
         {
             get
             {
@@ -67,12 +57,28 @@ namespace test
             }
         }
 
-        public string PrintSupervisorInfo()
+        /// <summary>
+        /// Return the supervisor's basic information
+        /// </summary>
+        public string PrintSupervisorInfo                                                           //The supervisor's basic information
         {
+            get
+            {
+                Researcher supervisor = ResearcherController.GetSupervisor(SupervisorID);           //gets the supervisor object
 
-            Researcher supervisor = ResearcherController.GetSupervisor(SupervisorID);
+                return supervisor.FamilyName + ", " + supervisor.GivenName + " (" + supervisor.NameTitle + ") - " + supervisor.EmploymentLevel;
+            }
+        }
 
-            return supervisor.FamilyName + ", " + supervisor.GivenName + " (" + supervisor.NameTitle + ") - " + supervisor.EmploymentLevel;
+        /// <summary>
+        /// Formats a string for displaying basic student information. 
+        /// </summary>
+        /// <returns>
+        /// A string containing their full name title and position.
+        /// </returns>
+        public string PrintStudentInfo()
+        {
+            return FamilyName + ", " + GivenName + " (" + NameTitle + ") - " + EmploymentLevel;
         }
 
     }
