@@ -63,24 +63,48 @@ namespace test
         /// <returns>
         /// A double indicating a percentage.
         /// </returns>
-        public double Q1Percentage()
+        public string Q1Percentage
         {
-            double Q1Number = 0.0;
-
-            foreach (Publication p in Publications)
+            get
             {
-                if (p.Ranking == Publication.JournalRanking.Q1)
-                {
-                    Q1Number++;
-                }
-            }
+                double Q1Number = 0.0;
 
-            return 100 * (Q1Number / Publications.Count);
+                foreach (Publication p in Publications)
+                {
+                    if (p.Ranking == Publication.JournalRanking.Q1)
+                    {
+                        Q1Number++;
+                    }
+                }
+
+                Q1Number = Math.Round(100 * Q1Number / Publications.Count, 1);
+
+                string Q1String = Q1Number.ToString();
+
+                return Q1String + "%";
+            }
         }
 
-        public string GetPublicationCount()
+        /// <summary>
+        /// The length of time in fractional years since they started at UTas
+        /// </summary>
+        public double Tenure
         {
-            return Publications.Count.ToString();
+            get
+            {
+                double daysInYear = 365.0;
+                // System.Console.WriteLine(Positions.Count());
+                // System.Console.WriteLine(EarliestJobStart.ToString());
+                return Math.Round((DateTime.Today.Subtract(InstitutionStart)).Days / daysInYear, 1);
+            }
+        }
+
+        public int PublicationCount
+        {
+            get
+            {
+                return Publications.Count;
+            }
         }
 
         /// <summary>
@@ -89,6 +113,7 @@ namespace test
         /// <param name="publications">The researchers publications.</param>
         public void PopulateCummulatives(List<Publication> publications)
         {
+            bool found = false;
             publications = publicationsController.OldestToNewest(publications);
 
             foreach (Publication p in publications)
@@ -99,22 +124,35 @@ namespace test
                 {
                     CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
                 } 
-             
-
-
-
-                foreach (CummulativeCount c in CummulativeCounts)
+                
+                while (found == false)
                 {
-                    if (c.Year == p.YearOfPublication)
+                    foreach (CummulativeCount c in CummulativeCounts)
                     {
-                        c.publications.Add(p);
+                        if (c.Year == p.YearOfPublication)
+                        {
+                            c.publications.Add(p);
+                            found = true;
+                        } 
                     }
-                    else
+
+                    if (found == false)
                     {
                         CummulativeCounts.Add(new CummulativeCount(p.YearOfPublication));
-                        c.publications.Add(p);
+
+                        foreach (CummulativeCount c in CummulativeCounts)
+                        {
+                            if (c.Year == p.YearOfPublication)
+                            {
+                                c.publications.Add(p);
+                                found = true;
+                            }
+                        }
                     }
                 }
+
+                found = false;
+
             }
         }
 

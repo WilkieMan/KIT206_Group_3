@@ -72,5 +72,19 @@ namespace test
             Reports.ItemsSource = researcherController.GenerateReports("star");
     
         }
+
+        private void CopyEmails_Copy(object sender, RoutedEventArgs e)
+        {
+            string emails = "";
+            List<Researcher> performers = Reports.ItemsSource as List<Researcher>;
+
+            foreach (Researcher r in performers)
+            {
+                emails += r.Email + "\n";
+            }
+
+            Clipboard.SetText(emails);
+            MessageBox.Show("Copied to clipboard: " + emails);
+        }
     }
 }

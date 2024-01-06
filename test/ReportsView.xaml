@@ -14,7 +14,10 @@
                 <Button x:Name="MeetingMinimumButton" Content="Meeting Minimum Performers" Click="MeetingMinimumButton_Click" Margin="20,20,20,20" Height="30" VerticalAlignment="Top"/>
                 <Button x:Name="StarButton" Content="Star Performers" Click="StarButton_Click" Margin="20,20,20,20" Height="30" VerticalAlignment="Top"/>
             </StackPanel>
-            <ListBox x:Name="Reports" FontSize="20" Width="300" HorizontalAlignment="Left" Height="401" Margin="10,10,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <ListBox x:Name="Reports" FontSize="20" Width="300" HorizontalAlignment="Left" Height="401" Margin="10,10,0,10"/>
+                <Button x:Name="CopyEmails_Button" Content="Copy Emails" Margin="10,10,10,10" Width="100" Height="30" VerticalAlignment="Top" Click="CopyEmails_Copy"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

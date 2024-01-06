@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace test
 
             researcher.PopulateCummulatives(researcher.Publications);
 
-            MessageBox.Show("Cummulative Count\n");
+            MessageBox.Show("Cummulative Count: \n" + researcherController.GenerateCummulativeTable(researcher));
             
         }
 

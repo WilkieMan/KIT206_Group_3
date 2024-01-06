@@ -11,7 +11,7 @@ namespace test
     {
         public List<Student> SupervisionsList; // Supervision list of researcher (If available)     
         public int SupervisionsCount = 0; // The number of supervisions they have
-        public string funding = null;
+        int FundingToMaintin = 0;
 
         /// <summary>
         /// Staff constructor.
@@ -28,31 +28,19 @@ namespace test
             NameTitle = title;
             EmploymentLevel = employmentLevel;
             FamilyName = familyName;
-            // FundingToMaintain = fundingToMaintain;
         }
 
-        /// <summary>
-        /// The length of time in fractional years since they started at UTas
-        /// </summary>
-        public double Tenure
+        public string Funding
         {
             get
             {
-                double daysInYear = 365.0;
-                // System.Console.WriteLine(Positions.Count());
-                // System.Console.WriteLine(EarliestJobStart.ToString());
-                return Math.Round((DateTime.Today.Subtract(EarliestJobStart)).Days / daysInYear, 1);
-            }
-        }
+                if (FundingToMaintin == 0)
+                {
+                    return "No funding data available.";
+                }
 
-        public string GetFunding()
-        {
-            if (funding == null)
-            {
-                return "No funding data available.";
+                return FundingToMaintin.ToString() + " AUD";
             }
-
-            return funding;
         }
 
         /// <summary>
@@ -147,12 +135,15 @@ namespace test
         /// <returns>
         /// The number of publications per year.
         /// </returns>
-        public double GetPerformanceByPublication()
+        public string PerformanceByPublication
         {
-            double PublicationCount = Publications.Count;
+            get
+            {
+                string performance = Math.Round((Publications.Count / Tenure),1).ToString();
 
-            return Math.Round(PublicationCount / Tenure, 1);
-        }
+                return performance + " publications/yr";
+            }
+         }
 
         /// <summary>
         /// The amount of funding received per year for their entire tenure. 
@@ -160,16 +151,25 @@ namespace test
         /// <returns>
         /// The amount of funding received per year.
         /// </returns>
-        public double GetPerformanceByFunding()
+        public string PerformanceByFunding
         {
-            double TotalFunding = 0.0;
-
-            foreach (Publication p in Publications)
+            get
             {
-                TotalFunding += p.Funding;
-            }
+                double TotalFunding = 0.0;
 
-            return Math.Round(TotalFunding / Tenure, 1);
+                foreach (Publication p in Publications)
+                {
+                    TotalFunding += p.Funding;
+                } 
+
+                if (TotalFunding == 0.0)
+                {
+                    return "No funding data available.";
+                } else
+                {
+                    return (Math.Round((TotalFunding / Tenure), 1)).ToString() + " AUD/yr"; 
+                }
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -203,5 +204,44 @@ namespace test
 
         }
 
+        public int GetCummulativeYears(int year, Researcher researcher)
+        {
+            int totalPublications = 0;
+
+            foreach (Publication p in researcher.Publications)
+            {
+                if (p.YearOfPublication == year)
+                {
+                    totalPublications++;
+                }
+            }
+
+            return totalPublications;
+        }
+
+        public string GenerateCummulativeTable(Researcher researcher)
+        {
+            int cummulative = 0;
+            string message = "";
+
+            DataTable table = new DataTable();
+            table.Columns.Add("Year", typeof(int));
+            table.Columns.Add("Number of Publications", typeof(int));
+
+            for (int i = researcher.InstitutionStart.Year; i <= DateTime.Now.Year; i++)
+            {
+                table.Rows.Add(i, (GetCummulativeYears(i, researcher) + cummulative));
+
+                cummulative = GetCummulativeYears(i, researcher) + cummulative;
+            }
+
+
+            foreach (DataRow row in table.Rows)
+            {
+                message += $"{row["Year"]}\t{row["Number of Publications"]}\n";
+            }
+
+            return message;
+        }
     }
 }

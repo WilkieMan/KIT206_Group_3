@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:test"
              mc:Ignorable="d" d:DesignWidth="1000" Height="800">
     <Grid Background="Wheat">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left">
+                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="220" Margin="10,10,10,10" HorizontalAlignment="Left">
                     <StackPanel>
                         <TextBlock Text="Basic Details" Background="WhiteSmoke"/>
                         <StackPanel Orientation="Horizontal">
@@ -37,22 +38,18 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="500" Margin="10,10,10,10" HorizontalAlignment="Left">
+                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="450" Margin="10,10,10,10" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Performance" Background="WhiteSmoke"/>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Current Job Title: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobTitle}"/>
                                 <Label Margin="0,2,5,2" Content="{Binding CurrentTitle}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobTitle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Commenced with institution: "/>
                                 <Label Margin="0,2,5,2" Content="{Binding InstitutionStart}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Margin="0,2,5,2" Content="Commenced in current position: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobStart}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Tenure: "/>
@@ -60,11 +57,11 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Number of publications: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetPublicationCount}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding PublicationCount}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Q1 percentage: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetQ1Percentage}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding Q1Percentage}"/>
                             </StackPanel>
                         </StackPanel>
                         <Button Content="Cumulative Count" Height="50" Margin="30,20,10,10" VerticalAlignment="Top" Click="CummulativeCount_Click" />
@@ -73,31 +70,35 @@
             <Image Height="200" Width="200" Source="{Binding Path=Photo}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="500" Margin="10,10,10,10" HorizontalAlignment="Left">
+                <Border BorderThickness="1" BorderBrush="DarkGoldenrod" Width="650" Margin="10,10,10,10" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Staff Details" Background="WhiteSmoke"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Margin="0,2,5,2" Content="Commenced in current position: "/>
+                                <Label Margin="0,2,5,2" Content="{Binding CurrentJobStart}"/>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="3-year average: "/>
                                 <Label Margin="0,2,5,2" Content="{Binding ThreeYearAverage}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Funding recieved: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetFunding}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding Funding}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Performance by publication: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetPerformanceByPublication}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding PerformanceByPublication}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Margin="0,2,5,2" Content="Performance by funding: "/>
-                                <Label Margin="0,2,5,2" Content="{Binding GetPerformanceByFunding}"/>
+                                <Label Margin="0,2,5,2" Content="{Binding PerformanceByFunding}"/>
                             </StackPanel>
                         </StackPanel>
                         <Button Content="Supervisions" Height="50" Margin="30,20,10,10" VerticalAlignment="Top" Click="Supervisions_Click" />
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Past Positions" Margin="10,10,0,0"/>
-                            <ListBox x:Name="PastPositionsBox" Height="100" Width="180" Margin="10,0,10,10" ItemsSource="{Binding Positions}"/>
+                            <ListBox x:Name="PastPositionsBox" Height="100" Width="200" Margin="10,0,10,10" ItemsSource="{Binding Positions}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -129,7 +130,7 @@
                     <TextBox x:Name="LowerLimit" Width="100" Height="30" Margin="10,10,10,10"/>
                     <Button Content="Search" Height="30" Width="80" Click="PublicationSearch_Click"/>
                 </StackPanel>
-                <ListBox x:Name="PublicationsListView" Height="180" Width="600" HorizontalAlignment="Left" Margin="10,10,10,10" ItemsSource="{Binding Publications}" SelectionChanged="Publication_SelectionChanged"/>
+                <ListBox x:Name="PublicationsListView" Height="150" Width="850" HorizontalAlignment="Left" Margin="10,10,10,10" ItemsSource="{Binding Publications}" SelectionChanged="Publication_SelectionChanged"/>
             </StackPanel>
         </StackPanel>
     </Grid>
