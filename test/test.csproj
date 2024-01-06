@@ -74,6 +74,7 @@
     <Compile Include="ResearcherDetailView.xaml.cs">
       <DependentUpon>ResearcherDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Testing\FakeResearcherData.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,8 +122,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Testing\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

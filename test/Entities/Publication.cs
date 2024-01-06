@@ -88,6 +88,7 @@ namespace test
         /// <returns>
         /// A string representing the publication.
         /// </returns>
+        /// Written by Sumaiya
         public override string ToString()
         {
             return Title + " - " + Type + " on " + AvailableFrom.ToShortDateString();
@@ -99,6 +100,7 @@ namespace test
         /// <returns>
         /// A string of all the publications details.
         /// </returns>
+        /// Written by Sumaiya
         public string ToDetailedString()
         {
             return String.Format("DOI: {0} \n" +

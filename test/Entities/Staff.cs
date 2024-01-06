@@ -44,21 +44,6 @@ namespace test
         }
 
         /// <summary>
-        /// Creates a string for the staff's current employment level.
-        /// </summary>
-        public string CurrentJobTitle                                             //Current job of researcher
-        {
-            get
-            {
-                var currentJob = from Position p in Positions
-                                 orderby p.Start descending
-                                 select p;
-
-                return currentJob.First().ToTitle(CurrentJobLevel);
-            }
-        }
-
-        /// <summary>
         /// Populates the staff's supervisions using information that is already known.
         /// </summary>
         public List<Student> GetSupervisionsList()
@@ -93,11 +78,10 @@ namespace test
             }
         }
 
-
-
         /// <summary>
         /// A percentage representing the percent of expected publications produced per year over the last 3 years.
         /// </summary>
+        /// Written by Sumaiya
         public double Performance3Year
         {
             get
@@ -173,38 +157,9 @@ namespace test
         }
 
         /// <summary>
-        /// Returns the employment level of the staff's current job.
-        /// </summary>
-        public Position.EmploymentLevel CurrentJobLevel                                          //Current job level of researcher
-        {
-            get
-            {
-                var currentJob = from Position p in Positions
-                                 orderby p.Start descending
-                                 select p;
-
-                return currentJob.First().Level;
-            }
-        }
-
-        /// <summary>
-        /// Creates a string describing their current job in the form of job title + date they started.
-        /// </summary>
-        public string CurrentJob                                         //Date of current position of researcher
-        {
-            get
-            {
-                var currentJob = from Position p in Positions
-                                 orderby p.Start descending
-                                 select p;
-
-                return currentJob.First().ToTitle(CurrentJobLevel) + " started on " + CurrentJobStart.ToString("dd-MM-yyyy");
-            }
-        }
-
-        /// <summary>
         /// Returns the date they started their current job.
         /// </summary>
+        /// Written by Sumaiya
         public DateTime CurrentJobStart                                         //Date of current position of researcher
         {
             get
@@ -214,41 +169,6 @@ namespace test
                                  select p;
 
                 return currentJob.First().Start;
-            }
-        }
-
-        /// <summary>
-        /// Gets the date that they started at the institution. 
-        /// </summary>
-        public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
-        {
-            get
-            {
-                var earliestJob = from Position p in Positions
-                                  orderby p.Start ascending
-                                  select p;
-
-                return earliestJob.First().Start;
-            }
-        }
-
-        /// <summary>
-        /// Returns a list of all the other jobs this person has held.
-        /// </summary>
-        public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
-        {
-            get
-            {
-                List<Position> pastJob = new List<Position>();
-
-                foreach (Position p in Positions)
-                {
-                    pastJob.Add(p);
-                }
-
-                pastJob.RemoveAt(pastJob.Count - 1);
-
-                return pastJob;
             }
         }
     }

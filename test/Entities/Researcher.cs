@@ -88,13 +88,13 @@ namespace test
         /// <summary>
         /// The length of time in fractional years since they started at UTas
         /// </summary>
+        /// Written by Sumaiya
         public double Tenure
         {
             get
             {
                 double daysInYear = 365.0;
-                // System.Console.WriteLine(Positions.Count());
-                // System.Console.WriteLine(EarliestJobStart.ToString());
+            
                 return Math.Round((DateTime.Today.Subtract(InstitutionStart)).Days / daysInYear, 1);
             }
         }

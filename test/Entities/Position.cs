@@ -8,6 +8,7 @@ namespace test
 {
     public class Position
     {
+        /// Written by Sumaiya
         public int ID { get; set; } // ID of researcher
         public EmploymentLevel Level { get; set; } // Employment level 
         public DateTime Start { get; set; } // Start day 
@@ -36,6 +37,7 @@ namespace test
         /// <returns>
         /// Their job title.
         /// </returns>
+        /// Written by Sumaiya
         public string ToTitle(EmploymentLevel el)
         {
             string title;                                   //The title of the researcher
@@ -69,6 +71,7 @@ namespace test
         /// </summary>
         /// <returns>
         /// A string representing the position.</returns>
+        /// Written by Sumaiya
         public override string ToString()
         {
             string start = Start.ToString("dd-MM-yyyy");  //The start date 
